@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleafe.org">
+<head>
+<meta charset="utf-8">
+<title>Lista De Usuario</title>
+
+<style type="text/css">
+td {
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+	padding: 5px;
+}
+
+th {
+	background-color: black;
+	color: white;
+	padding: 12px;
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.tabela {
+	border: 3px solid blue;
+	text-align: center;
+	margin: auto;
+	width: 80%;
+}
+
+a {
+	text-decoration: none;
+}
+
+
+.nav {
+	background: #202020;
+	color: white;
+}
+
+</style>
+
+
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
+
+</head>
+<body>
+
+	<header>
+		<nav class="nav">
+			<div class="nav-wrapper">
+				<a href="/logout" class="brand-logo right"> <i
+					class="material-icons">exit_to_app</i></a>
+				<ul id="nav-mobile" class="left hide-on-med-and-down">
+					<li><a href="/formAdmin">Cadastro de Adm</a></li>
+					<li><a href="/formUsuario">Cadastro de Usuario</a></li>
+					<li><a href="/listarAdmin/1">Listar Administrador</a></li>
+					<li><a href="/listarUsuario/1">Listar Usuarios</a></li>
+
+
+				</ul>
+			</div>
+		</nav>
+	</header>
+
+
+	<table border="1" class="tabela">
+		<tr>
+			<th>Id</th>
+			<th>Nome</th>
+			<th>Nif</th>
+			<th>Alterar</th>
+			<th>Excluir</th>
+
+
+		</tr>
+
+
+		<!-- each é uma "estrutura" de repetição -->
+		<tr th:each="u: ${usuario}">
+			<td th:text="${u.id}"></td>
+			<td th:text="${u.nome}"></td>
+			<td th:text="${u.nif}"></td>
+			<td><a th:href="@{/alterarUsuario(id=${u.id})}">Alterar</a></td>
+			<td><a th:href="@{/excluirUsuario(id=${u.id})}">Excluir</a></td>
+
+
+
+		</tr>
+
+
+	</table>
+
+</body>
+</html>
