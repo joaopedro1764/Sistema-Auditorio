@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 	var initialLocaleCode = 'pt-br';
 	var calendarEl = document.getElementById('calendar');
-	
+
 	var calendar = new FullCalendar.Calendar(calendarEl, {
 
 
@@ -15,34 +15,24 @@ document.addEventListener('DOMContentLoaded', function() {
 			center: 'title',
 			right: 'dayGridMonth,timeGridWeek,timeGridDay'
 		},
-		
+
 
 		select: function(arg) {
-			
-			function historico() {
 
-				let url = "http://localhost:8080/api/evento"
-
-				body = {
-					"id": id,
-					"title": title,
-					"start": start,
-					"end": end,
-				}
-
-				fazPost(url, body)
-			}
 			if (title) {
-				
+
 				historico();
 
 				calendar.addEvent({
+					id: id,
 					title: title,
 					start: arg.start,
 					end: arg.end,
-					/*allDay: arg.allDay*/
+
 
 				})
+
+
 			}
 
 
@@ -58,30 +48,37 @@ document.addEventListener('DOMContentLoaded', function() {
 			method: 'GET'
 
 		},
-		
+
 		dateClick: function(info) {
+
 			$('#modalId').modal('show')
-			
+
+
 		},
 
 		eventClick: function(info) {
+
+			$('#eventoModal #idModal').text(info.event.id)
+			$('#eventoModal #titleModal').text(info.event.title)
+			$('#eventoModal #startModal').text(info.event.start.toLocaleString())
+			$('#eventoModal #endModal').text(info.event.end.toLocaleString())
 			$('#eventoModal').modal('show')
 		},
 		selectMirror: true,
 		eventDidMount: function(info) {
 			console.log(1);
 		},
-		
+
 
 		editable: true,
 		dayMaxEvents: true, // allow "more" link when too many events
 
 	});
-	
-   
+
+
 	calendar.render();
-	
-	
+
+
 });
 
 FullCalendar.globalLocales.push(function() {

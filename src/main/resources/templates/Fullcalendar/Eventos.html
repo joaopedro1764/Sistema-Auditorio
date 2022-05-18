@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://thymeleafe.org">
 
 <head>
 <meta charset='utf-8' />
@@ -62,11 +62,11 @@ body {
 				<div class="modal-body">
 
 					<form onsubmit="historico()">
-					<input type="hidden" id="id">
+						<input type="hidden" id="id">
 						<div class="form-row">
 							<div class="form-group col-md-6">
-								<label for="inputEmail4">TÍTULO DO EVENTO</label> <input type="text"
-								class="form-control" id="title2">
+								<label for="inputEmail4">TÍTULO DO EVENTO</label> <input
+									type="text" class="form-control" id="title2">
 							</div>
 							<div class="form-group col-md-6">
 								<label for="inputPassword4">COMEÇO DO EVENTO</label> <input
@@ -78,23 +78,33 @@ body {
 								type="datetime-local" class="form-control" id="end2">
 						</div>
 						<button type="submit" class="btn btn-primary">Reservar</button>
-						
-						</form>
+
+					</form>
 				</div>
 				<div class="modal-footer"></div>
 			</div>
 		</div>
 	</div>
-	
+
 	<div id="eventoModal" class="modal" tabindex="-1">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title">Cadastrar Novo Usuario</h5>
+					<h5 class="modal-title">Reserva</h5>
 				</div>
-				<div class="modal-body">
+				<div id="bodyModal" class="modal-body modal-xl">
 
-				
+
+					<dl class="row">
+						<dt class="col-sm-5">Número Da Reserva:</dt>
+						<dd id="idModal" class="col-sm-9"></dd>
+						<dt class="col-sm-5">TÍTULO:</dt>
+						<dd id="titleModal" class="col-sm-9"></dd>
+						<dt class="col-sm-5">INICIO DO EVENTO:</dt>
+						<dd id="startModal" class="col-sm-9"></dd>
+						<dt  class="col-sm-5">FIM DO EVENTO:</dt>
+						<dd id="endModal" class="col-sm-9"></dd>
+					</dl>
 				</div>
 				<div class="modal-footer"></div>
 			</div>
