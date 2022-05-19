@@ -87,4 +87,13 @@ public class EventoRest {
 		return new ResponseEntity<Void>(headers, HttpStatus.OK);
 
 	}
+
+	@Publico
+	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+	public ResponseEntity<Void> ExcluirReserva(@PathVariable("id") Long idReserva) {
+		repository.deleteById(idReserva);
+
+		return ResponseEntity.noContent().build();
+
+	}
 }

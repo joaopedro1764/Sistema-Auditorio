@@ -16,19 +16,18 @@ function fazPost(url, body) {
 	return request.responseText
 }
 function historico() {
-	location.reload();
 
 	let url = "http://localhost:8080/api/evento/"
 	let id = document.getElementById("id").value
 	let title = document.getElementById("title2").value
 	let start = document.getElementById("start2").value
 	let end = document.getElementById("end2").value
-	
+
 
 	console.log(id)
 	console.log(title)
 	console.log(start.toLocaleString())
-	console.log(end)
+	console.log(end.toLocaleString())
 
 
 
@@ -40,6 +39,6 @@ function historico() {
 	}
 
 
-
+	location.reload();
 	fazPost(url, body)
 }
