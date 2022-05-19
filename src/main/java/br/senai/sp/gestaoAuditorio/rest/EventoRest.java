@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -70,5 +71,20 @@ public class EventoRest {
 		} else {
 			return ResponseEntity.notFound().build();
 		}
+	}
+
+	@Publico
+	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+	public ResponseEntity<Void> atulizarEvento(@RequestBody Evento evento, @PathVariable("id") Long id) {
+		if (id != evento.getId()) {
+			throw new RuntimeException("id invalido");
+		}
+		// savar o usuario no banco de dados
+		repository.save(evento);
+		// criar um cabeçalhao HTTp
+		HttpHeaders headers = new HttpHeaders();
+		headers.setLocation(URI.create("/api/evento/"));
+		return new ResponseEntity<Void>(headers, HttpStatus.OK);
+
 	}
 }

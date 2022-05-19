@@ -1,7 +1,7 @@
-function fazPost(url, body) {
+function fazPut(url, body) {
 	console.log("body=", body)
 	let request = new XMLHttpRequest()
-	request.open("POST", url, true)
+	request.open("PUT", url, true)
 	request.setRequestHeader("content-type", "application/json")
 	request.send(JSON.stringify(body))
 
@@ -15,15 +15,14 @@ function fazPost(url, body) {
 
 	return request.responseText
 }
-function historico() {
-	location.reload();
+function update() {
 
-	let url = "http://localhost:8080/api/evento/"
-	let id = document.getElementById("id").value
-	let title = document.getElementById("title2").value
-	let start = document.getElementById("start2").value
-	let end = document.getElementById("end2").value
-	
+	let id = document.getElementById("idUpdate").value
+	let title = document.getElementById("titleUpdate").value
+	let start = document.getElementById("startUpdate").value
+	let end = document.getElementById("endUpdate").value
+	let url = "http://localhost:8080/api/evento/" + id
+
 
 	console.log(id)
 	console.log(title)
@@ -41,5 +40,5 @@ function historico() {
 
 
 
-	fazPost(url, body)
+	fazPut(url, body)
 }

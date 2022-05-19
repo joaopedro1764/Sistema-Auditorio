@@ -34,6 +34,10 @@
 <script src='/main.js'></script>
 <script src="/reserva.js"></script>
 <script src="/post.js"></script>
+<script src="/put.js"></script>
+<script>
+	moment().format();
+</script>
 <style>
 body {
 	margin: 40px 10px;
@@ -57,7 +61,7 @@ body {
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title">Cadastrar Novo Usuario</h5>
+					<h5 class="modal-title">Novo Evento</h5>
 				</div>
 				<div class="modal-body">
 
@@ -69,17 +73,59 @@ body {
 									type="text" class="form-control" id="title2">
 							</div>
 							<div class="form-group col-md-6">
-								<label for="inputPassword4">COMEÇO DO EVENTO</label> <input
+								<label for="inputPassword4">INÍCIO DO EVENTO</label> <input
 									type="datetime-local" class="form-control" id="start2">
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="inputAddress">FIM DO EVENTO</label> <input
-								type="datetime-local" class="form-control" id="end2">
+							<label for="inputAddress">FINAL DO EVENTO</label> <input
+								value="#start2" type="datetime-local" class="form-control"
+								id="end2">
 						</div>
 						<button type="submit" class="btn btn-primary">Reservar</button>
 
 					</form>
+
+
+
+				</div>
+				<div class="modal-footer"></div>
+			</div>
+		</div>
+	</div>
+
+
+	<div id="modalUpdate" class="modal" tabindex="-1">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Modificar Evento</h5>
+				</div>
+				<div class="modal-body">
+
+					<form onsubmit="update()" >
+						<input type="hidden" id="idUpdate">
+						<div class="form-row">
+							<div class="form-group col-md-6">
+								<label for="inputEmail4">TÍTULO DO EVENTO</label> <input
+									type="text" class="form-control" id="titleUpdate">
+							</div>
+							<div class="form-group col-md-6">
+								<label for="inputPassword4">INÍCIO DO EVENTO</label> <input
+									type="datetime-local" class="form-control" id="startUpdate">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="inputAddress">FINAL DO EVENTO</label> <input
+								value="#start2" type="datetime-local" class="form-control"
+								id="endUpdate">
+						</div>
+						<button type="submit" class="btn btn-primary">Atualizar Reserva</button>
+
+					</form>
+
+
+
 				</div>
 				<div class="modal-footer"></div>
 			</div>
@@ -102,7 +148,7 @@ body {
 						<dd id="titleModal" class="col-sm-9"></dd>
 						<dt class="col-sm-5">INICIO DO EVENTO:</dt>
 						<dd id="startModal" class="col-sm-9"></dd>
-						<dt  class="col-sm-5">FIM DO EVENTO:</dt>
+						<dt class="col-sm-5">FIM DO EVENTO:</dt>
 						<dd id="endModal" class="col-sm-9"></dd>
 					</dl>
 				</div>
