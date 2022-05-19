@@ -127,7 +127,7 @@ a {
 			<td th:text="${a.nif}"></td>
 
 
-			<td><a th:href="@{/alterarAdmin(id=${a.id})}">Alterar</a></td>
+			<td><button onclick="atualizarUsuario()" id="btnALterar">Alterar</button></td>
 			<td><a th:href="@{/excluirAdmin(id=${a.id})}">Excluir</a></td>
 
 

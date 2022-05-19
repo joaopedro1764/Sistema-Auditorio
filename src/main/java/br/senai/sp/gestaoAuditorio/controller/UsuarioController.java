@@ -111,9 +111,9 @@ public class UsuarioController {
 	@RequestMapping("alterarUsuario")
 	public String alterarUsuario(Model model, Long id) {
 
-		model.addAttribute("usuario", repository.findById(id).get());
+		model.addAttribute("user", repository.findById(id).get());
 
-		return "forward:formUsuario";
+		return "forward:listarUsuario/1";
 
 	}
 
