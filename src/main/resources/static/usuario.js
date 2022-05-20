@@ -12,6 +12,7 @@ function atualizar(id) {
 	function main() {
 
 		let data = fazerGet("http://localhost:8080/api/usuario/" + id);
+		// variavel para acessar os atributos
 		let usuario = JSON.parse(data);
 
 		$('#modalUpdateUsuario #idUsuario').val(usuario.id)

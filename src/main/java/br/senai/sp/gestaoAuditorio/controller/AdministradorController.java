@@ -64,14 +64,14 @@ public class AdministradorController {
 		try {
 			repository.save(administrador);
 
-			return "redirect:formAdmin";
+			return "redirect:listarAdmin/1";
 
 		} catch (Exception e) {
 
 			// caso ocorra um erro informa ao usuario de forma melhor
 
 		}
-		return "redirect:formAdmin";
+		return "redirect:listarAdmin/1";
 	}
 
 	@Privado

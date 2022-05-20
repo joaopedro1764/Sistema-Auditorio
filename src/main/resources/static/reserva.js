@@ -9,6 +9,12 @@ document.addEventListener('DOMContentLoaded', function() {
 	var today = new Date().toISOString().slice(0, 10);
 	var calendar = new FullCalendar.Calendar(calendarEl, {
 
+		timeZone: 'UTC', // the default (unnecessary to specify)
+		events: [
+			{ start: '2018-09-01T12:30:00Z' }, // will be shifted to local
+			{ start: '2018-09-01T12:30:00+XX:XX' }, // already same offset as local, so won't shift
+			{ start: '2018-09-01T12:30:00' } // will be parsed as if it were '2018-09-01T12:30:00+XX:XX'
+		],
 
 		locale: initialLocaleCode,
 		headerToolbar: {
@@ -16,9 +22,6 @@ document.addEventListener('DOMContentLoaded', function() {
 			center: 'title',
 			right: 'dayGridMonth,timeGridWeek,timeGridDay'
 		},
-
-
-
 
 		select: function(arg) {
 
@@ -53,23 +56,25 @@ document.addEventListener('DOMContentLoaded', function() {
 
 		},
 
-		select: function(info) {
+		select: function(arg) {
 			// ATRIBUINDO A DATA E HORA - INÍCIO E FIM AO FORMULÁRIO
 			$('#modalId').modal('show');
-			$('#modalId #start2').val(info.start.toISOString().substring(0, 16));
-			console.log(info.start.str)
-			console.log(info.end.toLocaleString())
+			$('#modalId #start2').val(arg.start.toISOString().substring(0, 16));
+			console.log(arg.start.toISOString().substring(0, 16).replace());
+			console.log(arg.start.toISOString())
+			console.log(arg.start.toISOString())
+			//console.log(arg.end.toLocaleString())
 		},
 
 		//bloqueia dias passados ao atual
 		validRange: {
 			start: today
-			
+
 		},
-		
-		
-		
-		
+
+
+
+
 		//eventClick: function(info) {
 
 		//$('#eventoModal #idModal').text(info.event.id)

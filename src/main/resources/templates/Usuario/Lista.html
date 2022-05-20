@@ -112,18 +112,19 @@ a {
 					<div class="form-row">
 						<div class="form-group col-md-6">
 							<label for="inputEmail4">NOME</label> <input name="nome"
-								placeholder="NOME" type="text" class="form-control"
-								id="inputEmail4">
+								required="required" placeholder="NOME" type="text"
+								class="form-control" id="inputEmail4">
 						</div>
 						<div class="form-group col-md-6">
 							<label for="inputPassword4">NIF</label> <input name="nif"
-								placeholder="NIF" type="text" class="form-control" id="NIF" maxlength="7" minLength="7">
+								required="required" placeholder="NIF" type="text"
+								class="form-control" id="NIF" maxlength="7" minLength="7">
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="inputAddress">SENHA</label> <input name="senha"
-							type="password" class="form-control" id="inputAddress"
-							placeholder="SENHA">
+						<input name="senha"
+							required="required" type="hidden" class="form-control"
+							id="inputAddress" placeholder="SENHA">
 					</div>
 
 					<button type="submit" class="btn btn-primary">Cadastrar</button>
@@ -161,13 +162,14 @@ a {
 						</div>
 						<div class="form-group col-md-6">
 							<label for="inputPassword4">NIF</label> <input name="nif"
-								id="nifUsuario" placeholder="NIF" type="text" maxlength="7" minLength="7"
-								class="form-control">
+								id="nifUsuario" placeholder="NIF" type="text" maxlength="7"
+								minLength="7" class="form-control">
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="inputAddress">SENHA</label> <input name="senha"
-							type="password" class="form-control" placeholder="SENHA">
+							id="senhaUsuario" type="password" class="form-control"
+							placeholder="SENHA">
 					</div>
 
 					<button type="submit" class="btn btn-primary">Alterar</button>
@@ -227,6 +229,7 @@ a {
 		let id = document.getElementById("idUsuario").value
 		let nome = document.getElementById("nomeUsuario").value
 		let nif = document.getElementById("nifUsuario").value
+		let senha = document.getElementById("senhaUsuario").value
 		let url = "http://localhost:8080/api/usuario/" + id
 
 		console.log(id)
@@ -236,10 +239,12 @@ a {
 		body = {
 			"id" : id,
 			"nome" : nome,
-			"nif" : nif
+			"nif" : nif,
+			"senha" : senha
 		}
 
 		fazPut(url, body)
+		location.reload();
 	}
 </script>
 
