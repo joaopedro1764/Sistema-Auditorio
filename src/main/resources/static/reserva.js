@@ -5,8 +5,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 	var initialLocaleCode = 'pt-br';
 	var calendarEl = document.getElementById('calendar');
-	
 
+	var today = new Date().toISOString().slice(0, 10);
 	var calendar = new FullCalendar.Calendar(calendarEl, {
 
 
@@ -61,16 +61,24 @@ document.addEventListener('DOMContentLoaded', function() {
 			console.log(info.end.toLocaleString())
 		},
 
-
+		//bloqueia dias passados ao atual
+		validRange: {
+			start: today
+			
+		},
+		
+		
+		
+		
 		//eventClick: function(info) {
 
-			//$('#eventoModal #idModal').text(info.event.id)
-			//$('#eventoModal #titleModal').text(info.event.title)
-			//$('#eventoModal #startModal').text(info.event.start.toLocaleString())
-			//$('#eventoModal #endModal').text(info.event.end.toLocaleString())
-			//$('#eventoModal').modal('show')
+		//$('#eventoModal #idModal').text(info.event.id)
+		//$('#eventoModal #titleModal').text(info.event.title)
+		//$('#eventoModal #startModal').text(info.event.start.toLocaleString())
+		//$('#eventoModal #endModal').text(info.event.end.toLocaleString())
+		//$('#eventoModal').modal('show')
 		//},
-		
+
 		eventClick: function(info) {
 
 			$('#modalUpdate #idUpdate').val(info.event.id)
@@ -79,7 +87,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			$('#modalUpdate #endUpdate').val(info.event.end.toISOString().substring(0, 16))
 			$('#modalUpdate').modal('show')
 		},
-		
+
 		selectMirror: true,
 		eventDidMount: function(info) {
 			console.log(1);
@@ -90,6 +98,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		dayMaxEvents: true, // allow "more" link when too many events
 
 	});
+
 
 
 	calendar.render();
@@ -123,7 +132,7 @@ FullCalendar.globalLocales.push(function() {
 
 }());
 
-	
+
 
 
 function fazPost(url, body) {

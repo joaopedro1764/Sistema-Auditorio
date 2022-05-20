@@ -23,4 +23,5 @@ public class Evento {
 	/* @JsonFormat(pattern = "dd-MM-yyyy") */
 	private String start;
 	private String end;
+	
 }
