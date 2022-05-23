@@ -23,28 +23,6 @@ document.addEventListener('DOMContentLoaded', function() {
 			right: 'dayGridMonth,timeGridWeek,timeGridDay'
 		},
 
-		select: function(arg) {
-
-			if (title) {
-
-				historico();
-
-				calendar.addEvent({
-					id: id,
-					title: title,
-					start: arg.start,
-					end: arg.end,
-
-
-				})
-
-
-			}
-
-
-			calendar.unselect()
-
-		},
 
 
 		navLinks: true, // can click day/week names to navigate views
@@ -71,18 +49,6 @@ document.addEventListener('DOMContentLoaded', function() {
 			start: today
 
 		},
-
-
-
-
-		//eventClick: function(info) {
-
-		//$('#eventoModal #idModal').text(info.event.id)
-		//$('#eventoModal #titleModal').text(info.event.title)
-		//$('#eventoModal #startModal').text(info.event.start.toLocaleString())
-		//$('#eventoModal #endModal').text(info.event.end.toLocaleString())
-		//$('#eventoModal').modal('show')
-		//},
 
 		eventClick: function(info) {
 
