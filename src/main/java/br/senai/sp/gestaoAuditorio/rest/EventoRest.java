@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.senai.sp.gestaoAuditorio.annotation.Privado;
 import br.senai.sp.gestaoAuditorio.annotation.Publico;
@@ -32,10 +33,21 @@ public class EventoRest {
 
 	@Publico
 	@RequestMapping(value = "", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Object> criarUsuario(@RequestBody Evento evento) {
+	public ResponseEntity<Object> criarEvento(@RequestBody Evento evento, RedirectAttributes attr) {
 		try {
+
+			Evento evn = repository.findByStartAndEnd(evento.getStart(), evento.getEnd());
+
+			if (evn == null) {
+				System.out.println("SALVOU");
+				repository.save(evento);
+
+			} else {
+				System.out.println("ERROOOO");
+				attr.addFlashAttribute("mensagemErro", "DATA JA RESERVADA");
+
+			}
 			// salvar o usuário no banco de dados
-			repository.save(evento);
 			// retorna código 201, com a URL para acesso no Location e o usuário inserido
 			// no corpo da resposta
 			return ResponseEntity.created(URI.create("/api/evento/" + evento.getId())).body(evento);
@@ -55,12 +67,13 @@ public class EventoRest {
 		}
 	}
 
-	@Publico
+	@Privado
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	public Iterable<Evento> getAllValues() {
 		return repository.findAll();
 	}
 
+	// Pelo id
 	@Privado
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<Evento> findEvento(@PathVariable("id") Long idEvento) {
@@ -73,7 +86,7 @@ public class EventoRest {
 		}
 	}
 
-	@Publico
+	@Privado
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<Void> atulizarEvento(@RequestBody Evento evento, @PathVariable("id") Long id) {
 		if (id != evento.getId()) {
@@ -88,7 +101,7 @@ public class EventoRest {
 
 	}
 
-	@Publico
+	@Privado
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<Void> ExcluirReserva(@PathVariable("id") Long idReserva) {
 		repository.deleteById(idReserva);

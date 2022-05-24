@@ -18,7 +18,7 @@ function atualizarAdmin(id) {
 		$('#modalUpdateAdmin #nomeAdm').val(admin.nome)
 		$('#modalUpdateAdmin #nifAdm').val(admin.nif)
 		$('#modalUpdateAdmin').modal('show')
-		
+
 
 	}
 

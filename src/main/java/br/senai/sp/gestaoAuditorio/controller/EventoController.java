@@ -19,10 +19,12 @@ public class EventoController {
 	}
 
 	@RequestMapping("salvarEvento")
-	public String salvarEvento(Evento evento) {
+	public String salvarEvento(Evento evento, String start, String end) {
 
 		System.out.println("Passou no salvar");
-		repository.save(evento);
+		
+			
+		
 
 		return "redirect:fullCalendar";
 
@@ -34,5 +36,11 @@ public class EventoController {
 		model.addAttribute("info", repository.findById(id).get());
 
 		return "forward:fullCalendar";
+	}
+
+	@RequestMapping("dataInvalida")
+	public String data(String start, String end) {
+
+		return "";
 	}
 }

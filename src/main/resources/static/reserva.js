@@ -38,6 +38,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			// ATRIBUINDO A DATA E HORA - INÍCIO E FIM AO FORMULÁRIO
 			$('#modalId').modal('show');
 			$('#modalId #start2').val(arg.start.toISOString().substring(0, 16));
+
 			console.log(arg.start.toISOString().substring(0, 16).replace());
 			console.log(arg.start.toISOString())
 			console.log(arg.start.toISOString())
@@ -46,9 +47,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
 		//bloqueia dias passados ao atual
 		validRange: {
-			start: today
+			start: '2022-01-01',
 
 		},
+
+		// faz com que remova o horario do front
+		//displayEventTime: false,
 
 		eventClick: function(info) {
 
@@ -57,6 +61,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			$('#modalUpdate #startUpdate').val(info.event.start.toISOString().substring(0, 16))
 			$('#modalUpdate #endUpdate').val(info.event.end.toISOString().substring(0, 16))
 			$('#modalUpdate').modal('show')
+
 		},
 
 		selectMirror: true,
