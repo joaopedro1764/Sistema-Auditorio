@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 		//bloqueia dias passados ao atual
 		validRange: {
-			start: '2022-01-01',
+			start: today,
 
 		},
 

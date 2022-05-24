@@ -36,12 +36,18 @@ public class EventoRest {
 	public ResponseEntity<Object> criarEvento(@RequestBody Evento evento, RedirectAttributes attr) {
 		try {
 
-			Evento evn = repository.findByStartAndEnd(evento.getStart(), evento.getEnd());
+			
+			
+			
+			
+		//Evento evn = repository.findByStartAndEnd(evento.getStart(), evento.getEnd());
 
-			if (evn == null) {
+			Evento evn2 =  repository.intervaloDeDatas(evento.getStart(), evento.getEnd());
+			if (evn2 == null) {
+					
 				System.out.println("SALVOU");
 				repository.save(evento);
-
+				
 			} else {
 				System.out.println("ERROOOO");
 				attr.addFlashAttribute("mensagemErro", "DATA JA RESERVADA");

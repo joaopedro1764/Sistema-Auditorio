@@ -19,7 +19,7 @@ public class AppInterceptor implements HandlerInterceptor {
 		// variável para descobrir pra onde estão tentando ir
 		String uri = request.getRequestURI();
 
-		System.out.println(uri);
+		
 
 		// verifica se o handler é um HandlerMethod, o que indica que foi encontrado um
 		// método em algum controller para a requisição
