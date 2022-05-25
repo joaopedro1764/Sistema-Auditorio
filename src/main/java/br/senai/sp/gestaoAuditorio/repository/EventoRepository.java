@@ -13,7 +13,7 @@ public interface EventoRepository extends PagingAndSortingRepository<Evento, Lon
 	
 	public Evento findByStartAndEnd(String start, String end);
 	
-	@Query("SELECT t.start,t.end FROM Evento t where t.start  BETWEEN :s AND :e")
+	@Query("SELECT t FROM Evento t where t.start  BETWEEN :s AND :e")
 	public Evento intervaloDeDatas(@Param("s") String start, @Param("e") String end);
 
 }
