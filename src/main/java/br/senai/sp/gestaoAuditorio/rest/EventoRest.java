@@ -1,6 +1,7 @@
 package br.senai.sp.gestaoAuditorio.rest;
 
 import java.net.URI;
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,18 +36,30 @@ public class EventoRest {
 	@RequestMapping(value = "", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Object> criarEvento(@RequestBody Evento evento, RedirectAttributes attr) {
 		try {
-
+					
 			Evento evn2 = repository.intervaloDeDatas(evento.getStart(), evento.getEnd());
 			if (evn2 == null) {
-
-				System.err.println(evento.getStart());
-				System.out.println("SALVOU");
-				repository.save(evento);
-
+				
+				System.out.println("PRIMEIRO IF");
+				
+				evn2 = repository.intervaloForaHoras(evento.getStart(), evento.getEnd());
+				if(evn2 == null) {
+					
+					System.out.println("SALVOU");
+					repository.save(evento);	
+					
+				}else {
+													
+					System.out.println("ERRO IF INTERNO");			
+				}
+			
+							
 			} else {
 				System.out.println("ERROOOO");
 				attr.addFlashAttribute("mensagemErro", "DATA JA RESERVADA");
-
+				
+				
+					
 			}
 			// salvar o usuário no banco de dados
 			// retorna código 201, com a URL para acesso no Location e o usuário inserido

@@ -69,10 +69,12 @@ body {
 
 <body>
 
-	<div class="bloco-msg" th:if="${not #strings.isEmpty(mensagemErro)}">
-		<span th:text="${mensagemErro}"></span>
+
 	</div>
 	<div id='calendar'></div>
+	
+	<div class="erro" th:if="${not #strings.isEmpty(mensagemErro)}"> </div>
+	
 	<div id="modalId" class="modal" tabindex="-1">
 		<div class="modal-dialog">
 			<div class="modal-content">
@@ -80,6 +82,8 @@ body {
 					<h5 class="modal-title">Nova Reserva</h5>
 				</div>
 				<div class="modal-body">
+				
+				<span th:if="${not #strings.isEmpty(mensagemErro)}" th:text="${mensagemErro}" ></span>
 
 					<form onsubmit="historico()">
 						<input type="hidden" id="id">
