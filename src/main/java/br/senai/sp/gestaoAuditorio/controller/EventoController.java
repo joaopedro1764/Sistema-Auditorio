@@ -15,19 +15,7 @@ public class EventoController {
 
 	@RequestMapping("fullCalendar")
 	public String form() {
-		return "Fullcalendar/Eventos";
-	}
-
-	@RequestMapping("salvarEvento")
-	public String salvarEvento(Evento evento, String start, String end) {
-
-		System.out.println("Passou no salvar");
-		
-			
-		
-
-		return "redirect:fullCalendar";
-
+		return "Interface/Eventos";
 	}
 
 	@RequestMapping("verPorId")
@@ -38,9 +26,8 @@ public class EventoController {
 		return "forward:fullCalendar";
 	}
 
-	@RequestMapping("dataInvalida")
-	public String data(String start, String end) {
-
-		return "";
+	@RequestMapping("painelReserva")
+	public String painelReserva() {
+		return "Interface/PainelReserva";
 	}
 }

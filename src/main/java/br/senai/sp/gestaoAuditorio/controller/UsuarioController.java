@@ -2,9 +2,7 @@ package br.senai.sp.gestaoAuditorio.controller;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -14,8 +12,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
-import br.senai.sp.gestaoAuditorio.model.Administrador;
 import br.senai.sp.gestaoAuditorio.model.Usuario;
 import br.senai.sp.gestaoAuditorio.repository.UsuarioRepository;
 import br.senai.sp.gestaoAuditorio.util.HashUtil;
@@ -126,6 +122,27 @@ public class UsuarioController {
 
 	}
 
+	@RequestMapping("interfaceUsuario")
+	public String painelUsuario() {
+
+		return "Interface/PainelUsuario";
+	}
+
+	@RequestMapping("perfilUsuario")
+	public String perfilUsuario() {
+
+		return "Interface/Perfil";
+	}
+
+	@RequestMapping("alterarUser")
+	public String alterarUser(Model model, Long id) {
+
+		model.addAttribute("u", repository.findById(id).get());
+
+		return "forward:perfilUsuario";
+
+	}
+
 	@RequestMapping("loginUsuario")
 	public String login(Usuario usuario, RedirectAttributes attr, HttpSession session) {
 
@@ -139,7 +156,9 @@ public class UsuarioController {
 		} else {
 
 			session.setAttribute("usuarioLogado", user);
-			return "redirect:listarUsuario/1";
+			System.out.println(user);
+			System.out.println(user.getId());
+			return "redirect:interfaceUsuario";
 
 		}
 
