@@ -46,7 +46,7 @@ public class AdministradorRest {
 		repository.save(administrador);
 		// criar um cabeçalhao HTTp
 		HttpHeaders headers = new HttpHeaders();
-		headers.setLocation(URI.create("/api/usuario/"));
+		headers.setLocation(URI.create("/api/administrador/"));
 		return new ResponseEntity<Void>(headers, HttpStatus.OK);
 
 	}

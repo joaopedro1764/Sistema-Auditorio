@@ -13,8 +13,6 @@
 	content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
 	name='viewport' />
 <!--     Fonts and icons     -->
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-	rel="stylesheet">
 <link
 	href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200"
 	rel="stylesheet" />
@@ -31,7 +29,7 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
 	crossorigin="anonymous"></script>
-<script src="/usuario.js"></script>
+<script src="/administrador.js"></script>
 <!-- CSS Just for demo purpose, don't include it in your project -->
 <link href="/demoPainel.css" rel="stylesheet" />
 <script type="text/javascript">
@@ -44,12 +42,12 @@
 
 		return request.responseText
 	}
-	function updateUsuario() {
+	function updateAdmin() {
 
-		let id = document.getElementById("idUsuario").value
-		let nome = document.getElementById("nomeUsuario").value
-		let nif = document.getElementById("nifUsuario").value
-		let url = "http://localhost:8080/api/usuario/" + id
+		let id = document.getElementById("idAdm").value
+		let nome = document.getElementById("nomeAdm").value
+		let nif = document.getElementById("nifAdm").value
+		let url = "http://localhost:8080/api/administrador/" + id
 
 		console.log(id)
 		console.log(nome)
@@ -112,14 +110,14 @@
 							<li class="nav-item"></li>
 							<li class="nav-item"><a href="#" class="nav-link"> <i
 									class="nc-icon nc-zoom-split"></i> <span class="d-lg-block">&nbsp;Pesquisar
-										Usuário</span>
+										Administrador</span>
 							</a></li>
 						</ul>
 						<ul class="navbar-nav ml-auto">
 
 
 							<li class="nav-item"><a class="nav-link" href="/logOut">
-									<span class="no-icon">LogOut</span>
+									<span class="no-icon">Log out</span>
 							</a></li>
 						</ul>
 					</div>
@@ -133,7 +131,7 @@
 							<div class="card strpied-tabled-with-hover">
 								<div class="card-header ">
 									<h4 class="card-title">LISTA</h4>
-									<p class="card-category">Usuarios</p>
+									<p class="card-category">Administradores</p>
 								</div>
 								<div class="card-body table-full-width table-responsive">
 									<table class="table table-hover table-striped">
@@ -146,14 +144,14 @@
 
 										</thead>
 										<tbody>
-											<tr th:each="u: ${usuario}">
-												<td th:text="${u.id}"></td>
-												<td th:text="${u.nome}"></td>
-												<td th:text="${u.nif}"></td>
+											<tr th:each="a: ${admin}">
+												<td th:text="${a.id}"></td>
+												<td th:text="${a.nome}"></td>
+												<td th:text="${a.nif}"></td>
 
-												<td><button th:onclick="atualizar([[${u.id}]])"
-														id="btnALterarUsuario">Alterar</button></td>
-												<td><a th:href="@{/excluirUsuario(id=${u.id})}">Excluir</a></td>
+												<td><button th:onclick="atualizarAdmin([[${a.id}]])"
+														id="btnALterarAdm">Alterar</button></td>
+												<td><a th:href="@{/excluirAdmin(id=${a.id})}">Excluir</a></td>
 
 											</tr>
 
@@ -166,7 +164,7 @@
 
 						<button style="float: right;" type="button" class="btn btn-dark"
 							data-toggle="modal" data-target="#modalCadastro">Novo
-							Usuario</button>
+							Administrador</button>
 
 						<!-- Modal -->
 						<div class="modal fade" id="modalCadastro" data-backdrop="static"
@@ -176,14 +174,14 @@
 								<div class="modal-content">
 									<div class="modal-header">
 										<h5 class="modal-title" id="staticBackdropLabel">Cadastrar
-											Usuario</h5>
+											Admin</h5>
 										<button style="float: right;" type="button" class="close"
 											data-dismiss="modal" aria-label="Close">
 											<span aria-hidden="true">&times;</span>
 										</button>
 									</div>
 									<div class="modal-body">
-										<form method="post" action="/salvarUsuario">
+										<form method="post" action="/salvarAdmin">
 											<div class="form-row">
 												<div class="form-group col-md-6">
 													<label for="inputEmail4">NOME</label> <input name="nome"
@@ -210,7 +208,7 @@
 						</div>
 
 						<!--FORMULARIO DE ALTERAÇÂO-->
-						<div class="modal fade" id="modalUpdateUsuario"
+						<div class="modal fade" id="modalUpdateAdmin"
 							data-backdrop="static" data-keyboard="false" tabindex="-1"
 							aria-labelledby="staticBackdropLabel" aria-hidden="true">
 							<div class="modal-dialog">
@@ -224,20 +222,20 @@
 										</button>
 									</div>
 									<div class="modal-body">
-										<form onsubmit="updateUsuario()">
+										<form onsubmit="updateAdmin()">
 
-											<input type="hidden" id="idUsuario">
+											<input type="hidden" id="idAdm">
 
 											<div class="form-row">
 												<div class="form-group col-md-6">
 													<label for="inputEmail4">NOME</label> <input name="nome"
-														id="nomeUsuario" placeholder="NOME" type="text"
+														id="nomeAdm" placeholder="NOME" type="text"
 														class="form-control">
 												</div>
 												<div class="form-group col-md-6">
 													<label for="inputPassword4">NIF</label> <input name="nif"
-														id="nifUsuario" placeholder="NIF" type="text"
-														maxlength="7" minLength="7" class="form-control">
+														id="nifAdm" placeholder="NIF" type="text" maxlength="7"
+														minLength="7" class="form-control">
 												</div>
 											</div>
 											<div class="form-group">
@@ -256,5 +254,4 @@
 
 
 					</div>
-				</div>
 </html>

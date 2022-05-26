@@ -82,7 +82,7 @@ public class AdministradorController {
 
 		// cria uma pagina que começa na 0, que possuem 6 elementos por paginas e ordena
 		// pelo nome
-		PageRequest pageble = PageRequest.of(page - 1, 10, Sort.by(Sort.Direction.ASC, "nome"));
+		PageRequest pageble = PageRequest.of(page - 1, 10, Sort.by(Sort.Direction.ASC, "id"));
 
 		// cria a pagina atual atraves do repository
 
@@ -109,7 +109,7 @@ public class AdministradorController {
 		// quantidade de paginas com base nos cadastros
 		model.addAttribute("numPg", pageNumbers);
 		// retorna para o html da lista
-		return "Administrador/Lista";
+		return "Administrador/PainelAdministrativo";
 	}
 
 	@Privado
@@ -151,7 +151,7 @@ public class AdministradorController {
 
 	}
 
-	@RequestMapping("logout")
+	@RequestMapping("logOut")
 	public String logout(HttpSession session) {
 		// elimina o usuário da session
 		session.invalidate();
