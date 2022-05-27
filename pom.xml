@@ -56,6 +56,11 @@
 			<artifactId>guava</artifactId>
 			<version>31.1-jre</version>
 		</dependency>
+		<dependency>
+			<groupId>com.google.firebase</groupId>
+			<artifactId>firebase-admin</artifactId>
+			<version>8.1.0</version>
+		</dependency>
 		
 		<!-- https://mvnrepository.com/artifact/org.netbeans.modules/org-netbeans-modules-php-api-phpmodule -->
 	<dependency>

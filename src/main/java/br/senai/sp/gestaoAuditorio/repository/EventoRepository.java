@@ -9,8 +9,9 @@ import br.senai.sp.gestaoAuditorio.model.Evento;
 
 public interface EventoRepository extends PagingAndSortingRepository<Evento, Long> {
 
-	// public Evento findByStartAndEnd(String start, String end);
-
+	@Query("SELECT t FROM Evento t where (t.start BETWEEN :s AND :e) OR (t.end BETWEEN :s AND :e)")
+	public Evento intervaloForaHoras(@Param("s") LocalDateTime start, @Param("e") LocalDateTime end);
+	
 	@Query("SELECT t FROM Evento t where (:s BETWEEN t.start AND t.end) OR (:e BETWEEN t.start AND t.end)")
 	public Evento intervaloDeDatas(@Param("s") LocalDateTime start, @Param("e") LocalDateTime end);
 }
