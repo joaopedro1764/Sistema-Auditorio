@@ -55,7 +55,6 @@ document.addEventListener('DOMContentLoaded', function() {
 		//displayEventTime: false,
 
 		eventClick: function(info) {
-
 			$('#modalUpdate #idUpdate').val(info.event.id)
 			$('#modalUpdate #titleUpdate').val(info.event.title)
 			$('#modalUpdate #startUpdate').val(info.event.start.toISOString().substring(0, 16))

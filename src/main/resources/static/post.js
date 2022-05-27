@@ -18,16 +18,12 @@ function fazPost(url, body) {
 function historico() {
 
 	let url = "http://localhost:8080/api/evento/"
+	const idUsuario = document.getElementById("idUsuario").value
+	console.log(idUsuario)
 	let id = document.getElementById("id").value
 	let title = document.getElementById("title2").value
 	let start = document.getElementById("start2").value
 	let end = document.getElementById("end2").value
-
-
-	console.log(id)
-	console.log(title)
-	console.log(start.toLocaleString())
-	console.log(end.toLocaleString())
 
 
 
@@ -35,8 +31,15 @@ function historico() {
 		"id": id,
 		"title": title,
 		"start": start,
-		"end": end
-	}
+		"end": end,
+		"usuario": {
+			"id": idUsuario,
+		}
+	};
+
+
+
+
 
 
 	location.reload();

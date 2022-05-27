@@ -2,7 +2,9 @@ package br.senai.sp.gestaoAuditorio.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -12,7 +14,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 import br.senai.sp.gestaoAuditorio.model.Usuario;
+import br.senai.sp.gestaoAuditorio.repository.EventoRepository;
 import br.senai.sp.gestaoAuditorio.repository.UsuarioRepository;
 import br.senai.sp.gestaoAuditorio.util.HashUtil;
 
@@ -21,6 +25,9 @@ public class UsuarioController {
 
 	@Autowired
 	private UsuarioRepository repository;
+
+	@Autowired
+	EventoRepository repositoryEvento;
 
 	@RequestMapping("formUsuario")
 	public String formUsuario() {
@@ -144,7 +151,7 @@ public class UsuarioController {
 	}
 
 	@RequestMapping("loginUsuario")
-	public String login(Usuario usuario, RedirectAttributes attr, HttpSession session) {
+	public String login(Usuario usuario, Model model, Long id, RedirectAttributes attr, HttpSession session) {
 
 		Usuario user = repository.findByNifAndSenha(usuario.getNif(), usuario.getSenha());
 
@@ -156,9 +163,11 @@ public class UsuarioController {
 		} else {
 
 			session.setAttribute("usuarioLogado", user);
+			//model.addAttribute("usuario", repositoryEvento.findByUsuarioId(id));
 			System.out.println(user);
-			System.out.println(user.getId());
-			return "redirect:interfaceUsuario";
+			System.out.println(user.getId() + "II");
+			System.out.println(user.getEventos());
+			return "forward:painelReserva";
 
 		}
 

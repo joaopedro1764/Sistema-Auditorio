@@ -73,8 +73,8 @@
 	margin: 30px auto;
 }
 
-#modal-body{
-border: 3px solid red;
+#modal-body {
+	border: 3px solid red;
 }
 </style>
 
@@ -152,7 +152,8 @@ border: 3px solid red;
 					<div class="modal-body">
 
 						<form onsubmit="historico()">
-							<input type="hidden" id="id">
+							<input th:value="${session.usuarioLogado.id}" type="hidden"
+								id="idUsuario"> <input type="hidden" id="id">
 							<div class="form-row">
 								<div class="form-group col-md-6">
 									<label for="inputEmail4">TÍTULO DO EVENTO</label> <input
@@ -193,7 +194,10 @@ border: 3px solid red;
 					<div class="modal-body">
 
 						<form onsubmit="update()">
+
 							<input type="hidden" id="idUpdate">
+							<input type="hidden" id="idUsuario">
+
 							<div class="form-row">
 								<div class="form-group col-md-6">
 									<label for="inputEmail4">TÍTULO DO EVENTO</label> <input
@@ -209,8 +213,8 @@ border: 3px solid red;
 									value="#start2" type="datetime-local" class="form-control"
 									id="endUpdate">
 							</div>
-							<button type="submit" class="btn btn-primary">ALTERAR</button>
-							<button onclick="apagar()" type="button" class="btn btn-primary">DELETAR
+							<button th:if="${session.usuarioLogado.id == usuario?.id }" type="submit" class="btn btn-primary">ALTERAR</button>
+							<button th:if="${session.usuarioLogado.id == usuario?.id }" onclick="apagar()" type="button" class="btn btn-primary">DELETAR
 							</button>
 
 						</form>
