@@ -1,16 +1,13 @@
 package br.senai.sp.gestaoAuditorio.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import br.senai.sp.gestaoAuditorio.repository.EventoRepository;
-
 @Controller
 public class EventoController {
-	@Autowired
-	EventoRepository repository;
 
 	@RequestMapping("fullCalendar")
 	public String form() {
@@ -20,17 +17,15 @@ public class EventoController {
 	@RequestMapping("verPorId")
 	public String verPeloid(Long id, Model model) {
 
-	//	model.addAttribute("info", repository.findById(id).get());
+		// model.addAttribute("info", repository.findById(id).get());
 
 		return "forward:fullCalendar";
 	}
 
 	@RequestMapping("painelReserva")
-	public String painelReserva(Model model, Long id) {
-		
+	public String painelReserva(Model model, Long id, HttpSession session) {
 
 		return "Interface/PainelReserva";
-
 	}
 
 }

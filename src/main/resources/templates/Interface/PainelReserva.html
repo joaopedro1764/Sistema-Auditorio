@@ -134,7 +134,9 @@
 					</div>
 				</div>
 			</nav>
-
+			
+			<p th:text="${session.evento}"></p>
+			
 			<div id="calendar"></div>
 
 
@@ -213,9 +215,19 @@
 									value="#start2" type="datetime-local" class="form-control"
 									id="endUpdate">
 							</div>
-							<button th:if="${session.usuarioLogado.id == usuario?.id }" type="submit" class="btn btn-primary">ALTERAR</button>
-							<button th:if="${session.usuarioLogado.id == usuario?.id }" onclick="apagar()" type="button" class="btn btn-primary">DELETAR
-							</button>
+							
+							<table th:each="us : ${session.evento}">
+							<tr>
+								<td>
+								
+								<button th:if="${session.usuarioLogado.id == us.usuario.id}" type="submit" class="btn btn-primary">ALTERAR</button>
+								<button th:if="${session.usuarioLogado.id == us.usuario.id}" onclick="apagar()" type="button" class="btn btn-primary">DELETAR</button>
+								</td>
+								</tr>
+							
+								</table>
+							
+						
 
 						</form>
 
@@ -251,4 +263,6 @@
 				</div>
 			</div>
 		</div>
+		
+							
 </html>

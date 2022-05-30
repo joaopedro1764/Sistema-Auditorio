@@ -18,4 +18,5 @@ public interface EventoRepository extends PagingAndSortingRepository<Evento, Lon
 	public Evento intervaloDeDatas(@Param("s") LocalDateTime start, @Param("e") LocalDateTime end);
 	
 	public List<Evento> findByUsuarioId(Long id);
+	
 }

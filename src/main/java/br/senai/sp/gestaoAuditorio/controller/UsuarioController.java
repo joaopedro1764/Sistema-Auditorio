@@ -27,7 +27,7 @@ public class UsuarioController {
 	private UsuarioRepository repository;
 
 	@Autowired
-	EventoRepository repositoryEvento;
+	private EventoRepository repositoryEvento;
 
 	@RequestMapping("formUsuario")
 	public String formUsuario() {
@@ -161,13 +161,11 @@ public class UsuarioController {
 
 			return "redirect:/";
 		} else {
-
-			session.setAttribute("usuarioLogado", user);
-			//model.addAttribute("usuario", repositoryEvento.findByUsuarioId(id));
 			System.out.println(user);
-			System.out.println(user.getId() + "II");
-			System.out.println(user.getEventos());
-			return "forward:painelReserva";
+			System.out.println(repositoryEvento.findAll());
+			session.setAttribute("usuarioLogado", user);
+			session.setAttribute("evento", repositoryEvento.findAll());
+			return "redirect:painelReserva";
 
 		}
 

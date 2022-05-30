@@ -19,8 +19,6 @@ public class AppInterceptor implements HandlerInterceptor {
 		// variável para descobrir pra onde estão tentando ir
 		String uri = request.getRequestURI();
 
-		
-
 		// verifica se o handler é um HandlerMethod, o que indica que foi encontrado um
 		// método em algum controller para a requisição
 		if (handler instanceof HandlerMethod) {
@@ -48,6 +46,9 @@ public class AppInterceptor implements HandlerInterceptor {
 
 			// verifica se existe um usuario logado
 			if (request.getSession().getAttribute("adminLogado") != null) {
+				return true;
+			}
+			if (request.getSession().getAttribute("usuarioLogado") != null) {
 				return true;
 			} else {
 				// redireciona para apagina inicial
