@@ -38,6 +38,15 @@ document.addEventListener('DOMContentLoaded', function() {
 			// ATRIBUINDO A DATA E HORA - INÍCIO E FIM AO FORMULÁRIO
 			$('#modalId').modal('show');
 			$('#modalId #start2').val(arg.start.toISOString().substring(0, 16));
+			$('#modalId #end2').val(arg.start.toISOString().substring(0, 16));
+
+
+			$('#date-form2').on('focusout', function() {
+				var dateObj1 = new Date($('#start2').val());
+				var dateObj2 = new Date($('#end2').val());
+
+				
+			});
 
 			console.log(arg.start.toISOString().substring(0, 16).replace());
 			console.log(arg.start.toISOString())

@@ -1,6 +1,5 @@
-
 <!DOCTYPE html>
-<html xmlns:th="http://thymeleafe.org">
+<html xmlns:th="http://thymeleaf.org">
 
 <head>
 <meta charset='utf-8' />
@@ -68,12 +67,13 @@ body {
 </head>
 
 <body>
-
+<form action="dataInvalida" class="erro" th:if="${not #strings.isEmpty(mensagemErro)}"> <span th:text="${mensagemErro}" ></span></form>
 
 	</div>
 	<div id='calendar'></div>
 	
-	<div class="erro" th:if="${not #strings.isEmpty(mensagemErro)}"> </div>
+	
+	
 	
 	<div id="modalId" class="modal" tabindex="-1">
 		<div class="modal-dialog">
@@ -83,7 +83,7 @@ body {
 				</div>
 				<div class="modal-body">
 				
-				<span th:if="${not #strings.isEmpty(mensagemErro)}" th:text="${mensagemErro}" ></span>
+				
 
 					<form onsubmit="historico()">
 						<input type="hidden" id="id">

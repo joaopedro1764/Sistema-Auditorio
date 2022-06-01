@@ -22,12 +22,26 @@ function historico() {
 	let title = document.getElementById("title2").value
 	let start = document.getElementById("start2").value
 	let end = document.getElementById("end2").value
-
-
+	
+	  
+	
+	
+	if(end < start){
+		    alert('A Data final não pode acabar antes da data de inicio!');
+		    
+		    end.focus()
+		   
+			}else{
+				
+			
+			
 	console.log(id)
 	console.log(title)
 	console.log(start.toLocaleString())
 	console.log(end.toLocaleString())
+	
+	
+	
 
 
 
@@ -37,8 +51,11 @@ function historico() {
 		"start": start,
 		"end": end
 	}
+	
+	
 
 
 	location.reload();
 	fazPost(url, body)
+	}
 }

@@ -1,7 +1,7 @@
 package br.senai.sp.gestaoAuditorio.rest;
 
 import java.net.URI;
-import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,47 +36,58 @@ public class EventoRest {
 	@RequestMapping(value = "", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Object> criarEvento(@RequestBody Evento evento, RedirectAttributes attr) {
 		try {
-					
+
 			Evento evn2 = repository.intervaloDeDatas(evento.getStart(), evento.getEnd());
 			if (evn2 == null) {
-				
+				System.out.println(evn2);
 				System.out.println("PRIMEIRO IF");
-				
+
 				evn2 = repository.intervaloForaHoras(evento.getStart(), evento.getEnd());
-				if(evn2 == null) {
-					
+				if (evn2 == null) {
+
 					System.out.println("SALVOU");
-					repository.save(evento);	
-					
-				}else {
-													
-					System.out.println("ERRO IF INTERNO");			
+					repository.save(evento);
+
+				} else {
+
+					System.out.println("ERRO IF INTERNO");
 				}
-			
-							
+
 			} else {
 				System.out.println("ERROOOO");
 				attr.addFlashAttribute("mensagemErro", "DATA JA RESERVADA");
-				
-				
-					
+
 			}
 			// salvar o usuário no banco de dados
-			// retorna código 201, com a URL para acesso no Location e o usuário inserido
-			// no corpo da resposta
+			// retorna código 201, com a URL para acesso no Location e o usuário inserido no
+			// corpo da resposta
+
 			return ResponseEntity.created(URI.create("/api/evento/" + evento.getId())).body(evento);
+
 		} catch (DataIntegrityViolationException e) {
+
 			e.printStackTrace();
+
 			Erro erro = new Erro();
+
 			erro.setStatusCode(500);
+
 			erro.setMensagem("Erro de Constraint: Registro Duplicado");
+
 			erro.setExcepiton(e.getClass().getName());
+
 			return new ResponseEntity<Object>(erro, HttpStatus.INTERNAL_SERVER_ERROR);
+
 		} catch (Exception e) {
+
 			Erro erro = new Erro();
+
 			erro.setStatusCode(500);
+
 			erro.setMensagem("Erro: " + e.getMessage());
+
 			erro.setExcepiton(e.getClass().getName());
+
 			return new ResponseEntity<Object>(erro, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
@@ -91,7 +102,7 @@ public class EventoRest {
 	@Privado
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<Evento> findEvento(@PathVariable("id") Long idEvento) {
-		// busca o usuário
+		// busca o evento
 		Optional<Evento> eveto = repository.findById(idEvento);
 		if (eveto.isPresent()) {
 			return ResponseEntity.ok(eveto.get());
@@ -103,11 +114,32 @@ public class EventoRest {
 	@Privado
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<Void> atulizarEvento(@RequestBody Evento evento, @PathVariable("id") Long id) {
+
+		List<Evento> evn1 = repository.intervaloDeDatasComLista(evento.getStart(), evento.getEnd());
+
+		List<Evento> evn2 = repository.intervaloForaHorasComLista(evento.getStart(), evento.getEnd());
+
+		Evento evn3 = repository.findByStartAndEnd(evento.getStart(), evento.getEnd());
+
+		Evento evn4 = repository.findByStart(evento.getStart());
+
+		Evento evn5 = repository.findByEnd(evento.getEnd());
+
+		Evento evn6 = repository.findByTitle(evento.getTitle());
+
+		if (evn1 != null) {
+
+			System.out.println("ERROOOOO Alteracao1");
+
+		}
+
 		if (id != evento.getId()) {
+
 			throw new RuntimeException("id invalido");
 		}
-		// savar o usuario no banco de dados
-		repository.save(evento);
+
+		// salvar o evento no banco de dados
+
 		// criar um cabeçalhao HTTp
 		HttpHeaders headers = new HttpHeaders();
 		headers.setLocation(URI.create("/api/evento/"));
