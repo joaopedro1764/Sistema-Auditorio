@@ -1,13 +1,17 @@
 package br.senai.sp.gestaoAuditorio.controller;
 
-import javax.servlet.http.HttpSession;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import br.senai.sp.gestaoAuditorio.repository.EventoRepository;
+
 @Controller
 public class EventoController {
+
+	@Autowired
+	private EventoRepository repositoryEvento;
 
 	@RequestMapping("fullCalendar")
 	public String form() {
@@ -23,7 +27,9 @@ public class EventoController {
 	}
 
 	@RequestMapping("painelReserva")
-	public String painelReserva(Model model, Long id, HttpSession session) {
+	public String painelReserva(Model model) {
+
+		model.addAttribute("evento", repositoryEvento.findAll());
 
 		return "Interface/PainelReserva";
 	}
