@@ -1,0 +1,163 @@
+* {
+    margin: 0;
+}  
+
+#header {
+    width: 100%;
+    height: 78.5px;
+    background-color: #2884B2;
+    font-size: 15px;
+}
+
+header img {
+    margin-top: 2px;
+    margin-left: 18px;
+}
+
+header nav ul li {
+    margin: 0;
+    position: relative;
+    top: 15px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.imgLogo {
+    padding: 10px;
+    float: left;
+    margin-top: 1em;
+}
+
+.listaNav {
+    height: 100%;
+    padding: 10px;
+    padding-top: 0%;
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    float: right;
+    color: white;
+    margin-top: 7px;
+    margin-right: 2em;
+}
+
+/* li:nth-child(1) {
+    border-right: white solid 2px;
+} */
+
+.current:nth-child(1) {
+    border-right: white solid 2px;
+}
+
+.current:nth-child(2) {
+    margin-left: 10px;
+} 
+
+li {
+    padding: 1px;
+    margin: 10px;
+    border-radius: 2px;
+}
+
+.aNav {
+    text-transform: none;
+    /* border-right: 2px solid white; */
+    margin: 15px;
+
+    padding-right: 15px;
+    border-radius: 2px;
+    /* padding: 5px; */
+    background-color: transparent;
+    color: white;
+    font-size: 1.4em;
+    text-transform: uppercase;
+}
+
+.aNav3 {
+    border: none;
+    font-size: 15px;
+}
+
+.btnav:hover {
+    cursor: pointer;
+}
+
+
+.nif_princ {
+    padding: 20px;
+    border: solid black 2px;
+}
+
+.img_nif {
+    position: relative;
+    right: 5.8em;
+    top: 1.5em;
+}
+
+/* FORMULÁRIO */
+
+.form input::placeholder {
+    position: relative;
+    left: 3em;
+}
+
+.form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    top: 18em;
+    background-color: rgba(0, 255, 255, 0.211);
+    width: 292px;
+}
+
+.form input {
+    padding-left: 15px;
+    padding-right: 15px;
+    outline: none;
+    border: none;
+    font-size: 17px;
+    margin: 10px;
+}
+
+.form section {
+    border-radius: 50px;
+}
+
+.form input {
+    background-color: transparent;
+}
+
+.form section {
+    /* background-color: #2884b22d; */
+    background-color: rgba(128, 128, 128, 0.187);
+}
+
+#nif {
+    position: relative;
+    right: 5em;
+}
+
+#senha {
+    position: relative;
+    right: 4.5em;
+}
+
+#nif, #senha {
+    margin-bottom: 5px;
+}
+
+label {
+    font-family: 'Tajawal', sans-serif;
+    font-size: 20px;
+}
+
+#button {
+    background: none;
+    padding: 15px;
+    width: 100%;
+}
+.divform{
+    width: 100%;
+    background-color: #b22828;
+}

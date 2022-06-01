@@ -1,7 +1,6 @@
 package br.senai.sp.gestaoAuditorio.controller;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -163,11 +162,6 @@ public class UsuarioController {
 			return "redirect:/";
 		} else {
 			System.out.println(user);
-			Calendar expiracao = Calendar.getInstance();
-			expiracao.add(Calendar.HOUR, 1);
-			if (expiracao == null) {
-				return " redirect:/";
-			}
 			System.out.println(repositoryEvento.findAll());
 			session.setAttribute("usuarioLogado", user);
 			return "redirect:painelReserva";

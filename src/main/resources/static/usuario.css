@@ -5,8 +5,8 @@
 }
 body{
     width: 100%;
-    height: 100%;
-    background-color: aqua;
+    height: 1px;
+    background-color: rgb(255, 255, 255);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-image: url(/imgs/senaiFundo.jpg);
     background-repeat: no-repeat;
@@ -27,7 +27,7 @@ body{
     list-style: none;
     float: right;
 }
-li{
+.liNavs{
     
     padding: 1px;
     margin: 10px;
@@ -35,23 +35,20 @@ li{
     border-radius: 2px;
 
 }
-a{
-    text-transform: none;
 
-}
-.btnav{
+.btNav{
     border-right: 2px solid rgb(255, 0, 0);
     border-top:2px solid rgba(0, 0, 0, 0);
     border-left:2px solid rgba(0, 0, 0, 0);
     border-bottom:2px solid rgba(0, 0, 0, 0);
-
+    font-style: normal;
     border-radius: 2px;
     padding: 5px;
     background-color: transparent;
     color: rgb(0, 0, 0);
     font-size: 20px;
 }
-.btnav:hover {
+.btNav:hover {
      border-right: 2px solid rgb(0, 119, 255);
     border-top:2px solid rgba(0, 0, 0, 0);
     border-left:2px solid rgba(0, 0, 0, 0);
@@ -66,7 +63,6 @@ a{
     color: aliceblue;
     width: 10px;
     float: left;
-    padding-left: 12px;
 }
 .inner{
     width: 30%;
@@ -82,7 +78,6 @@ a{
 }
 .divLogin{
     padding-top: 5%;
-    padding-left: 42%;
 }
 .h1Senai{
     color: rgb(255, 0, 0);
@@ -96,17 +91,17 @@ a{
     border-style: double;
     
 }
-.btMais{
-    background-color: rgb(199, 191, 191);
-    color: white;
+.botao{
+    background-color: transparent;
+    color: rgb(0, 0, 0);
     border: none;
-    padding: 6px;
+    padding: 2px;
     border-radius: 4px;
-    width: 200px;
+    width: 220px;
 }
-.btMais:hover{
-    background-color: rgb(255, 0, 0);
-    color: white;
+.botao:hover{
+    background-color: transparent;
+    color: rgb(255, 0, 0);
     border: none;
     padding: 6px;
     border-radius: 4px;
@@ -118,19 +113,21 @@ a{
     float: left;
 }
 .input100{
-    width: 314px;
-    font-size: 20px;
+    width: 90%;
+    font-size: 15px;
+    padding: 12px;
     border-top: 0px solid red ;
-    border-bottom: 1px solid red ;
+    border-bottom: 1px solid rgb(0, 0, 0) ;
     border-left: 0px solid red ;
     border-right: 0px solid red ;
     outline: none;
+    background-color: rgba(0, 0, 0, 0);
 }
 .divinputs{
-    padding: 100px;
-    background-color: rgba(0, 255, 255, 0);
-    width: 50px;
-    border: 3px solid red;
+    padding: 10000px;
+    background-color: rgb(0, 255, 255);
+    width: 500px;
+    border: 3px solid rgb(0, 0, 0);
     border-style: dashed;
     border-radius: 20px;
     width: 314px;
@@ -138,20 +135,20 @@ a{
 .login100-form-btn{
     border: none;
     padding: 10PX;
-    width: 314PX;
+    width: 95%;
     font-size: 20px;
     font-family: monospace;
 }
 .login100-form-btn:hover{
     border: none;
     padding: 10PX;
-    width: 314PX;
+    width: 95%;
     color: white;
     background-color: rgb(146,214,255);
 
 }
 .login100-form-title{
-    padding: 10px;
+    padding: 20px;
     text-align: center;
     font-size: 40px;
     border-radius: 10%;
@@ -162,5 +159,45 @@ a{
     
 }
 .divSpan{
-    padding-left: 90px;
 }
+.limiter{
+    width: 25%;
+    padding-left: 30%;
+    padding-top: 100px;
+}
+
+.login100-form{
+}
+.divCriar{
+    width: 100px;
+    background-color: rgba(74, 76, 76, 0);
+}
+.divCadastrar{
+    background-color: rgba(255, 166, 0, 0);
+    width: 100%;
+    padding: 10px;
+}
+.text-center{
+    background-color: rgb(255, 0, 0);
+    width: 1px;
+}
+.divForgot{
+    width: 100px;
+    float: left;
+}
+form{
+    width: 500px;
+    padding: 100px;
+    border-radius: 50px;
+    border: 2.5px solid red;
+    border-style: dotted;
+}
+.ulNavscards{
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    
+}    
+.liCards{
+    margin: 60px;
+}   
