@@ -33,7 +33,7 @@ public class UsuarioRest {
 	@Autowired
 	private UsuarioRepository repository;
 	// constantes para gerar o token
-	public static final String EMISSOR = "romeu";
+	public static final String EMISSOR = "r@meu";
 	public static final String SECRET = "RES@PLICA";
 
 	@Publico
@@ -83,10 +83,13 @@ public class UsuarioRest {
 	@Publico
 	@RequestMapping(value = "/login", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<TokenJWT> logar(@RequestBody Usuario usuario) {
+		System.out.println(usuario.getNif());
+		System.out.println(usuario.getSenha());
 		// busca o usuário no BD
 		usuario = repository.findByNifAndSenha(usuario.getNif(), usuario.getSenha());
 		// verifica se existe o usuário
 		if (usuario != null) {
+			System.out.println("Entrou aqui !");
 			// valores adicionais para o token
 			Map<String, Object> payload = new HashMap<String, Object>();
 			payload.put("id_usuario", usuario.getId());
@@ -100,7 +103,10 @@ public class UsuarioRest {
 			TokenJWT tokenJwt = new TokenJWT();
 			tokenJwt.setToken(JWT.create().withPayload(payload).withIssuer(EMISSOR).withExpiresAt(expiracao.getTime())
 					.sign(algoritmo));
+			
+			System.out.println(tokenJwt);
 			return ResponseEntity.ok(tokenJwt);
+			
 		} else {
 			return new ResponseEntity<TokenJWT>(HttpStatus.UNAUTHORIZED);
 		}

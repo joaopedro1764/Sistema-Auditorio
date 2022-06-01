@@ -112,24 +112,7 @@ public class AdministradorController {
 		return "Administrador/PainelAdministrativo";
 	}
 
-	@Privado
-	@RequestMapping("alterarAdmin")
-	public String alterarAdmin(Model model, Long id) {
 
-		model.addAttribute("admin", repository.findById(id).get());
-
-		return "forward:formAdmin";
-
-	}
-
-	@RequestMapping("excluirAdmin")
-	public String excluirAdmin(Long id) {
-
-		repository.deleteById(id);
-
-		return "redirect:listarAdmin/1";
-
-	}
 
 	@Publico
 	@RequestMapping("loginAdmin")
