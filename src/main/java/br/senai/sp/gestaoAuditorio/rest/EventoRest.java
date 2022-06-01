@@ -1,7 +1,10 @@
 package br.senai.sp.gestaoAuditorio.rest;
 
 import java.net.URI;
+<<<<<<< HEAD
 import java.util.List;
+=======
+>>>>>>> 0dc5dbf975d98dfad3ba7586269eb4711fd2869c
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -92,14 +95,14 @@ public class EventoRest {
 		}
 	}
 
-	@Privado
+	@Publico
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	public Iterable<Evento> getAllValues() {
 		return repository.findAll();
 	}
 
 	// Pelo id
-	@Privado
+	@Publico
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<Evento> findEvento(@PathVariable("id") Long idEvento) {
 		// busca o evento
@@ -154,5 +157,11 @@ public class EventoRest {
 
 		return ResponseEntity.noContent().build();
 
+	}
+	
+	@Publico
+	@RequestMapping(value = "/usuario/{id}",method = RequestMethod.GET)
+	public Iterable<Evento>procurarID(@PathVariable("id")Long id){
+	return repository.findByUsuarioId(id);
 	}
 }

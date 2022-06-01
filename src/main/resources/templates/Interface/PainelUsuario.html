@@ -1,0 +1,99 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleafe.org">
+
+<head>
+<meta charset="utf-8" />
+<link rel="apple-touch-icon" sizes="76x76"
+	href="../assets/img/apple-icon.png">
+<link rel="icon" type="image/png" href="../assets/img/favicon.ico">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<title>PAINEL USUÀRIO</title>
+<meta
+	content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
+	name='viewport' />
+<!--     Fonts and icons     -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200"
+	rel="stylesheet" />
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
+<!-- CSS Files -->
+<link href="/bootstrapPainel.min.css" rel="stylesheet" />
+<link href="/painelAdm.css " rel="stylesheet" />
+<script
+	src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+	integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
+	crossorigin="anonymous"></script>
+<script src="/administrador.js"></script>
+<!-- CSS Just for demo purpose, don't include it in your project -->
+<link href="/demoPainel.css" rel="stylesheet" />
+
+</head>
+
+<body>
+	<div class="wrapper">
+		<div class="sidebar" data-image="../assets/img/senai.png">
+			<!--
+        Tip 1: You can change the color of the sidebar using: data-color="purple | blue | green | orange | red"
+
+        Tip 2: you can also add an image using data-image tag
+    -->
+			<div class="sidebar-wrapper">
+				<div class="logo">"RICARDO LERNER"</div>
+				<ul class="nav">
+					<li><a class="nav-link" href="#"> <i
+							class=" large material-icons">home</i>
+							<p>Home</p>
+					</a></li>
+
+					<li><a class="nav-link" href="/painelReserva"> <i
+							class=" large material-icons">event_seat</i>
+							<p>Auditório</p>
+					</a></li>
+
+					<li><a class="nav-link" href="/perfilUsuario"> <i
+							class=" large material-icons">perm_identity</i>
+							<p>Perfil</p>
+					</a></li>
+
+
+					<li>
+				</ul>
+			</div>
+		</div>
+		<div class="main-panel">
+			<!-- Navbar -->
+			<nav class="navbar navbar-expand-lg " color-on-scroll="500">
+				<div class="container-fluid">
+					<a class="navbar-brand"> Painel Usuário </a>
+
+					<div class="collapse navbar-collapse justify-content-end"
+						id="navigation">
+
+						<ul class="navbar-nav ml-auto">
+
+
+							<li class="nav-item"><a class="nav-link"
+								href="/perfilUsuario"> <span class="no-icon"><i
+										class=" medium material-icons">account_circle</i></span>
+							</a></li>
+							<li class="nav-item"><a class="nav-link" href="/logOut">
+									<span class="no-icon"><i class=" medium material-icons">exit_to_app</i></span>
+							</a></li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+
+
+
+
+		</div>
+</html>

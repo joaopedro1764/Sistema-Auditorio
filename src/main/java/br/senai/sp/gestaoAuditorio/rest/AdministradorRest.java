@@ -48,7 +48,12 @@ public class AdministradorRest {
 		HttpHeaders headers = new HttpHeaders();
 		headers.setLocation(URI.create("/api/administrador/"));
 		return new ResponseEntity<Void>(headers, HttpStatus.OK);
-
+	}
+	
+	@Publico
+	@RequestMapping(value = "", method = RequestMethod.GET)
+	public Iterable<Administrador> getAllValues() {
+		return repository.findAll();
 	}
 
 }

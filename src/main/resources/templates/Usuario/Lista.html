@@ -80,21 +80,24 @@
 				<div class="logo">"RICARDO LERNER"</div>
 				<ul class="nav">
 					<li><a class="nav-link" href="#"> <i
-							class="nc-icon nc-chart-pie-35"></i>
+							class=" large material-icons">home</i>
 							<p>Home</p>
 					</a></li>
-					<li><a class="nav-link" href="#"> <i
-							class="nc-icon nc-circle-09"></i>
-							<p>Meu Perfil</p>
-					</a></li>
-					<li class="nav-item active"><a class="nav-link"
-						href="/listarUsuario/1"> <i class="nc-icon nc-notes"></i>
-							<p>Usuários</p>
-					</a></li>
+
 					<li><a class="nav-link" href="/listarAdmin/1"> <i
-							class="nc-icon nc-notes"></i>
+							class=" large material-icons">perm_identity</i>
 							<p>Administradores</p>
 					</a></li>
+
+					<li class="nav-item active"><a class="nav-link"
+						href="/listarUsuario/1"> <i class=" large material-icons">account_circle</i>
+							<p>Usuários</p>
+					</a></li>
+					<li><a class="nav-link" href="/painelReserva"><i
+							class=" large material-icons">event_seat</i>
+							<p>Auditório</p> </a></li>
+
+
 
 					<li>
 				</ul>
@@ -110,16 +113,14 @@
 						id="navigation">
 						<ul class="nav navbar-nav mr-auto">
 							<li class="nav-item"></li>
-							<li class="nav-item"><a href="#" class="nav-link"> <i
-									class="nc-icon nc-zoom-split"></i> <span class="d-lg-block">&nbsp;Pesquisar
-										Usuário</span>
-							</a></li>
+							<li class="nav-item"><a href="#" class="nav-link"><i
+									class=" large material-icons">search</i> </a></li>
 						</ul>
 						<ul class="navbar-nav ml-auto">
 
 
 							<li class="nav-item"><a class="nav-link" href="/logOut">
-									<span class="no-icon">LogOut</span>
+									<span class="no-icon"><i class=" medium material-icons">exit_to_app</i></span>
 							</a></li>
 						</ul>
 					</div>
@@ -164,9 +165,10 @@
 							</div>
 						</div>
 
+
 						<button style="float: right;" type="button" class="btn btn-dark"
 							data-toggle="modal" data-target="#modalCadastro">Novo
-							Usuario</button>
+							Usuário</button>
 
 						<!-- Modal -->
 						<div class="modal fade" id="modalCadastro" data-backdrop="static"
@@ -179,7 +181,7 @@
 											Usuario</h5>
 										<button style="float: right;" type="button" class="close"
 											data-dismiss="modal" aria-label="Close">
-											<span aria-hidden="true">&times;</span>
+											<span aria-hidden="true"></span>
 										</button>
 									</div>
 									<div class="modal-body">

@@ -11,8 +11,9 @@ import lombok.Data;
 
 @Data
 @Entity
+
 public class Usuario {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -20,22 +21,24 @@ public class Usuario {
 	@Column(unique = true)
 	private String nif;
 	
+	// @JsonProperty(access = Access.WRITE_ONLY)
+	// @OneToMany(mappedBy = "usuario")
+	// private List<Evento> eventos;
 	private String senha;
-	
+
 	// metodo que seta a senha sem o hash
-			public void setSenhaComHash(String hash) {
+	public void setSenhaComHash(String hash) {
 
-				// seta o hash na senha
-				this.senha = hash;
+		// seta o hash na senha
+		this.senha = hash;
 
-			}
-			
-			// metodo para setar a senha aplicando o hash
-			public void setSenha(String senha) {
+	}
 
-				// aplica o hash e seta a senha no objeto
-				this.senha = HashUtil.hash256(senha);
-			}
+	// metodo para setar a senha aplicando o hash
+	public void setSenha(String senha) {
 
-	
+		// aplica o hash e seta a senha no objeto
+		this.senha = HashUtil.hash256(senha);
+	}
+
 }

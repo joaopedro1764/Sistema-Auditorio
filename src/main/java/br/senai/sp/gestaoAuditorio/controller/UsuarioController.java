@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import br.senai.sp.gestaoAuditorio.model.Administrador;
 import br.senai.sp.gestaoAuditorio.model.Usuario;
+import br.senai.sp.gestaoAuditorio.repository.EventoRepository;
 import br.senai.sp.gestaoAuditorio.repository.UsuarioRepository;
 import br.senai.sp.gestaoAuditorio.util.HashUtil;
 
@@ -25,6 +25,9 @@ public class UsuarioController {
 
 	@Autowired
 	private UsuarioRepository repository;
+
+	@Autowired
+	private EventoRepository repositoryEvento;
 
 	@RequestMapping("formUsuario")
 	public String formUsuario() {
@@ -126,8 +129,29 @@ public class UsuarioController {
 
 	}
 
+	@RequestMapping("interfaceUsuario")
+	public String painelUsuario() {
+
+		return "Interface/PainelUsuario";
+	}
+
+	@RequestMapping("perfilUsuario")
+	public String perfilUsuario() {
+
+		return "Interface/Perfil";
+	}
+
+	@RequestMapping("alterarUser")
+	public String alterarUser(Model model, Long id) {
+
+		model.addAttribute("u", repository.findById(id).get());
+
+		return "forward:perfilUsuario";
+
+	}
+
 	@RequestMapping("loginUsuario")
-	public String login(Usuario usuario, RedirectAttributes attr, HttpSession session) {
+	public String login(Usuario usuario, Model model, Long id, RedirectAttributes attr, HttpSession session) {
 
 		Usuario user = repository.findByNifAndSenha(usuario.getNif(), usuario.getSenha());
 
@@ -137,9 +161,10 @@ public class UsuarioController {
 
 			return "redirect:/";
 		} else {
-
+			System.out.println(user);
+			System.out.println(repositoryEvento.findAll());
 			session.setAttribute("usuarioLogado", user);
-			return "redirect:listarUsuario/1";
+			return "redirect:painelReserva";
 
 		}
 

@@ -1,0 +1,112 @@
+* {
+    margin: 0;
+}
+
+.nif_princ {
+    padding: 20px;
+    border: solid black 2px;
+}
+
+.img_nif {
+    position: relative;
+    right: 5.8em;
+    top: 1.5em;
+}
+
+/* FORMULÁRIO */
+
+.form input::placeholder {
+    position: relative;
+    left: 3em;
+}
+
+.form {
+
+    flex-direction: column;
+    /* position: relative;
+    top: 18em; */
+    width: 292px;
+    margin: auto;
+}
+
+.form input {
+    padding-left: 15px;
+    padding-right: 15px;
+    outline: none;
+    border: none;
+    font-size: 17px;
+    margin: 10px;
+}
+
+.form section {
+    border-radius: 50px;
+}
+
+.form input {
+    background-color: transparent;
+}
+
+.form section {
+    /* background-color: #2884b22d; */
+    background-color: rgba(128, 128, 128, 0.187);
+}
+
+#nif {
+    position: relative;
+    left: 20px;
+}
+
+#senha {
+    position: relative;
+    left: 20px;
+}
+
+#nif,
+#senha {
+    margin-bottom: 5px;
+}
+
+label, #button, #titulo {
+    font-family: 'Tajawal', sans-serif;
+}
+
+label {
+    
+    font-size: 22px;
+}
+
+#button {
+    background-color: #2884b246;
+    position: relative;
+    top: 2.5em;
+    right: 0.0em;
+    display: flex;
+    border: none;
+    border-radius: 17px;
+    padding: 10px 15px 10px 15px;
+    font-size: 22px;
+    /* border: solid black 2.5px; */
+    cursor: pointer;
+    width: 130px;
+    justify-content: center;
+    margin: auto;
+}
+
+.divForm {
+    margin: auto;
+    border: 5px dashed black;
+    border-radius: 15px;
+    height: 18em;
+    padding-top: 2em;
+    padding-bottom: 1em;
+    width: 25em;
+    position: relative;
+    top: 20vh;
+}
+
+#titulo {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    top: 5em;
+}

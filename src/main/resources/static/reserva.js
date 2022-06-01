@@ -65,10 +65,25 @@ document.addEventListener('DOMContentLoaded', function() {
 
 		eventClick: function(info) {
 
+
 			$('#modalUpdate #idUpdate').val(info.event.id)
+			let idUsuarioLogado = document.getElementById("idUsuario").value
+			let botaoAlterar = document.getElementById("btnAlterar");
+			let botaoExcluir = document.getElementById("btnExcluir");
+			console.log(idUsuario)
 			$('#modalUpdate #titleUpdate').val(info.event.title)
 			$('#modalUpdate #startUpdate').val(info.event.start.toISOString().substring(0, 16))
 			$('#modalUpdate #endUpdate').val(info.event.end.toISOString().substring(0, 16))
+			$('#modalUpdate #usuarioUpdate').val(info.event.extendedProps.usuario.nome)
+			console.log(idUsuarioLogado)
+			console.log(info.event.extendedProps.usuario.nome)
+			if (info.event.extendedProps.usuario.id == idUsuarioLogado) {
+				botaoAlterar.style.visibility = "visible"
+				botaoExcluir.style.visibility = "visible"
+			} else {
+				botaoAlterar.style.visibility = "hidden"
+				botaoExcluir.style.visibility = "hidden"
+			}
 			$('#modalUpdate').modal('show')
 
 		},
@@ -83,6 +98,12 @@ document.addEventListener('DOMContentLoaded', function() {
 		dayMaxEvents: true, // allow "more" link when too many events
 
 	});
+
+	function validaEvento() {
+
+
+
+	}
 
 
 
