@@ -24,6 +24,29 @@ function historico() {
 	let title = document.getElementById("title2").value
 	let start = document.getElementById("start2").value
 	let end = document.getElementById("end2").value
+<<<<<<< HEAD
+	
+	  
+	
+	
+	if(end < start){
+		    alert('A Data final não pode acabar antes da data de inicio!');
+		    
+		    end.focus()
+		   
+			}else{
+				
+			
+			
+	console.log(id)
+	console.log(title)
+	console.log(start.toLocaleString())
+	console.log(end.toLocaleString())
+	
+	
+	
+=======
+>>>>>>> 0dc5dbf975d98dfad3ba7586269eb4711fd2869c
 
 
 
@@ -31,6 +54,12 @@ function historico() {
 		"id": id,
 		"title": title,
 		"start": start,
+<<<<<<< HEAD
+		"end": end
+	}
+	
+	
+=======
 		"end": end,
 		"usuario": {
 			"id": idUsuario,
@@ -40,8 +69,13 @@ function historico() {
 
 
 
+>>>>>>> 0dc5dbf975d98dfad3ba7586269eb4711fd2869c
 
 
 	location.reload();
 	fazPost(url, body)
+<<<<<<< HEAD
+	}
+=======
+>>>>>>> 0dc5dbf975d98dfad3ba7586269eb4711fd2869c
 }

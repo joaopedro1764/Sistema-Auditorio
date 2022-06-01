@@ -23,12 +23,26 @@ function update() {
 	let start = document.getElementById("startUpdate").value
 	let end = document.getElementById("endUpdate").value
 	let url = "http://localhost:8080/api/evento/" + id
-
-
+	
+	
+	if(end < start){
+		    alert('A Data final não pode acabar antes do inicio!');
+	
+		    end.focus()
+		    		    	
+		
+					    
+	}else if (start > start){
+			alert("ERROOOO")		
+		}else{
+			
+		
+		-
+			
 	console.log(id)
 	console.log(title)
 	console.log(start.toLocaleString())
-	console.log(end)
+	console.log(end.toLocaleString())
 
 
 
@@ -46,5 +60,5 @@ function update() {
 
 
 	fazPut(url, body)
-
+}
 }
