@@ -65,6 +65,7 @@
 	crossorigin="anonymous"></script>
 <script src="/administrador.js"></script>
 <script src="/reserva.js"></script>
+<script src="/usuariolog.js"></script>
 
 <!-- CSS Just for demo purpose, don't include it in your project -->
 <link href="/demoPainel.css" rel="stylesheet" />
@@ -172,8 +173,8 @@
 					<div class="modal-body">
 
 						<form onsubmit="historico()">
-							<input th:value="${session.usuarioLogado.id}" type="hidden"
-								id="idUsuario"> <input type="hidden" id="id">
+							<input type="hidden" id="idUsuario"> <input type="hidden"
+								id="id">
 							<div class="form-row">
 								<div class="form-group col-md-6">
 									<label for="inputEmail4">TÍTULO DO EVENTO</label> <input
@@ -189,7 +190,8 @@
 								<label for="inputAddress">FINAL DO EVENTO</label> <input
 									required="required" value="#start2" type="datetime-local"
 									class="form-control" id="end2">
-								<button style="margin-top: 35px;" type="submit" class="btn btn-light">Reservar</button>
+								<button style="margin-top: 35px;" type="submit"
+									class="btn btn-light">Reservar</button>
 							</div>
 
 						</form>
@@ -216,8 +218,7 @@
 
 						<form onsubmit="update()">
 
-							<input type="hidden" id="idUpdate"> <input
-								th:value="${session.usuarioLogado.id}" type="hidden"
+							<input type="hidden" id="idUpdate"> <input type="hidden"
 								id="idUsuario">
 
 							<div class="form-row">
@@ -227,7 +228,8 @@
 								</div>
 								<div class="form-group col-md-8">
 									<label for="inputEmail4">USUÀRIO</label> <input readonly
-									style="background-color: transparent;"	type="text" class="form-control" id="usuarioUpdate">
+										style="background-color: transparent;" type="text"
+										class="form-control" id="usuarioUpdate">
 								</div>
 								<div class="form-group col-md-8">
 									<label for="inputPassword4">INÍCIO DO EVENTO</label> <input

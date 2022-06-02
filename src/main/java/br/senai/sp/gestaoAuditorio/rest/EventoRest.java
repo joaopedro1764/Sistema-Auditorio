@@ -1,10 +1,7 @@
 package br.senai.sp.gestaoAuditorio.rest;
 
 import java.net.URI;
-<<<<<<< HEAD
 import java.util.List;
-=======
->>>>>>> 0dc5dbf975d98dfad3ba7586269eb4711fd2869c
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;

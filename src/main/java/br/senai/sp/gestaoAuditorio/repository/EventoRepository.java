@@ -17,8 +17,6 @@ public interface EventoRepository extends PagingAndSortingRepository<Evento, Lon
 	@Query("SELECT t FROM Evento t where (:s BETWEEN t.start AND t.end) OR (:e BETWEEN t.start AND t.end)")
 	public Evento intervaloDeDatas(@Param("s") LocalDateTime start, @Param("e") LocalDateTime end);
 	
-<<<<<<< HEAD
-	
 	@Query("SELECT t FROM Evento t where (:s BETWEEN t.start AND t.end) OR (:e BETWEEN t.start AND t.end)")
 	public List<Evento> intervaloDeDatasComLista(@Param("s") LocalDateTime start, @Param("e") LocalDateTime end);
 	
@@ -38,10 +36,10 @@ public interface EventoRepository extends PagingAndSortingRepository<Evento, Lon
 	
 	public Evento findByTitle(String title);
 
-=======
+
 	public List<Evento> findByUsuarioId(Long id);
 	
->>>>>>> 0dc5dbf975d98dfad3ba7586269eb4711fd2869c
+
 }
 
 
