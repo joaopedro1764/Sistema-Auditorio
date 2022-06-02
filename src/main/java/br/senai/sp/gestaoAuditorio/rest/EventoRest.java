@@ -1,7 +1,6 @@
 package br.senai.sp.gestaoAuditorio.rest;
 
 import java.net.URI;
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -115,36 +114,20 @@ public class EventoRest {
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<Void> atulizarEvento(@RequestBody Evento evento, @PathVariable("id") Long id) {
 
-		List<Evento> evn1 = repository.intervaloDeDatasComLista(evento.getStart(), evento.getEnd());
-
-		List<Evento> evn2 = repository.intervaloForaHorasComLista(evento.getStart(), evento.getEnd());
-
-		Evento evn3 = repository.findByStartAndEnd(evento.getStart(), evento.getEnd());
-
-		Evento evn4 = repository.findByStart(evento.getStart());
-
-		Evento evn5 = repository.findByEnd(evento.getEnd());
-
-		Evento evn6 = repository.findByTitle(evento.getTitle());
-
-		if (evn1 != null) {
-
-			System.out.println("ERROOOOO Alteracao1");
-
-		}
-
 		if (id != evento.getId()) {
 
 			throw new RuntimeException("id invalido");
+		} else {
+
+			repository.save(evento);
+			// salvar o evento no banco de dados
+
+			// criar um cabeçalhao HTTp
+			HttpHeaders headers = new HttpHeaders();
+			headers.setLocation(URI.create("/api/evento/"));
+			return new ResponseEntity<Void>(headers, HttpStatus.OK);
+
 		}
-
-		// salvar o evento no banco de dados
-
-		// criar um cabeçalhao HTTp
-		HttpHeaders headers = new HttpHeaders();
-		headers.setLocation(URI.create("/api/evento/"));
-		return new ResponseEntity<Void>(headers, HttpStatus.OK);
-
 	}
 
 	@Privado
@@ -155,10 +138,10 @@ public class EventoRest {
 		return ResponseEntity.noContent().build();
 
 	}
-	
+
 	@Publico
-	@RequestMapping(value = "/usuario/{id}",method = RequestMethod.GET)
-	public Iterable<Evento>procurarID(@PathVariable("id")Long id){
-	return repository.findByUsuarioId(id);
+	@RequestMapping(value = "/usuario/{id}", method = RequestMethod.GET)
+	public Iterable<Evento> procurarID(@PathVariable("id") Long id) {
+		return repository.findByUsuarioId(id);
 	}
 }

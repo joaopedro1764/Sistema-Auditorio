@@ -1,11 +1,12 @@
 
 //function colocaValor() {
 
-// token = sessionStorage.getItem("token")
-//payload = parseJwt(token)
+//let token = sessionStorage.getItem("token")
+//let payload = parseJwt(token)
 //console.log(payload)
-//var element = document.getElementById('idUSuario')
-//element.innerHTML = payload.id
+//console.log(payload.id_usuario)
+//var element = document.getElementById('idUsuario')
+//element.innerHTML = payload.id_usuario
 //};
 
 function logarUsuario() {
@@ -72,5 +73,5 @@ function parseJwt(token) {
 
 	return JSON.parse(jsonPayload);
 };
-
+colocaValor()
 //logarUsuario()

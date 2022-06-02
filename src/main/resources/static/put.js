@@ -18,7 +18,7 @@ function fazPut(url, body) {
 function update() {
 
 	let id = document.getElementById("idUpdate").value
-	let idUsuario = document.getElementById("idUsuario").value
+	let idUsuario = document.getElementById("idUsuarioU").value
 	let title = document.getElementById("titleUpdate").value
 	let start = document.getElementById("startUpdate").value
 	let end = document.getElementById("endUpdate").value
