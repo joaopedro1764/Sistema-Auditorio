@@ -46,17 +46,40 @@ function historico() {
 
 
 
-
-
-		body = {
-			"id": id,
-			"title": title,
-			"start": start,
-			"end": end,
-			"usuario": {
-				"id": idUsuario,
+		if (usuarioLogado == nulll) {
+			body = {
+				"id": id,
+				"title": title,
+				"start": start,
+				"end": end,
+				"usuario": {
+					"id": idUsuario,
+				},
+				"administrador": {
+					"id": "",
+				}
 			}
+			console.log(body + "usuario")
+
+		}else{
+			body = {
+				"id": id,
+				"title": title,
+				"start": start,
+				"end": end,
+				"usuario": {
+					"id": "",
+				},
+				"administrador": {
+					"id": idUsuario,
+				}
+			}
+			console.log(body + "admin")
+
+			
 		}
+
+
 
 
 

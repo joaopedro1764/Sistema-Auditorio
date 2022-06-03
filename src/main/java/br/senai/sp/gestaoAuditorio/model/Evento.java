@@ -23,5 +23,7 @@ public class Evento {
 	private LocalDateTime end;
 	@ManyToOne
 	private Usuario usuario;
+	@ManyToOne
+	private Administrador administrador;
 
 }
