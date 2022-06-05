@@ -170,7 +170,7 @@
 					</div>
 					<div class="modal-body">
 
-						<form onsubmit="historico()">
+						<form >
 							<input type="text" id="idUsuario"> <input type="hidden"
 								id="id">
 							<div class="form-row">
@@ -188,7 +188,7 @@
 								<label for="inputAddress">FINAL DO EVENTO</label> <input
 									required="required" value="#start2" type="datetime-local"
 									class="form-control" id="end2">
-								<button style="margin-top: 35px;" type="submit"
+								<button  onclick="historico()"  style="margin-top: 35px;" type="button"
 									class="btn btn-light">Reservar</button>
 							</div>
 
@@ -215,8 +215,8 @@
 					<div style="margin: 0 auto;" class="modal-body">
 
 						<form>
-								<input type="hidden" id="idUsuario"> 
-							<input type="hidden" id="idUpdate">
+							<input type="hidden" id="idUsuario"> <input type="hidden"
+								id="idUpdate">
 
 							<div class="form-row">
 								<div class="form-group col-md-8">
@@ -383,8 +383,11 @@
 
 				if (end < start) {
 					alert('A Data final não pode acabar antes da data de inicio!');
-					end.focus()
-				} else {
+				
+				} else if (start === end) {
+					alert(" data inicio não pode ser igual a data final!")
+					
+				}else {
 
 					console.log(id)
 					console.log(title)
@@ -451,11 +454,12 @@
 				return request.responseText
 			}
 			function update() {
-
+				let token = sessionStorage.getItem("token");
+				let payload = parseJwt(token);
 				console.log("entrei update")
 				let id = document.getElementById("idUpdate").value
 				console.log(id)
-			//	let idUsuario = document.getElementById("idUsuarioU").value
+				let idUsuario = document.getElementById("idUsuario").value
 				console.log(idUsuario)
 				let title = document.getElementById("titleUpdate").value
 				let start = document.getElementById("startUpdate").value
@@ -467,7 +471,9 @@
 
 					end.focus()
 
-				} else if (start > start) {
+				} else if (start === end) {
+					alert("data inicio não pode ser igual a data final")
+				} else if (start > end) {
 					alert("ERROOOO")
 				} else {
 
@@ -478,17 +484,51 @@
 					console.log(start.toLocaleString())
 					console.log(end.toLocaleString())
 
-					body = {
-						"id" : id,
-						"title" : title,
-						"start" : start,
-						"end" : end,
-						
+					if (payload.tipoUsuario === "usuario") {
+						body = {
+							"id" : id,
+							"title" : title,
+							"start" : start,
+							"end" : end,
+							"usuario" : {
+								"id" : idUsuario,
+							}
+						}
+						console.log(body + "usuario")
+
+					} else if (payload.tipoAdm === "administrador") {
+						body = {
+							"id" : id,
+							"title" : title,
+							"start" : start,
+							"end" : end,
+							"administrador" : {
+								"id" : idUsuario,
+							}
+						}
+						console.log(body + "admin")
 					}
+					
 
 					fazPut(url, body)
 					location.reload()
 				}
 			}
+			function parseJwt(token) {
+				var base64Url = token.split('.')[1];
+				var base64 = base64Url.replace(/-/g, '+').replace(/_/g,
+						'/');
+				var jsonPayload = decodeURIComponent(atob(base64)
+						.split('').map(
+								function(c) {
+									return '%'
+											+ ('00' + c.charCodeAt(0)
+													.toString(16))
+													.slice(-2);
+								}).join(''));
+
+				return JSON.parse(jsonPayload);
+			}
+			;
 		</script>
 </html>

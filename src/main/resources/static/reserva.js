@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			
 			if (payload.tipoUsuario) {
 				console.log("ENTREi IF" + info.event.extendedProps)
-				$('#modalUpdate #usuarioUpdate').val(info.event.extendedProps.usuario)
+				$('#modalUpdate #usuarioUpdate').val(info.event.extendedProps.usuario.nome)
 			}
 
 			if (payload.tipoAdm) {
