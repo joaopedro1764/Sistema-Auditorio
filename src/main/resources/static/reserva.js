@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function() {
 				var dateObj1 = new Date($('#start2').val());
 				var dateObj2 = new Date($('#end2').val());
 
-				
+
 			});
 
 			console.log(arg.start.toISOString().substring(0, 16).replace());
@@ -65,24 +65,61 @@ document.addEventListener('DOMContentLoaded', function() {
 
 		eventClick: function(info) {
 
+			function parseJwt(token) {
+				var base64Url = token.split('.')[1];
+				var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+				var jsonPayload = decodeURIComponent(atob(base64).split('')
+					.map(
+						function(c) {
+							return '%'
+								+ ('00' + c.charCodeAt(0).toString(
+									16)).slice(-2);
+						}).join(''));
 
+				return JSON.parse(jsonPayload);
+			};
+
+			console.log(info.event)
+			let token = sessionStorage.getItem("token");
+			let payload = parseJwt(token);
+			console.log(payload)
 			$('#modalUpdate #idUpdate').val(info.event.id)
 			let idUsuarioLogado = document.getElementById("idUsuario").value
 			let botaoAlterar = document.getElementById("btnAlterar");
 			let botaoExcluir = document.getElementById("btnExcluir");
-			console.log(idUsuario)
+			console.log(payload)
+			
+			if (payload.tipoUsuario) {
+				console.log("ENTREi IF" + info.event.extendedProps)
+				$('#modalUpdate #usuarioUpdate').val(info.event.extendedProps.usuario)
+			}
+
+			if (payload.tipoAdm) {
+				console.log("ENTREI ELSEE")
+				$('#modalUpdate #usuarioUpdate').val(info.event.extendedProps.administrador.nome)
+			}
+
 			$('#modalUpdate #titleUpdate').val(info.event.title)
 			$('#modalUpdate #startUpdate').val(info.event.start.toISOString().substring(0, 16))
 			$('#modalUpdate #endUpdate').val(info.event.end.toISOString().substring(0, 16))
-			$('#modalUpdate #usuarioUpdate').val(info.event.extendedProps.usuario.nome)
-			console.log(idUsuarioLogado)
-			console.log(info.event.extendedProps.usuario.nome)
-			if (info.event.extendedProps.usuario.id == idUsuarioLogado) {
-				botaoAlterar.style.visibility = "visible"
-				botaoExcluir.style.visibility = "visible"
-			} else {
-				botaoAlterar.style.visibility = "hidden"
-				botaoExcluir.style.visibility = "hidden"
+
+			console.log(info.event.id)
+			if (payload.tipoUsuario === "usuario") {
+				console.log("USUARIOOO")
+				console.log(info.event.extendedProps.usuario.id)
+				console.log(payload.id_usuario)
+
+				if (payload.id_usuario == info.event.extendedProps.usuario.id) {
+					console.log("USUARIOOO ALTERAR")
+					botaoAlterar.style.visibility = "visible"
+					botaoExcluir.style.visibility = "visible"
+
+
+				} else {
+					botaoAlterar.style.visibility = "hidden"
+					botaoExcluir.style.visibility = "hidden"
+				}
+
 			}
 			$('#modalUpdate').modal('show')
 
@@ -90,7 +127,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 		selectMirror: true,
 		eventDidMount: function(info) {
-			console.log(1);
+			//console.log(1);
 		},
 
 

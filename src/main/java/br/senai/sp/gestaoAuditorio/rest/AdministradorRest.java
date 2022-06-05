@@ -53,6 +53,7 @@ public class AdministradorRest {
 		if (id != administrador.getId()) {
 			throw new RuntimeException("id invalido");
 		}
+		System.out.println("OIIII");
 		// salvar o usuario no banco de dados
 		repository.save(administrador);
 		// criar um cabeçalhao HTTp
@@ -80,6 +81,7 @@ public class AdministradorRest {
 			Map<String, Object> payload2 = new HashMap<String, Object>();
 			payload2.put("id_admin", administrador.getId());
 			payload2.put("nome_admin", administrador.getNome());
+			payload2.put("tipoAdm", "administrador");
 			// definir a data de expiração
 			Calendar expiracao = Calendar.getInstance();
 			expiracao.add(Calendar.HOUR, 1);

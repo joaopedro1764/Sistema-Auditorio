@@ -112,8 +112,6 @@ public class AdministradorController {
 		return "Administrador/PainelAdministrativo";
 	}
 
-
-
 	@Publico
 	@RequestMapping("loginAdmin")
 	public String login(Administrador administrador, RedirectAttributes attr, HttpSession session) {
@@ -131,6 +129,15 @@ public class AdministradorController {
 			return "redirect:listarAdmin/1";
 
 		}
+
+	}
+
+	@RequestMapping("excluirAdmin")
+	public String excluirAdmin(Long id) {
+
+		repository.deleteById(id);
+
+		return "redirect:listarAdmin/1";
 
 	}
 

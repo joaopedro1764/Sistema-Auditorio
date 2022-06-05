@@ -140,13 +140,15 @@ public class UsuarioController {
 
 		return "Interface/Perfil";
 	}
+	
+	
 
 	@RequestMapping("alterarUser")
 	public String alterarUser(Model model, Long id) {
 
 		model.addAttribute("u", repository.findById(id).get());
 
-		return "forward:perfilUsuario";
+		return "forward:listarUsuario/1";
 
 	}
 

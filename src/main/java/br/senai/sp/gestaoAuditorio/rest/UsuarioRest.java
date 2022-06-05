@@ -8,6 +8,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -81,6 +82,20 @@ public class UsuarioRest {
 	}
 
 	@Publico
+	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+	public ResponseEntity<Void> atualizarAdm(@RequestBody Usuario usuario, @PathVariable("id") Long id) {
+		if (id != usuario.getId()) {
+			throw new RuntimeException("id invalido");
+		}
+		// salvar o usuario no banco de dados
+		repository.save(usuario);
+		// criar um cabeçalhao HTTp
+		HttpHeaders headers = new HttpHeaders();
+		headers.setLocation(URI.create("/api/usuario/"));
+		return new ResponseEntity<Void>(headers, HttpStatus.OK);
+	}
+
+	@Publico
 	@RequestMapping(value = "/login", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<TokenJWT> logar(@RequestBody Usuario usuario) {
 		System.out.println(usuario.getNif());
@@ -94,6 +109,7 @@ public class UsuarioRest {
 			Map<String, Object> payload = new HashMap<String, Object>();
 			payload.put("id_usuario", usuario.getId());
 			payload.put("nome_usuario", usuario.getNome());
+			payload.put("tipoUsuario", "usuario");
 			// definir a data de expiração
 			Calendar expiracao = Calendar.getInstance();
 			expiracao.add(Calendar.HOUR, 1);
@@ -103,10 +119,10 @@ public class UsuarioRest {
 			TokenJWT tokenJwt = new TokenJWT();
 			tokenJwt.setToken(JWT.create().withPayload(payload).withIssuer(EMISSOR).withExpiresAt(expiracao.getTime())
 					.sign(algoritmo));
-			
+
 			System.out.println(tokenJwt);
 			return ResponseEntity.ok(tokenJwt);
-			
+
 		} else {
 			return new ResponseEntity<TokenJWT>(HttpStatus.UNAUTHORIZED);
 		}

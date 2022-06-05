@@ -14,6 +14,7 @@ function logaradmin() {
 	let url = "http://localhost:8080/api/administrador/login";
 	let senha = document.getElementById("senha").value;
 	let nif = document.getElementById("nif").value;
+	
 
 	console.log(senha)
 	console.log(nif)
@@ -72,5 +73,3 @@ function parseJwt(token) {
 
 	return JSON.parse(jsonPayload);
 };
-colocaValor()
-//logarUsuario()
