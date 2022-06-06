@@ -30,9 +30,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
 		eventSources: {
 			url: 'http://localhost:8080/api/evento',
-			method: 'GET'
+			method: 'GET',
+
+
 
 		},
+
 
 		select: function(arg) {
 			// ATRIBUINDO A DATA E HORA - INÍCIO E FIM AO FORMULÁRIO
@@ -88,23 +91,16 @@ document.addEventListener('DOMContentLoaded', function() {
 			let botaoAlterar = document.getElementById("btnAlterar");
 			let botaoExcluir = document.getElementById("btnExcluir");
 			console.log(payload)
-			
-			if (payload.tipoUsuario) {
 				console.log("ENTREi IF" + info.event.extendedProps)
 				$('#modalUpdate #usuarioUpdate').val(info.event.extendedProps.usuario.nome)
-			}
-
-			if (payload.tipoAdm) {
-				console.log("ENTREI ELSEE")
-				$('#modalUpdate #usuarioUpdate').val(info.event.extendedProps.administrador.nome)
-			}
+		
 
 			$('#modalUpdate #titleUpdate').val(info.event.title)
 			$('#modalUpdate #startUpdate').val(info.event.start.toISOString().substring(0, 16))
 			$('#modalUpdate #endUpdate').val(info.event.end.toISOString().substring(0, 16))
 
 			console.log(info.event.id)
-			if (payload.tipoUsuario === "usuario") {
+			if (payload.tipo === "USUARIO") {
 				console.log("USUARIOOO")
 				console.log(info.event.extendedProps.usuario.id)
 				console.log(payload.id_usuario)

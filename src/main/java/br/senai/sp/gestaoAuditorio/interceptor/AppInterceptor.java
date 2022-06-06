@@ -18,7 +18,6 @@ import com.auth0.jwt.interfaces.JWTVerifier;
 
 import br.senai.sp.gestaoAuditorio.annotation.Privado;
 import br.senai.sp.gestaoAuditorio.annotation.Publico;
-import br.senai.sp.gestaoAuditorio.rest.AdministradorRest;
 import br.senai.sp.gestaoAuditorio.rest.UsuarioRest;
 
 @Component
@@ -46,15 +45,8 @@ public class AppInterceptor implements HandlerInterceptor {
 						DecodedJWT jwt = verifier.verify(token);
 						Map<String, Claim> payload = jwt.getClaims();
 						System.out.println(payload.get("nome_usuario"));
-						
 						token = request.getHeader("Authorization");
-						Algorithm algorithm2 = Algorithm.HMAC256(AdministradorRest.SECRET);
-						JWTVerifier verifier2 = JWT.require(algorithm2).withIssuer(AdministradorRest.EMISSOR).build();
-						DecodedJWT jwt2 = verifier2.verify(token);
-						Map<String, Claim> payload2 = jwt2.getClaims();
-						
-						System.out.println(payload2.get("nome_admin"));
-						
+
 						return true;
 
 					} catch (Exception e) {

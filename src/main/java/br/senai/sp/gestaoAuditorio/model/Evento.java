@@ -8,6 +8,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
+
 import lombok.Data;
 
 @Entity
@@ -23,7 +26,4 @@ public class Evento {
 	private LocalDateTime end;
 	@ManyToOne
 	private Usuario usuario;
-	@ManyToOne
-	private Administrador administrador;
-
 }

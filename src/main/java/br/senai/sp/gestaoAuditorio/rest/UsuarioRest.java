@@ -96,6 +96,12 @@ public class UsuarioRest {
 	}
 
 	@Publico
+	@RequestMapping(value = "", method = RequestMethod.GET)
+	public Iterable<Usuario> getAllValues() {
+		return repository.findAll();
+	}
+
+	@Publico
 	@RequestMapping(value = "/login", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<TokenJWT> logar(@RequestBody Usuario usuario) {
 		System.out.println(usuario.getNif());
@@ -109,7 +115,7 @@ public class UsuarioRest {
 			Map<String, Object> payload = new HashMap<String, Object>();
 			payload.put("id_usuario", usuario.getId());
 			payload.put("nome_usuario", usuario.getNome());
-			payload.put("tipoUsuario", "usuario");
+			payload.put("tipo", usuario.getTipo());
 			// definir a data de expiração
 			Calendar expiracao = Calendar.getInstance();
 			expiracao.add(Calendar.HOUR, 1);

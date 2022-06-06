@@ -50,7 +50,8 @@
 		let nome = document.getElementById("nomeUsuario").value
 		let nif = document.getElementById("nifUsuario").value
 		let url = "http://localhost:8080/api/usuario/" + id
-
+		let tipo = document.getElementById("tipo").value
+		console.log(tipo)
 		console.log(id)
 		console.log(nome)
 		console.log(nif)
@@ -58,7 +59,8 @@
 		body = {
 			"id" : id,
 			"nome" : nome,
-			"nif" : nif
+			"nif" : nif,
+			"tipo" : tipo
 		}
 
 		fazPut(url, body)
@@ -142,6 +144,7 @@
 											<th>ID</th>
 											<th>NOME</th>
 											<th>NIF</th>
+											<th>TIPO</th>
 											<th>Alterar</th>
 											<th>Excluir</th>
 
@@ -151,6 +154,7 @@
 												<td th:text="${u.id}"></td>
 												<td th:text="${u.nome}"></td>
 												<td th:text="${u.nif}"></td>
+												<td th:text="${u.tipo}"></td>
 
 												<td><button th:onclick="atualizar([[${u.id}]])"
 														id="btnALterarUsuario">Alterar</button></td>
@@ -186,6 +190,13 @@
 									</div>
 									<div class="modal-body">
 										<form method="post" action="/salvarUsuario">
+
+											<div class="form-group col-md-6">
+												<select id="tipo" name="tipo">
+													<option>USUARIO</option>
+													<option>ADMNISTRADOR</option>
+												</select>
+											</div>
 											<div class="form-row">
 												<div class="form-group col-md-6">
 													<label for="inputEmail4">NOME</label> <input name="nome"
@@ -229,7 +240,11 @@
 										<form onsubmit="updateUsuario()">
 
 											<input type="hidden" id="idUsuario">
-
+											 <select
+												id="tipo" name="tipo">
+												<option value="USUARIO">USUARIO</option>
+												<option value="ADMNISTRADOR">ADMNISTRADOR</option>
+											</select>
 											<div class="form-row">
 												<div class="form-group col-md-6">
 													<label for="inputEmail4">NOME</label> <input name="nome"

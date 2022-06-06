@@ -20,11 +20,10 @@ public class Usuario {
 	private String nome;
 	@Column(unique = true)
 	private String nif;
-	
-	// @JsonProperty(access = Access.WRITE_ONLY)
 	// @OneToMany(mappedBy = "usuario")
 	// private List<Evento> eventos;
 	private String senha;
+	private String tipo;
 
 	// metodo que seta a senha sem o hash
 	public void setSenhaComHash(String hash) {
