@@ -34,7 +34,7 @@ public class ConfiguracaoApp implements WebMvcConfigurer {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 
 		dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-		dataSource.setUrl("jdbc:mysql://localhost:3306/auditorio");
+		dataSource.setUrl("jdbc:mysql://localhost:3307/auditorio");
 		dataSource.setUsername("root");
 		dataSource.setPassword("root");
 
