@@ -1,46 +1,75 @@
-function pegaLinha(evento){
-    console.log(evento)
-    var linha = document.createElement("div");
-    var img = document.createElement("img")
-    img.src = ''
-    img.classList.add('img')
-    var tdTitle = document.createElement("h6");
-    tdTitle.classList.add('title')
-    var tdStart = document.createElement("p");
-    tdStart.classList.add('start')
-    var tdEnd = document.createElement("p");
-    tdEnd.classList.add('end')
+function pegaLinha(evento) {
+	console.log(evento)
+	var linha = document.createElement("div");
+	var img = document.createElement("img")
+	img.src = evento.fotos
+	img.classList.add('img')
+	var tdTitle = document.createElement("h6");
+	tdTitle.classList.add('title')
+	var tdStart = document.createElement("p");
+	tdStart.classList.add('start')
+	var tdEnd = document.createElement("p");
+	tdEnd.classList.add('end')
+	var btn = document.createElement('input');
+	var idput = document.createElement('input');
+	var botao = document.createElement('button');
 
-    tdTitle.innerHTML = evento.title
-    tdEnd.innerHTML = evento.end
-    tdStart.innerHTML = evento.start
+	var form = document.createElement("form");
+	form.setAttribute("method", "post");
+	form.setAttribute("action", "/salvarHistorico");
+	form.setAttribute("enctype", "multipart/form-data");
 
-    linha.appendChild(img)
-    linha.appendChild(tdTitle);
-    linha.appendChild(tdStart);
-    linha.appendChild(tdEnd);
 
-    return linha;
+	btn.setAttribute('type', 'file');
+	btn.setAttribute('accept', 'image/*');
+	btn.id = "fotos";
+	btn.name = "fileFotos";
+
+
+	idput.setAttribute('type', 'text');
+	idput.name = "idEvento";
+	idput.id = "idEvento";
+
+	botao.innerText = "salvarFotos";
+	botao.setAttribute('type', 'submit');
+
+	tdTitle.innerHTML = evento.title
+	tdEnd.innerHTML = evento.end
+	tdStart.innerHTML = evento.start
+	idput.value = evento.id
+	img.value = evento.fotos
+
+	linha.appendChild(tdTitle);
+	linha.appendChild(img);
+	linha.appendChild(tdStart);
+	linha.appendChild(tdEnd);
+	form.appendChild(idput);
+	form.appendChild(btn);
+	linha.appendChild(form);
+
+	form.appendChild(botao);
+
+	return linha;
 }
 
-function getHistorico(url){
-    let request = new XMLHttpRequest()
-    request.open("GET", url, false)
-    request.send()
-    return request.responseText;
+function getHistorico(url) {
+	let request = new XMLHttpRequest()
+	request.open("GET", url, false)
+	request.send()
+	return request.responseText;
 }
 
-function main(){
-    
-    let data = getHistorico("http://localhost:8080/api/evento")
-    let eventos = JSON.parse(data);
-    let tabela = document.getElementById("tabela")
+function main() {
 
-    eventos.forEach(element => {
-        let linha = pegaLinha(element);
-        tabela.appendChild(linha);
-    });
+	let data = getHistorico("http://localhost:8080/api/evento")
+	let eventos = JSON.parse(data);
+	let tabela = document.getElementById("tabela")
 
-    //console.log(eventos)
+	eventos.forEach(element => {
+		let linha = pegaLinha(element);
+		tabela.appendChild(linha);
+	});
+
+	//console.log(eventos)
 }
 main()
