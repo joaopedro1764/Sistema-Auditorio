@@ -50,6 +50,12 @@ public class EventoController {
 
 		return "Interface/PainelReserva";
 	}
+	@RequestMapping("historico")
+	public String historico(Model model) {
+
+
+		return "Interface/listaHistorico";
+	}
 
 	@RequestMapping("alterarFoto")
 	public String alterarFoto(Model model, Long idFoto) {
