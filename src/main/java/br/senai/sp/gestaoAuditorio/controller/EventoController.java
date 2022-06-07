@@ -52,8 +52,6 @@ public class EventoController {
 	}
 	@RequestMapping("historico")
 	public String historico(Model model) {
-
-
 		return "Interface/listaHistorico";
 	}
 
