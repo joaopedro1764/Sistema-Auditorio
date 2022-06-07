@@ -25,12 +25,7 @@ public class Evento {
 	/* @JsonFormat(pattern = "dd-MM-yyyy") */
 	private LocalDateTime start;
 	private LocalDateTime end;
-	@Column(columnDefinition = "TEXT")
-	private String fotos;
 	@ManyToOne
 	private Usuario usuario;
-	
-	public String[] verFotos() {
-		return this.fotos.split(";");
-	}
+
 }

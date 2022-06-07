@@ -181,7 +181,7 @@
 					<div class="modal-body">
 
 						<form>
-							<input type="text" id="idUsuario"> <input type="hidden"
+							<input type="hidden" id="idUsuario"> <input type="hidden"
 								id="id">
 							<div class="form-row">
 								<div class="form-group col-md-6">
@@ -224,8 +224,7 @@
 					</div>
 					<div style="margin: 0 auto;" class="modal-body">
 
-						<form action="salvaFotos" method="post"
-							enctype="multipart/form-data" accept-charset="utf-8">
+						<form>
 							<input type="hidden" id="idUsuario"> <input type="hidden"
 								id="idUpdate">
 
@@ -248,29 +247,8 @@
 										value="#start2" type="datetime-local" class="form-control"
 										id="endUpdate">
 								</div>
-								<input type="hidden" th:value="${listaFoto?.fotos}" name="fotos" />
-							<div class="file-field input-field">
-								<div class="btn">
-									<span>Escolha um Arquivo</span> <input id="fotos" type="file"
-										name="fileFotos" multiple accept="image/*">
-								</div>
-								<div class="file-path-wrapper">
-									<input class="file-path validate" type="text">
-								</div>
-							</div>
-							<div th:if="${listaFoto?.fotos?.length > 0}">
-								<h6>Fotos Cadastradas</h6>
-								<div>
-									<ul>
-										<li th:each="foto, i : ${listaFoto?.verFotos()}"><a
-											th:href="${foto}" target="_blank"> <img th:src="${foto}"></a>
-											<a
-											th:href="@{excluirFoto(idFoto=${listaFoto.id}, numFoto = ${i.index})}">
-												<i class="material-icons">delete_forever</i>
-										</a></li>
-									</ul>
-								</div>
-							</div>
+
+
 								<button onclick="update()" style="margin-right: 10px;"
 									id="btnAlterar" type="button" class="btn btn-dark col-md-5">ALTERAR</button>
 								<button onclick="apagar()" type="button"
@@ -358,12 +336,12 @@
 					usuarioLink.style.visibility = "hidden";
 					idUsuarioU.value = id;
 					//document.querySelectorAll('#idUsuario').value = id;
-				} else if (payload.tipo === "ADMINISTRADOR") {
+				} else if (payload.tipo === "ADMNISTRADOR") {
 					console.log("ENTREI NO ELSE DO ADM")
 					let token = sessionStorage.getItem("token");
 					let payload = parseJwt(token);
 					console.log(payload);
-					let id = payload.id_admin;
+					var id = payload.id_usuario;
 					console.log(id);
 					let idUsuario = document.getElementById("idUsuario")
 					let idUsuarioU = document.getElementById("idUsuarioU")
@@ -427,14 +405,12 @@
 
 					console.log(id)
 					console.log(title)
-					console.log(fotos)
 					console.log(start.toLocaleString())
 					console.log(end.toLocaleString())
 
 					body = {
 						"id" : id,
 						"title" : title,
-						"fotos" : fotos,
 						"start" : start,
 						"end" : end,
 						"usuario" : {
@@ -486,7 +462,6 @@
 				let idUsuario = document.getElementById("idUsuario").value
 				console.log(idUsuario)
 				let title = document.getElementById("titleUpdate").value
-				let fotos = document.getElementById("fotos").value
 				let start = document.getElementById("startUpdate").value
 				let end = document.getElementById("endUpdate").value
 				let url = "http://localhost:8080/api/evento/" + id
@@ -504,14 +479,12 @@
 
 					console.log(id)
 					console.log(title)
-					console.log(fotos)
 					console.log(start.toLocaleString())
 					console.log(end.toLocaleString())
 
 					body = {
 						"id" : id,
 						"title" : title,
-						"fotos" : fotos,
 						"start" : start,
 						"end" : end,
 						"usuario" : {

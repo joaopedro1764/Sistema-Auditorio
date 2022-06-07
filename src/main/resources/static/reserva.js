@@ -91,14 +91,13 @@ document.addEventListener('DOMContentLoaded', function() {
 			let botaoAlterar = document.getElementById("btnAlterar");
 			let botaoExcluir = document.getElementById("btnExcluir");
 			console.log(payload)
-				console.log("ENTREi IF" + info.event.extendedProps)
-				$('#modalUpdate #usuarioUpdate').val(info.event.extendedProps.usuario.nome)
-		
+			console.log("ENTREi IF" + info.event.extendedProps)
+			$('#modalUpdate #usuarioUpdate').val(info.event.extendedProps.usuario.nome)
+
 
 			$('#modalUpdate #titleUpdate').val(info.event.title)
 			$('#modalUpdate #startUpdate').val(info.event.start.toISOString().substring(0, 16))
 			$('#modalUpdate #endUpdate').val(info.event.end.toISOString().substring(0, 16))
-			$('#modalUpdate #fotos').val(info.event.fotos)
 
 			console.log(info.event.id)
 			if (payload.tipo === "USUARIO") {
