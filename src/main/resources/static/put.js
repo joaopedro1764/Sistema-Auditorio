@@ -25,6 +25,7 @@ console.log("entrei update")
 	let title = document.getElementById("titleUpdate").value
 	let start = document.getElementById("startUpdate").value
 	let end = document.getElementById("endUpdate").value
+	let fotos = document.getElementById("fotos").value
 	let url = "http://localhost:8080/api/evento/" + id
 
 
@@ -46,6 +47,7 @@ console.log("entrei update")
 		console.log(title)
 		console.log(start.toLocaleString())
 		console.log(end.toLocaleString())
+		console.log(fotos)
 
 
 
@@ -54,6 +56,7 @@ console.log("entrei update")
 			"title": title,
 			"start": start,
 			"end": end,
+			"fotos": fotos,
 			"usuario": {
 				"id": idUsuario,
 			}

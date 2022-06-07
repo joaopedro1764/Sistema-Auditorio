@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleafe.org">
 
@@ -27,6 +26,12 @@
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
 	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
 <script
 	src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
 	integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
@@ -219,7 +224,8 @@
 					</div>
 					<div style="margin: 0 auto;" class="modal-body">
 
-						<form>
+						<form action="salvaFotos" method="post"
+							enctype="multipart/form-data" accept-charset="utf-8">
 							<input type="hidden" id="idUsuario"> <input type="hidden"
 								id="idUpdate">
 
@@ -242,6 +248,29 @@
 										value="#start2" type="datetime-local" class="form-control"
 										id="endUpdate">
 								</div>
+								<input type="hidden" th:value="${listaFoto?.fotos}" name="fotos" />
+							<div class="file-field input-field">
+								<div class="btn">
+									<span>Escolha um Arquivo</span> <input id="fotos" type="file"
+										name="fileFotos" multiple accept="image/*">
+								</div>
+								<div class="file-path-wrapper">
+									<input class="file-path validate" type="text">
+								</div>
+							</div>
+							<div th:if="${listaFoto?.fotos?.length > 0}">
+								<h6>Fotos Cadastradas</h6>
+								<div>
+									<ul>
+										<li th:each="foto, i : ${listaFoto?.verFotos()}"><a
+											th:href="${foto}" target="_blank"> <img th:src="${foto}"></a>
+											<a
+											th:href="@{excluirFoto(idFoto=${listaFoto.id}, numFoto = ${i.index})}">
+												<i class="material-icons">delete_forever</i>
+										</a></li>
+									</ul>
+								</div>
+							</div>
 								<button onclick="update()" style="margin-right: 10px;"
 									id="btnAlterar" type="button" class="btn btn-dark col-md-5">ALTERAR</button>
 								<button onclick="apagar()" type="button"
@@ -398,12 +427,14 @@
 
 					console.log(id)
 					console.log(title)
+					console.log(fotos)
 					console.log(start.toLocaleString())
 					console.log(end.toLocaleString())
 
 					body = {
 						"id" : id,
 						"title" : title,
+						"fotos" : fotos,
 						"start" : start,
 						"end" : end,
 						"usuario" : {
@@ -455,6 +486,7 @@
 				let idUsuario = document.getElementById("idUsuario").value
 				console.log(idUsuario)
 				let title = document.getElementById("titleUpdate").value
+				let fotos = document.getElementById("fotos").value
 				let start = document.getElementById("startUpdate").value
 				let end = document.getElementById("endUpdate").value
 				let url = "http://localhost:8080/api/evento/" + id
@@ -472,12 +504,14 @@
 
 					console.log(id)
 					console.log(title)
+					console.log(fotos)
 					console.log(start.toLocaleString())
 					console.log(end.toLocaleString())
 
 					body = {
 						"id" : id,
 						"title" : title,
+						"fotos" : fotos,
 						"start" : start,
 						"end" : end,
 						"usuario" : {

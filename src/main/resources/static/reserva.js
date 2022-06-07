@@ -98,6 +98,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			$('#modalUpdate #titleUpdate').val(info.event.title)
 			$('#modalUpdate #startUpdate').val(info.event.start.toISOString().substring(0, 16))
 			$('#modalUpdate #endUpdate').val(info.event.end.toISOString().substring(0, 16))
+			$('#modalUpdate #fotos').val(info.event.fotos)
 
 			console.log(info.event.id)
 			if (payload.tipo === "USUARIO") {

@@ -2,6 +2,7 @@ package br.senai.sp.gestaoAuditorio.model;
 
 import java.time.LocalDateTime;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -24,6 +25,12 @@ public class Evento {
 	/* @JsonFormat(pattern = "dd-MM-yyyy") */
 	private LocalDateTime start;
 	private LocalDateTime end;
+	@Column(columnDefinition = "TEXT")
+	private String fotos;
 	@ManyToOne
 	private Usuario usuario;
+	
+	public String[] verFotos() {
+		return this.fotos.split(";");
+	}
 }

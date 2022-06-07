@@ -39,6 +39,7 @@ function historico() {
 
 		console.log(id)
 		console.log(title)
+		console.log(fotos)
 		console.log(start.toLocaleString())
 		console.log(end.toLocaleString())
 
@@ -50,6 +51,7 @@ function historico() {
 			body = {
 				"id": id,
 				"title": title,
+				"fotos" : fotos,
 				"start": start,
 				"end": end,
 				"usuario": {
@@ -65,6 +67,7 @@ function historico() {
 			body = {
 				"id": id,
 				"title": title,
+				"fotos" : fotos,
 				"start": start,
 				"end": end,
 				"usuario": {

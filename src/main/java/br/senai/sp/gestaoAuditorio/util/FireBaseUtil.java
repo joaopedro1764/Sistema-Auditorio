@@ -23,9 +23,9 @@ public class FireBaseUtil {
 	// variável para acessar o storage
 	private Storage storage;
 	// constante para o nome do Bucket
-	private final String BUCKET_NAME = "gestaoauditorio.appspot.com";
+	private final String BUCKET_NAME = "sistemaauditoriotarde.appspot.com";
 	// constante para o prefixo da url
-	private final String PREFIX = "https://firebasestorage.googleapis.com/v0/b/" + BUCKET_NAME + "/o/";
+	private final String PREFIX = "https://firebasestorage.googleapis.com/v0/b/"+BUCKET_NAME+"/o/";
 	// constante para o sufixo da URL
 	private final String SUFFIX = "?alt=media";
 	// constante para a URL
@@ -33,7 +33,7 @@ public class FireBaseUtil {
 
 	public FireBaseUtil() { // construtor
 		// buscar as credenciais (arquivo JSON)
-		Resource resources = new ClassPathResource("chaveFireBase.json");
+		Resource resources = new ClassPathResource("chavefirebase.json");
 		try {
 			// ler o arquivo para obter as credenciais
 			credenciais = GoogleCredentials.fromStream(resources.getInputStream());
