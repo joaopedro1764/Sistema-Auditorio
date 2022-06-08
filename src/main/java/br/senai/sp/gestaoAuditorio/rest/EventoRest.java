@@ -18,6 +18,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.senai.sp.gestaoAuditorio.annotation.Privado;
 import br.senai.sp.gestaoAuditorio.annotation.Publico;
+import br.senai.sp.gestaoAuditorio.controller.JavaMailApp;
 import br.senai.sp.gestaoAuditorio.model.Erro;
 import br.senai.sp.gestaoAuditorio.model.Evento;
 import br.senai.sp.gestaoAuditorio.repository.EventoRepository;
@@ -60,6 +61,8 @@ public class EventoRest {
 			// salvar o usuário no banco de dados
 			// retorna código 201, com a URL para acesso no Location e o usuário inserido no
 			// corpo da resposta
+
+			JavaMailApp.mandarEmail(evento);
 
 			return ResponseEntity.created(URI.create("/api/evento/" + evento.getId())).body(evento);
 
