@@ -1,11 +1,7 @@
-<<<<<<< HEAD
+
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleafe.org">
-=======
->>>>>>> a70fbd451a226cfa6680d4a7193d7eff377bd075
 
-<!doctype html>
-<html lang="en">
 <head>
 <title>Portal Auditório</title>
 <meta charset="utf-8">
@@ -31,11 +27,11 @@
 	crossorigin="anonymous">
 
 <script type="text/javascript" src="/usuariolog.js"></script>
-<<<<<<< HEAD
-<title>Login</title>
-=======
 
->>>>>>> a70fbd451a226cfa6680d4a7193d7eff377bd075
+<title>Login</title>
+
+
+
 </head>
 <body>
 	<section class="ftco-section">
@@ -60,7 +56,7 @@
 								</div>
 
 							</div>
-							<form action="#" class="signin-form">
+							<form action="/loginUsuario" class="signin-form">
 								<div class="form-group mb-3">
 									<label class="label" for="name">Nif</label> <input id="nif"
 										type="text" class="form-control" placeholder="Nif" required>
@@ -71,28 +67,31 @@
 										placeholder="Senha" required>
 								</div>
 								<div class="form-group">
-									<button type="button" onclick="logarUsuario()"
+									<button type="submit" onclick="logarUsuario()"
 										class="form-control btn btn-primary submit px-3">Logar</button>
 								</div>
 								<div class="form-group d-md-flex">
 
-<<<<<<< HEAD
-		<div class="divForm">
-			<form class="form" action="/loginUsuario">
-				<label for="">NIF</label>
-				<section>
-					<input id="nif" type="text" required maxlength="9">
-				</section>
-				<br> <label for="">Senha</label>
-				<section>
-					<input id="senha" type="password" required>
-				</section>
-				<button type="submit" onclick='logarUsuario()' id="button">Entrar</button>
-			</form>
 
-
-		</div>
+		
 	</div>
+	
+	<div class="w-50 text-md-right">
+										<a type="button" data-toggle="modal" data-target="#modalExemplo" href="#">Esqueceu a Senha?</a>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<script src="/jquery.minL.js"></script>
+	<script src="/popperL.js"></script>
+	<script src="/bootstrap.minL.js"></script>
+	<script src="/mainL.js"></script>
 
 
 	<div class="erro" th:if="${not #strings.isEmpty(mensagemErro)}">
@@ -111,9 +110,6 @@
 
 	</div>
 
-	<button type="button" data-toggle="modal" data-target="#modalExemplo"
-		th:if="${not #strings.isEmpty(mensagemErro)}" class="esqueceSenha">Esqueceu
-		sua senha?</button>
 
 	<div class="acesso" th:if="${not #strings.isEmpty(senha)}"
 		th:text="${senha}">
@@ -185,8 +181,6 @@
 	</form>
 
 
-
-
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
 		crossorigin="anonymous"></script>
@@ -198,28 +192,8 @@
 		src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
 		integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
 		crossorigin="anonymous"></script>
-
-
-</body>
-=======
-									<div class="w-50 text-md-right">
-										<a href="#">Esqueceu a Senha?</a>
-									</div>
-								</div>
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-
-	<script src="/jquery.minL.js"></script>
-	<script src="/popperL.js"></script>
-	<script src="/bootstrap.minL.js"></script>
-	<script src="/mainL.js"></script>
-
+							
 </body>
 </html>
->>>>>>> a70fbd451a226cfa6680d4a7193d7eff377bd075
+
 
