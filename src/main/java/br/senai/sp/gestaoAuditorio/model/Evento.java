@@ -27,5 +27,10 @@ public class Evento {
 	private LocalDateTime end;
 	@ManyToOne
 	private Usuario usuario;
+	@Column(columnDefinition = "TEXT")
+	private String fotos;
 
+	public String[] verFotos() {
+		return this.fotos.split(";");
+	}
 }
