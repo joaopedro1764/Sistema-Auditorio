@@ -32,6 +32,12 @@
 	integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
 	crossorigin="anonymous"></script>
 <script src="/usuario.js"></script>
+<style type="text/css">
+.btn {
+	margin-top: 50px;
+	margin-left: 50px;
+}
+</style>
 <!-- CSS Just for demo purpose, don't include it in your project -->
 <link href="/demoPainel.css" rel="stylesheet" />
 <script type="text/javascript">
@@ -81,14 +87,9 @@
 			<div class="sidebar-wrapper">
 				<div class="logo">"RICARDO LERNER"</div>
 				<ul class="nav">
-					<li><a class="nav-link" href="#"> <i
+					<li><a class="nav-link" href="/historico"> <i
 							class=" large material-icons">home</i>
 							<p>Home</p>
-					</a></li>
-
-					<li><a class="nav-link" href="/listarAdmin/1"> <i
-							class=" large material-icons">perm_identity</i>
-							<p>Administradores</p>
 					</a></li>
 
 					<li class="nav-item active"><a class="nav-link"
@@ -128,6 +129,8 @@
 					</div>
 				</div>
 			</nav>
+			<button type="button" class="btn btn-dark" data-toggle="modal"
+				data-target="#modalCadastro">Novo Usuário</button>
 			<!-- End Navbar -->
 			<div class="content">
 				<div class="container-fluid">
@@ -146,7 +149,7 @@
 											<th>NIF</th>
 											<th>TIPO</th>
 											<th>Alterar</th>
-											<th>Excluir</th>
+
 
 										</thead>
 										<tbody>
@@ -157,9 +160,7 @@
 												<td th:text="${u.tipo}"></td>
 
 												<td><button th:onclick="atualizar([[${u.id}]])"
-														id="btnALterarUsuario">Alterar</button></td>
-												<td><a th:href="@{/excluirUsuario(id=${u.id})}">Excluir</a></td>
-
+														id="btnALterarUsuario">Alterar</button>
 											</tr>
 
 
@@ -168,110 +169,108 @@
 								</div>
 							</div>
 						</div>
-
-
-						<button style="float: right;" type="button" class="btn btn-dark"
-							data-toggle="modal" data-target="#modalCadastro">Novo
-							Usuário</button>
-
-						<!-- Modal -->
-						<div class="modal fade" id="modalCadastro" data-backdrop="static"
-							data-keyboard="false" tabindex="-1"
-							aria-labelledby="staticBackdropLabel" aria-hidden="true">
-							<div class="modal-dialog">
-								<div class="modal-content">
-									<div class="modal-header">
-										<h5 class="modal-title" id="staticBackdropLabel">Cadastrar
-											Usuario</h5>
-										<button style="float: right;" type="button" class="close"
-											data-dismiss="modal" aria-label="Close">
-											<span aria-hidden="true"></span>
-										</button>
-									</div>
-									<div class="modal-body">
-										<form method="post" action="/salvarUsuario">
-
-											<div class="form-group col-md-6">
-												<select id="tipo" name="tipo">
-													<option>USUARIO</option>
-													<option>ADMNISTRADOR</option>
-												</select>
-											</div>
-											<div class="form-row">
-												<div class="form-group col-md-6">
-													<label for="inputEmail4">NOME</label> <input name="nome"
-														required="required" placeholder="NOME" type="text"
-														class="form-control" id="inputEmail4">
-												</div>
-												<div class="form-group col-md-6">
-													<label for="inputPassword4">NIF</label> <input name="nif"
-														required="required" placeholder="NIF" type="text"
-														class="form-control" id="NIF" maxlength="7" minLength="7">
-												</div>
-											</div>
-											<div class="form-group">
-												<input name="senha" type="hidden" class="form-control"
-													id="inputAddress" placeholder="SENHA">
-											</div>
-
-											<button type="submit" class="btn btn-primary">Cadastrar</button>
-										</form>
-									</div>
-
-								</div>
-							</div>
-						</div>
-
-						<!--FORMULARIO DE ALTERAÇÂO-->
-						<div class="modal fade" id="modalUpdateUsuario"
-							data-backdrop="static" data-keyboard="false" tabindex="-1"
-							aria-labelledby="staticBackdropLabel" aria-hidden="true">
-							<div class="modal-dialog">
-								<div class="modal-content">
-									<div class="modal-header">
-										<h5 class="modal-title" id="staticBackdropLabel">Atualizar
-											Usuario</h5>
-										<button style="float: right;" type="button" class="close"
-											data-dismiss="modal" aria-label="Close">
-											<span aria-hidden="true">&times;</span>
-										</button>
-									</div>
-									<div class="modal-body">
-										<form onsubmit="updateUsuario()">
-
-											<input type="hidden" id="idUsuario">
-											 <select
-												id="tipo" name="tipo">
-												<option value="USUARIO">USUARIO</option>
-												<option value="ADMNISTRADOR">ADMNISTRADOR</option>
-											</select>
-											<div class="form-row">
-												<div class="form-group col-md-6">
-													<label for="inputEmail4">NOME</label> <input name="nome"
-														id="nomeUsuario" placeholder="NOME" type="text"
-														class="form-control">
-												</div>
-												<div class="form-group col-md-6">
-													<label for="inputPassword4">NIF</label> <input name="nif"
-														id="nifUsuario" placeholder="NIF" type="text"
-														maxlength="7" minLength="7" class="form-control">
-												</div>
-											</div>
-											<div class="form-group">
-												<label for="inputAddress">SENHA</label> <input name="senha"
-													id="senhaAdm" type="password" class="form-control"
-													placeholder="SENHA">
-											</div>
-
-											<button type="submit" class="btn btn-primary">Alterar</button>
-										</form>
-									</div>
-
-								</div>
-							</div>
-						</div>
-
-
 					</div>
+
+
+
+
+					<!-- Modal -->
+					<div class="modal fade" id="modalCadastro" data-backdrop="static"
+						data-keyboard="false" tabindex="-1"
+						aria-labelledby="staticBackdropLabel" aria-hidden="true">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h5 class="modal-title" id="staticBackdropLabel">Cadastrar
+										Usuario</h5>
+									<button style="float: right;" type="button" class="close"
+										data-dismiss="modal" aria-label="Close">
+										<span aria-hidden="true"></span>
+									</button>
+								</div>
+								<div class="modal-body">
+									<form method="post" action="/salvarUsuario">
+
+										<div class="form-group col-md-6">
+											<select id="tipo" name="tipo">
+												<option>USUARIO</option>
+												<option>ADMNISTRADOR</option>
+											</select>
+										</div>
+										<div class="form-row">
+											<div class="form-group col-md-6">
+												<label for="inputEmail4">NOME</label> <input name="nome"
+													required="required" placeholder="NOME" type="text"
+													class="form-control" id="inputEmail4">
+											</div>
+											<div class="form-group col-md-6">
+												<label for="inputPassword4">NIF</label> <input name="nif"
+													required="required" placeholder="NIF" type="text"
+													class="form-control" id="NIF" maxlength="7" minLength="7">
+											</div>
+										</div>
+										<div class="form-group">
+											<input name="senha" type="hidden" class="form-control"
+												id="inputAddress" placeholder="SENHA">
+										</div>
+
+										<button type="submit" class="btn btn-primary">Cadastrar</button>
+									</form>
+								</div>
+
+							</div>
+						</div>
+					</div>
+
+					<!--FORMULARIO DE ALTERAÇÂO-->
+					<div class="modal fade" id="modalUpdateUsuario"
+						data-backdrop="static" data-keyboard="false" tabindex="-1"
+						aria-labelledby="staticBackdropLabel" aria-hidden="true">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h5 class="modal-title" id="staticBackdropLabel">Atualizar
+										Usuario</h5>
+									<button style="float: right;" type="button" class="close"
+										data-dismiss="modal" aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+								</div>
+								<div class="modal-body">
+									<form onsubmit="updateUsuario()">
+
+										<input type="hidden" id="idUsuario"> <select id="tipo"
+											name="tipo">
+											<option value="USUARIO">USUARIO</option>
+											<option value="ADMNISTRADOR">ADMNISTRADOR</option>
+										</select>
+										<div class="form-row">
+											<div class="form-group col-md-6">
+												<label for="inputEmail4">NOME</label> <input name="nome"
+													id="nomeUsuario" placeholder="NOME" type="text"
+													class="form-control">
+											</div>
+											<div class="form-group col-md-6">
+												<label for="inputPassword4">NIF</label> <input name="nif"
+													id="nifUsuario" placeholder="NIF" type="text" maxlength="7"
+													minLength="7" class="form-control">
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="inputAddress">SENHA</label> <input name="senha"
+												id="senhaAdm" type="password" class="form-control"
+												placeholder="SENHA">
+										</div>
+
+										<button type="submit" class="btn btn-primary">Alterar</button>
+									</form>
+								</div>
+
+							</div>
+						</div>
+					</div>
+
+
 				</div>
+			</div>
 </html>

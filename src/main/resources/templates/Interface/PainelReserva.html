@@ -89,18 +89,20 @@
 
 .modal-header {
 	color: white;
-	padding: 12px;
 	background-color: red;
-	padding: 12px;
 }
 
 .modal-title {
+<<<<<<< HEAD
 	font-family: verdana;
 	margin-bottom: 0;
 	position: relative;
 	top: -74%;
 	width: 23%;
 	color: white;
+=======
+	padding: 20px;
+>>>>>>> a70fbd451a226cfa6680d4a7193d7eff377bd075
 }
 
 .modal {
@@ -148,27 +150,22 @@ button.close {
         Tip 2: you can also add an image using data-image tag
     -->
 			<div class="sidebar-wrapper">
-				<div class="logo">"RICARDO LERNER"</div>
+				<div class="logo"></div>
 				<ul class="nav">
-					<li><a class="nav-link" href="/home"> <i
+					<li><a class="nav-link" href="#"> <i
 							class=" large material-icons">home</i>
 							<p>Home</p>
 					</a></li>
 
-					<li><a class="nav-link" href="/painelReserva"> <i
-							class=" large material-icons">event_seat</i>
-							<p>Auditório</p>
-					</a></li>
 
-					<li><a class="nav-link" href="/perfilUsuario"> <i
-							class=" large material-icons">perm_identity</i>
-							<p>Perfil</p>
+					<li class="nav-item "><a class="nav-link"
+						href="/listarUsuario/1"> <i class=" large material-icons">account_circle</i>
+							<p>Usuários</p>
 					</a></li>
+					<li class="nav-item active"><a class="nav-link"
+						href="/painelReserva"><i class=" large material-icons">event_seat</i>
+							<p>Auditório</p> </a></li>
 
-					<li id="usuarioLink"><a class="nav-link" href="/home"> <i
-							class=" large material-icons">home</i>
-							<p>USUARIO</p>
-					</a></li>
 
 
 					<li>
@@ -199,10 +196,7 @@ button.close {
 				</div>
 			</nav>
 
-
 			<div id="calendar"></div>
-
-
 
 
 		</div>
@@ -212,7 +206,7 @@ button.close {
 			<div class="modal-dialog">
 				<div class="modal-content">
 
-					<div class="headerModal">
+					<div class="modal-header">
 						<h5 class="modal-title" id="exampleModalLabel">NOVA RESERVA</h5>
 						<button type="button" class="close" data-dismiss="modal"
 							aria-label="Close">
@@ -247,7 +241,7 @@ button.close {
 						</form>
 
 					</div>
-					<div class="modal-footer"></div>
+
 				</div>
 			</div>
 		</div>
@@ -256,7 +250,7 @@ button.close {
 		<div id="modalUpdate" class="modal" tabindex="-1">
 			<div class="modal-dialog">
 				<div class="modal-content">
-					<div class="headerModal">
+					<div class="modal-header">
 
 						<h5 class="modal-title">VER EVENTO</h5>
 						<button type="button" class="close" data-dismiss="modal"
@@ -299,38 +293,16 @@ button.close {
 
 
 
-
-
-
-
-
-
-
-
-
-							<!--  <table th:each="us : ${evento}">
-								<tr>
-									<td>
-
-										<button th:if="${session.usuarioLogado.id == us.usuario.id}"
-											type="submit" class="btn btn-primary">ALTERAR</button>
-										<button th:if="${session.usuarioLogado.id == us.usuario.id}"
-											onclick="apagar()" type="button" class="btn btn-primary">DELETAR</button>
-									</td>
-								</tr>
-
-							</table>-->
-
-
-
 						</form>
 
 
 
 					</div>
-					<div class="modal-footer"></div>
+
 				</div>
+
 			</div>
+
 		</div>
 
 		<div id="eventoModal" class="modal" tabindex="-1">
@@ -353,7 +325,7 @@ button.close {
 							<dd id="endModal" class="col-sm-9"></dd>
 						</dl>
 					</div>
-					<div class="modal-footer"></div>
+
 				</div>
 			</div>
 		</div>

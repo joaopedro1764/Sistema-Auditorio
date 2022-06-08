@@ -99,6 +99,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			$('#modalUpdate #startUpdate').val(info.event.start.toISOString().substring(0, 16))
 			$('#modalUpdate #endUpdate').val(info.event.end.toISOString().substring(0, 16))
 
+
 			console.log(info.event.id)
 			if (payload.tipo === "USUARIO") {
 				console.log("USUARIOOO")
@@ -131,13 +132,6 @@ document.addEventListener('DOMContentLoaded', function() {
 		dayMaxEvents: true, // allow "more" link when too many events
 
 	});
-
-	function validaEvento() {
-
-
-
-	}
-
 
 
 	calendar.render();

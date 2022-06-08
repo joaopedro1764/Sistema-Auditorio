@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import br.senai.sp.gestaoAuditorio.annotation.Privado;
 import br.senai.sp.gestaoAuditorio.model.Usuario;
 import br.senai.sp.gestaoAuditorio.repository.EventoRepository;
 import br.senai.sp.gestaoAuditorio.repository.UsuarioRepository;
@@ -81,7 +82,7 @@ public class UsuarioController {
 
 		// cria uma pagina que começa na 0, que possuem 6 elementos por paginas e ordena
 		// pelo nome
-		PageRequest pageble = PageRequest.of(page - 1, 10, Sort.by(Sort.Direction.ASC, "nome"));
+		PageRequest pageble = PageRequest.of(page - 1, 100, Sort.by(Sort.Direction.ASC, "nome"));
 
 		// cria a pagina atual atraves do repository
 
@@ -118,6 +119,16 @@ public class UsuarioController {
 
 		return "forward:listarUsuario/1";
 
+	}
+
+	@Privado
+	@RequestMapping("logOut")
+	public String logOut(HttpSession httpSession) {
+
+		// elimina o usuario da sessao
+		httpSession.invalidate();
+
+		return "redirect:/";
 	}
 
 	@RequestMapping("excluirUsuario")
