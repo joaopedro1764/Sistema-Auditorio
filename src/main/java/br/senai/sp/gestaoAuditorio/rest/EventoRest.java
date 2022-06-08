@@ -50,12 +50,13 @@ public class EventoRest {
 				} else {
 
 					System.out.println("ERRO IF INTERNO");
+					return ResponseEntity.status(HttpStatus.CONFLICT).build();
 				}
 
 			} else {
 				System.out.println("ERROOOO");
 				attr.addFlashAttribute("mensagemErro", "DATA JA RESERVADA");
-
+				return ResponseEntity.status(HttpStatus.CONFLICT).build();
 			}
 			// salvar o usuário no banco de dados
 			// retorna código 201, com a URL para acesso no Location e o usuário inserido no

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://thymeleafe.org">
 
 <head>
 <meta charset="UTF-8">
@@ -12,8 +12,14 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;500&display=swap"
 	rel="stylesheet">
+
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+
 <script type="text/javascript" src="/usuariolog.js"></script>
-<title>Document</title>
+<title>Login</title>
 </head>
 
 <body>
@@ -35,19 +41,128 @@
 		<h1 id="titulo">Login</h1>
 
 		<div class="divForm">
-			<form class="form">
+			<form class="form" action="/loginUsuario">
 				<label for="">NIF</label>
 				<section>
-					<input id="nif"  type="text" required maxlength="9">
+					<input id="nif" type="text" required maxlength="9">
 				</section>
 				<br> <label for="">Senha</label>
 				<section>
-					<input id="senha"  type="password" required>
+					<input id="senha" type="password" required>
 				</section>
-				<button type="button" onclick='logarUsuario()' id="button">Entrar</button>
+				<button type="submit" onclick='logarUsuario()' id="button">Entrar</button>
 			</form>
+
+
 		</div>
 	</div>
+
+
+	<div class="erro" th:if="${not #strings.isEmpty(mensagemErro)}">
+
+		<span th:text="${mensagemErro}"></span>
+
+
+
+	</div>
+
+	<div class="erro" th:if="${not #strings.isEmpty(msg)}">
+
+		<span th:text="${msg}"></span>
+
+
+
+	</div>
+
+	<button type="button" data-toggle="modal" data-target="#modalExemplo"
+		th:if="${not #strings.isEmpty(mensagemErro)}" class="esqueceSenha">Esqueceu
+		sua senha?</button>
+
+	<div class="acesso" th:if="${not #strings.isEmpty(senha)}"
+		th:text="${senha}">
+
+	<span th:text="${senha}"></span>
+	
+	</div>
+
+	<form action="esquecerSenha">
+		<div class="modal fade" id="modalExemplo" tabindex="-1" role="dialog"
+			aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">INFORME O NIF</h5>
+
+
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Fechar">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+
+
+					<input name="nif" id="nif" type="number" maxlength="7"
+						minLength="7" placeholder="Informe Seu Nif"
+						class="modal-body nifSenha">
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary"
+							data-dismiss="modal">Fechar</button>
+						<button type="submit" class="btn btn-primary">Salvar
+							mudanças</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+
+
+
+	<form action="modal">
+		<div class="modal fade" id="modalSenha" tabindex="-1" role="dialog"
+			aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">ESQUECEU A
+							SENHA</h5>
+
+
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Fechar">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+
+
+					<input name="senha" id="senha" type="text" maxlength="20"
+						placeholder="Informe sua senha" class="modal-body nifSenha">
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary"
+							data-dismiss="modal">Fechar</button>
+						<button type="submit" class="btn btn-primary">Salvar
+							mudanças</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+
+
+
+
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+		integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+		integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+		crossorigin="anonymous"></script>
+
+
 </body>
 
 </html>

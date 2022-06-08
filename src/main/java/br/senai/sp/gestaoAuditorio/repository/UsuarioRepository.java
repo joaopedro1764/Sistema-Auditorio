@@ -8,6 +8,8 @@ public interface UsuarioRepository extends PagingAndSortingRepository<Usuario, L
 
 	public Usuario findByNifAndSenha(String nif, String senha);
 	
+	public Usuario findByNif(String nif);
+	
 	
 
 }
