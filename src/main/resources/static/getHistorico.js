@@ -26,11 +26,11 @@ function pegaLinha(evento) {
 	btn.name = "fileFotos";
 
 
-	idput.setAttribute('type', 'text');
+	idput.setAttribute('type', 'hidden');
 	idput.name = "idEvento";
 	idput.id = "idEvento";
 
-	botao.innerText = "salvarFotos";
+	botao.innerText = "SALVAR";
 	botao.setAttribute('type', 'submit');
 
 	tdTitle.innerHTML = evento.title

@@ -25,6 +25,7 @@ function update() {
 	let title = document.getElementById("titleUpdate").value
 	let start = document.getElementById("startUpdate").value
 	let end = document.getElementById("endUpdate").value
+
 	let url = "http://localhost:8080/api/evento/" + id
 
 

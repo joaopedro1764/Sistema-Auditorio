@@ -18,6 +18,8 @@ function atualizar(id) {
 		$('#modalUpdateUsuario #idUsuario').val(usuario.id)
 		$('#modalUpdateUsuario #nomeUsuario').val(usuario.nome)
 		$('#modalUpdateUsuario #nifUsuario').val(usuario.nif)
+		$('#modalUpdateUsuario #tipo2').val(usuario.tipo)
+		console.log(usuario.tipo)
 		$('#modalUpdateUsuario').modal('show')
 
 	}

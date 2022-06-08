@@ -207,8 +207,7 @@ button.close {
 					<div class="modal-body">
 
 						<form>
-							<input type="hidden" id="idUsuario"> <input type="hidden"
-								id="id">
+							<input type="text" id="idUsuario">
 							<div class="form-row">
 								<div class="form-group col-md-6">
 									<label for="inputEmail4">TÍTULO DO EVENTO</label> <input
@@ -324,8 +323,8 @@ button.close {
 			function colocaValor() {
 				let token = sessionStorage.getItem("token");
 				let payload = parseJwt(token);
-				var id = payload.id_admin;
-				if (payload.tipo === "USUARIO") {
+				var id = payload.id_usuario;
+				if (payload.tipo === "usuario") {
 					console.log("ENTREI NO IF DO USUARIO")
 					token = sessionStorage.getItem("token");
 					payload = parseJwt(token);
@@ -341,7 +340,7 @@ button.close {
 					usuarioLink.style.visibility = "hidden";
 					idUsuarioU.value = id;
 					//document.querySelectorAll('#idUsuario').value = id;
-				} else if (payload.tipo === "ADMNISTRADOR") {
+				} else if (payload.tipo === "administrador") {
 					console.log("ENTREI NO ELSE DO ADM")
 					let token = sessionStorage.getItem("token");
 					let payload = parseJwt(token);
@@ -377,14 +376,23 @@ button.close {
 
 		<script type="text/javascript">
 			function fazPost(url, body) {
+				console.log('PASSOU AQUIIIIIIIIIIIIIIII')
 				console.log("body=", body)
 				let request = new XMLHttpRequest()
+				request.onreadystatechange = function() {
+					console.log('dentro do retorno' + this.status)
+					console.log('dentro do retorno' + this.readyState)
+					if (this.readyState == 4 && this.status == 201) {
+						console.log('PASSOU AQUIIIIIIIIIIIIIIII')
+
+					} else if (this.readyState == 4 && this.status == 409) {
+						//  console.log(this)
+						alert("DATA JÀ CADASTRADA")
+					}
+				};
 				request.open("POST", url, true)
 				request.setRequestHeader("content-type", "application/json")
 				request.send(JSON.stringify(body))
-				request.onload = function() {
-					console.log(this.responseText)
-				}
 
 				return request.responseText
 			}
@@ -395,7 +403,7 @@ button.close {
 				let url = "http://localhost:8080/api/evento/"
 				let idUsuario = document.getElementById("idUsuario").value
 				console.log(idUsuario)
-				let id = document.getElementById("id").value
+				let id = document.getElementById("idUsuario").value
 				let title = document.getElementById("title2").value
 				let start = document.getElementById("start2").value
 				let end = document.getElementById("end2").value
@@ -491,6 +499,7 @@ button.close {
 						}
 					}
 					console.log(body)
+					console.log(id)
 
 				}
 				fazPost(url, body)
@@ -538,6 +547,7 @@ button.close {
 				let start = document.getElementById("startUpdate").value
 				let end = document.getElementById("endUpdate").value
 				let url = "http://localhost:8080/api/evento/" + id
+				let fotos = ""
 
 				if (end < start) {
 					alert('A Data final não pode acabar antes do inicio!');
@@ -560,6 +570,7 @@ button.close {
 						"title" : title,
 						"start" : start,
 						"end" : end,
+						"fotos" : fotos,
 						"usuario" : {
 							"id" : idUsuario,
 						}

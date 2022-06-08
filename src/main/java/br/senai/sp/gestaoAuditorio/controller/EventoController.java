@@ -71,7 +71,7 @@ public class EventoController {
 	public String salvarHistorico(Evento evento, @RequestParam("fileFotos") MultipartFile[] fileFotos,
 			@RequestParam("idEvento") Long idEvento) {
 		// String para a url das fotos
-		String fotos = evento.getFotos();
+		String fotos = evento.getFotos() == null ? "" : evento.getFotos();
 		for (MultipartFile arquivo : fileFotos) {
 			System.out.println("ENTREI NO FOR");
 			System.out.println(arquivo);
@@ -85,7 +85,6 @@ public class EventoController {
 				throw new RuntimeException(e);
 			}
 		}
-		
 
 		// evento.setFotos(fotos);
 		System.out.println("AAAA");
