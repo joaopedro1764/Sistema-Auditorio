@@ -78,7 +78,9 @@
 	max-width: 1100px;
 	margin: 30px auto;
 }
-
+.modAlterar{
+	background-color: transparent;
+}
 #modal-body {
 	border: 3px solid red;
 }
@@ -91,8 +93,44 @@
 }
 
 .modal-title {
-	font-family: verdana;
-	padding: 8px;
+    font-family: verdana;
+    margin-bottom: 0;
+    position: relative;
+    top: -74%;
+    width: 23%;
+    color: white;
+}
+
+.modal{
+	background-color: transparent;
+	max-height: 100%
+}
+.headerModal{
+	padding: 22px;
+	    background-color: red;
+    margin: -5.3%;
+    width: 46.3vh;
+    height: 59px;
+}
+
+	.close {
+    float: right;
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1;
+    color: #000;
+    text-shadow: 0 1px 0 #fff;
+    opacity: .5;
+    top: -300%;
+    left: 3%;
+}
+	
+button.close {
+    padding: 0;
+    background: 0 0;
+    position: relative;
+    border: 0;
+    -webkit-appearance: none;
 }
 </style>
 
@@ -167,11 +205,11 @@
 		</div>
 
 
-		<div id="modalId" class="modal" tabindex="-1">
+		<div id="modalId" class="modal modAlterar" tabindex="-1">
 			<div class="modal-dialog">
 				<div class="modal-content">
 
-					<div class="modal-header">
+					<div class="headerModal">
 						<h5 class="modal-title" id="exampleModalLabel">NOVA RESERVA</h5>
 						<button type="button" class="close" data-dismiss="modal"
 							aria-label="Close">
@@ -198,6 +236,7 @@
 								<label for="inputAddress">FINAL DO EVENTO</label> <input
 									required="required" value="#start2" type="datetime-local"
 									class="form-control" id="end2">
+									<p class="erro" id="erro"></p>
 								<button onclick="historico()" style="margin-top: 35px;"
 									type="button" class="btn btn-light">Reservar</button>
 							</div>
@@ -214,7 +253,7 @@
 		<div id="modalUpdate" class="modal" tabindex="-1">
 			<div class="modal-dialog">
 				<div class="modal-content">
-					<div class="modal-header">
+					<div class="headerModal">
 
 						<h5 class="modal-title">VER EVENTO</h5>
 						<button type="button" class="close" data-dismiss="modal"
@@ -395,11 +434,89 @@
 				let start = document.getElementById("start2").value
 				let end = document.getElementById("end2").value
 
+				let data = new Date()
+
+				var dia = data.getDate();
+				var mes = data.getMonth();
+				var ano = data.getFullYear();
+				var hora = data.getHours();
+				var min = data.getMinutes();
+				
+				
+				 
+				
+				
+
+				var dataAtual = ano + '-' + '0' + (mes + 1) + '-' + '0' + dia
+						+ 'T' + hora + ':' + min;
+
+				let divErro = document.getElementById("erro")
+
 				if (end < start) {
-					alert('A Data final não pode acabar antes da data de inicio!');
+
+					const mensagemErro1 = document.createElement('h5')
+
+					const msgErro = document.createTextNode('A Data final não pode acabar antes da data de inicio!')
+
+					mensagemErro1.appendChild(msgErro)
+
+					divErro.appendChild(mensagemErro1)
+					
+					
+
+					
+					
+					setInterval(function Tempo(){ 
+		                var msg = document.getElementsByClassName("erro");
+		                while(msg.length > 0){
+		                    msg[0].parentNode.removeChild(msg[0]);
+		                }
+		            }, 3000);
+					
+					end.focus()
 
 				} else if (start === end) {
-					alert(" data inicio não pode ser igual a data final!")
+
+					const mensagemErro2 = document.createElement('h5')
+
+					const msgErro2 = document.createTextNode('A data de inicio não pode ser igual a data final!')
+
+					mensagemErro2.appendChild(msgErro2)
+
+					divErro.appendChild(mensagemErro2)
+					
+					setInterval(function Tempo(){ 
+		                var msg = document.getElementsByClassName("erro");
+		                while(msg.length > 0){
+		                    msg[0].parentNode.removeChild(msg[0]);
+		                }
+		            }, 3000);
+					
+					end.focus()
+					
+					
+
+				} else if (start < dataAtual) {
+				
+					const mensagemErro3 = document.createElement('h5')
+
+					const msgErro3 = document.createTextNode('A data/hora inicial não pode ser menor que o dia/hora atual !')
+
+					mensagemErro3.appendChild(msgErro3)
+
+					divErro.appendChild(mensagemErro3)
+					
+					setInterval(function Tempo(){ 
+		                var msg = document.getElementsByClassName("erro");
+		                while(msg.length > 0){
+		                    msg[0].parentNode.removeChild(msg[0]);
+		                }
+		            }, 3000);
+					
+					end.focus()
+					
+					
+
 
 				} else {
 
