@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 			console.log(info.event.id)
-			if (payload.tipo === "USUARIO") {
+			if (payload.tipo === "usuario") {
 				console.log("USUARIOOO")
 				console.log(info.event.extendedProps.usuario.id)
 				console.log(payload.id_usuario)

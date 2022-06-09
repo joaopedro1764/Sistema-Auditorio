@@ -23,7 +23,7 @@ public interface EventoRepository extends PagingAndSortingRepository<Evento, Lon
 	@Query("SELECT t FROM Evento t where (t.start BETWEEN :s AND :e) OR (t.end BETWEEN :s AND :e)")
 	public List<Evento> intervaloForaHorasComLista(@Param("s") LocalDateTime start, @Param("e") LocalDateTime end);
 
-	public Evento findByIdAndFotos(Long idEvento ,String fotos);
+	public Evento findByIdAndFotos(Long idEvento, String fotos);
 
 	public Evento findByStart(LocalDateTime start);
 
@@ -35,4 +35,8 @@ public interface EventoRepository extends PagingAndSortingRepository<Evento, Lon
 
 	public List<Evento> findByUsuarioId(Long id);
 
+	@Query("SELECT t FROM Evento t WHERE t.title LIKE %:p% OR t.start LIKE %:p% ORDER BY t.title ASC")
+	public List<Evento> findByTitleAndStart(@Param("p") String parametro);
+
+	public List<Evento> findAllByOrderByTitleAsc();
 }
