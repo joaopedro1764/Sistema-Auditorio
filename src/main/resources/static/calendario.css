@@ -1,0 +1,9 @@
+@charset "ISO-8859-1";
+
+.erro{
+	
+	color:red;
+	margin-top:1em;
+	text-align: center;
+	transition: all, 5s linear;
+}

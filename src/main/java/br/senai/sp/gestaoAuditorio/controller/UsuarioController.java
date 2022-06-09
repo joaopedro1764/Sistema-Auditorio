@@ -35,6 +35,18 @@ public class UsuarioController {
 		return "Usuario/Form";
 	}
 
+	@RequestMapping("buscarUsuario")
+	public String buscar(Model model, String parametro) {
+		// busca
+		List<Usuario> usuario = repository.buscarUsuario(parametro);
+		if (usuario.size() == 0) {
+			model.addAttribute("mensagemErro", "Nenhuma correspondência encontrada");
+		} else {
+			model.addAttribute("usuario", repository.buscarUsuario(parametro));
+		}
+		return "Usuario/Lista";
+	}
+
 	@RequestMapping("salvarUsuario")
 	public String salvarUsuario(Usuario usuario) {
 
@@ -176,6 +188,37 @@ public class UsuarioController {
 			System.out.println(repositoryEvento.findAll());
 			session.setAttribute("usuarioLogado", user);
 			return "redirect:painelReserva";
+
+		}
+
+	}
+
+	@RequestMapping("esquecerSenha")
+	public String esquecerSenha(Usuario usuario, Model model, RedirectAttributes attr, String nif) {
+
+		Usuario usuario2 = repository.findByNif(usuario.getNif());
+
+		System.out.println("primeiro nif " + usuario.getNif());
+
+		if (usuario2 != null) {
+
+			attr.addFlashAttribute("senha", "Sua senha foi redefinida para a senha inicial!");
+
+			String parte = usuario.getNif().substring(0, 3);
+
+			usuario.setSenha(parte);
+
+			System.out.println(parte);
+
+			return "redirect:/";
+
+		} else {
+
+			System.out.println("DEU INDEX");
+
+			attr.addFlashAttribute("msg", "Nif não encontrado.");
+
+			return "redirect:/";
 
 		}
 

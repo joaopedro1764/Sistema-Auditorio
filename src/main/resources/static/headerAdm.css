@@ -1,47 +1,46 @@
 * {
-    margin: 0;
+	margin: 0;
 }
 
 ul {
-    display: inline-block;
-    list-style: none;
+	display: inline-block;
+	list-style: none;
 }
 
 a {
-    color: black;
-    text-decoration: none;
-    /* font-family: ; */
+	color: black;
+	text-decoration: none;
+	/* font-family: ; */
 }
 
 a:hover {
-    background: rgba(0, 0, 0, .05);
+	background: rgba(0, 0, 0, .05);
 }
 
 #menu {
-    display: flex;
-    gap: .5rem;
-    align-items: center;
+	display: flex;
+	gap: .5rem;
+	align-items: center;
 }
 
 #menu a {
-    display: block;
-    padding: .5rem;
+	display: block;
+	padding: .5rem;
 }
 
 /* HEADER */
-
 #header {
-    width: 100%;
-    height: 78.5px;
-    background-color: #2884B2;
-    font-size: 15px;
-    display: flex;
-    justify-content: space-between;
+	width: 100%;
+	height: 78.5px;
+	background-color: #2884B2;
+	font-size: 15px;
+	display: flex;
+	justify-content: space-between;
 }
 
 header img {
-    margin-top: 2px;
-    margin-left: 18px;
+	margin-top: 2px;
+	margin-left: 18px;
 }
 
 /* header nav ul li {
@@ -50,11 +49,63 @@ header img {
     top: 15px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 } */
-
 .imgLogo {
-    padding: 10px;
-    float: left;
-    margin-top: 1em;
+	padding: 10px;
+	float: left;
+	margin-top: 1em;
+}
+
+.erro {
+	position: absolute;
+	top: 75%;
+	width: 100%;
+	background-color: red;
+	color: white;
+	height: 60px;
+	transition: transform 1.0s ease-in-out;
+	transform: translateX(5);
+	padding-top: 1em;
+	text-align: center;
+}
+
+.esqueceSenha {
+	position: absolute;
+	top: 85%;
+	color: #0096c7;
+	background-color: white;
+	width: 100%;
+	text-align: center;
+	border: none;
+}
+
+.esqueceSenha:focus {
+	outline-style: none;
+}
+
+.nifSenha {
+	width: 90%;
+}
+
+.senha {
+	position: absolute;
+	top: 75%;
+	width: 100%;
+	height: 60px;
+	padding-top: 1em;
+	text-align: center;
+}
+
+.acesso {
+	position: absolute;
+	top: 75%;
+	width: 100%;
+	background-color: #c7f9cc;
+	color: black;
+	height: 60px;
+	transition: transform 1.0s ease-in-out;
+	transform: translateX(5);
+	padding-top: 1em;
+	text-align: center;
 }
 
 /* .listaNav {

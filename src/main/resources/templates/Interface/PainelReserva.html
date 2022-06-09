@@ -93,6 +93,12 @@
 }
 
 .modal-title {
+	font-family: verdana;
+	margin-bottom: 0;
+	position: relative;
+	top: -74%;
+	width: 23%;
+	color: white;
 	padding: 20px;
 }
 
@@ -128,6 +134,18 @@ button.close {
 	border: 0;
 	-webkit-appearance: none;
 }
+
+.fc button {
+	text-transform: uppercase;
+	border-radius: 2px;
+	font-size: 13px;
+	font-weight: 600;
+	transition: box-shadow linear 0.4s;
+	background-color: #2196F3;
+	border-color: #2196F3;
+	margin-top: 10px;
+	cursor: pointer;
+}
 </style>
 
 </head>
@@ -141,7 +159,10 @@ button.close {
         Tip 2: you can also add an image using data-image tag
     -->
 			<div class="sidebar-wrapper">
-				<div class="logo"></div>
+				<div class="logo">
+					<img alt="" style="position: relative; left: 2.8em;" width="120"
+						src="/logo_senai_original.png">"
+				</div>
 				<ul class="nav">
 					<li><a class="nav-link" href="#"> <i
 							class=" large material-icons">home</i>
@@ -156,7 +177,10 @@ button.close {
 					<li class="nav-item active"><a class="nav-link"
 						href="/painelReserva"><i class=" large material-icons">event_seat</i>
 							<p>Auditório</p> </a></li>
-
+					<li><a class="nav-link" href="/"> <i
+							class=" large material-icons">exit_to_app</i>
+							<p>Sair</p>
+					</a></li>
 
 
 					<li>
@@ -165,27 +189,8 @@ button.close {
 		</div>
 		<div class="main-panel">
 			<!-- Navbar -->
-			<nav class="navbar navbar-expand-lg " color-on-scroll="500">
-				<div class="container-fluid">
-					<a class="navbar-brand"> Disponibilidade do Auditório </a>
-
-					<div class="collapse navbar-collapse justify-content-end"
-						id="navigation">
-
-						<ul class="navbar-nav ml-auto">
 
 
-							<li class="nav-item"><a class="nav-link"
-								href="/perfilUsuario"> <span class="no-icon"><i
-										class=" medium material-icons">account_circle</i></span>
-							</a></li>
-							<li class="nav-item"><a class="nav-link" href="/logOut">
-									<span class="no-icon"><i class=" medium material-icons">exit_to_app</i></span>
-							</a></li>
-						</ul>
-					</div>
-				</div>
-			</nav>
 
 			<div id="calendar"></div>
 

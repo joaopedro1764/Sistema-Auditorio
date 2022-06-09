@@ -37,6 +37,27 @@
 	margin-top: 50px;
 	margin-left: 50px;
 }
+
+#buttonSearch {
+	background: none;
+	height: 1.8em;
+	position: relative;
+	top: 2em;
+	right:2em;
+	border: none;
+	outline: none;
+}
+
+#form {
+	position: relative;
+	left: 30em;
+}
+
+#inputForm {
+	width: 15em;
+	border: none;
+	border-bottom: 1px solid black;
+}
 </style>
 <!-- CSS Just for demo purpose, don't include it in your project -->
 <link href="/demoPainel.css" rel="stylesheet" />
@@ -87,7 +108,10 @@
         Tip 2: you can also add an image using data-image tag
     -->
 			<div class="sidebar-wrapper">
-				<div class="logo">"RICARDO LERNER"</div>
+				<div class="logo">
+					<img alt="" style="position: relative; left: 2.8em;" width="120"
+						src="/logo_senai_original.png">"
+				</div>
 				<ul class="nav">
 					<li><a class="nav-link" href="/historico"> <i
 							class=" large material-icons">home</i>
@@ -101,6 +125,10 @@
 					<li><a class="nav-link" href="/painelReserva"><i
 							class=" large material-icons">event_seat</i>
 							<p>Auditório</p> </a></li>
+					<li><a class="nav-link" href="/"> <i
+							class=" large material-icons">exit_to_app</i>
+							<p>Sair</p>
+					</a></li>
 
 
 
@@ -113,14 +141,15 @@
 			<nav class="navbar navbar-expand-lg " color-on-scroll="500">
 				<div class="container-fluid">
 					<a class="navbar-brand"> Painel Administrativo </a>
-
+					<form action="/buscarUsuario" id="form">
+						<button type="submit" id="buttonSearch">
+							<i class=" large material-icons">search</i>
+						</button>
+						<input placeholder="Buscar" type="text" name="parametro" id="inputForm">
+					</form>
 					<div class="collapse navbar-collapse justify-content-end"
 						id="navigation">
-						<ul class="nav navbar-nav mr-auto">
-							<li class="nav-item"></li>
-							<li class="nav-item"><a href="#" class="nav-link"><i
-									class=" large material-icons">search</i> </a></li>
-						</ul>
+
 						<ul class="navbar-nav ml-auto">
 
 
