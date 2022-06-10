@@ -48,7 +48,7 @@ function logarUsuario() {
 			sessionStorage.setItem("token", resposta.token)
 			console.log(resposta.token)
 
-			// console.log(sessionStorage)
+			 console.log(sessionStorage)
 
 			window.location.href = '/painelReserva'
 		})

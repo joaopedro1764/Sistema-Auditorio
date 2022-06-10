@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.senai.sp.gestaoAuditorio.annotation.Privado;
+import br.senai.sp.gestaoAuditorio.annotation.Publico;
 import br.senai.sp.gestaoAuditorio.model.Usuario;
 import br.senai.sp.gestaoAuditorio.repository.EventoRepository;
 import br.senai.sp.gestaoAuditorio.repository.UsuarioRepository;
@@ -87,7 +88,7 @@ public class UsuarioController {
 		return "redirect:listarUsuario/1";
 	}
 
-	@Privado
+	@Publico
 	@RequestMapping("listarUsuario/{pagina}")
 
 	// @PathVariable associando int page a ${page}

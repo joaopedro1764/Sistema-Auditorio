@@ -18,15 +18,15 @@ import br.senai.sp.gestaoAuditorio.interceptor.AppInterceptor;
 @Configuration
 public class ConfiguracaoApp implements WebMvcConfigurer {
 
-	@Autowired
-	private AppInterceptor interceptor;
-
-	@Override
-	public void addInterceptors(InterceptorRegistry registry) {
-
-		registry.addInterceptor(interceptor);
-
-	}
+	/*
+	 * @Autowired private AppInterceptor interceptor;
+	 * 
+	 * @Override public void addInterceptors(InterceptorRegistry registry) {
+	 * 
+	 * registry.addInterceptor(interceptor);
+	 * 
+	 * }
+	 */
 
 	@Bean
 	public DataSource dataSource() {
@@ -52,7 +52,7 @@ public class ConfiguracaoApp implements WebMvcConfigurer {
 		adapter.setDatabasePlatform("org.hibernate.dialect.MySQL8Dialect");
 
 		// Faz com que Gere as funções sql
-		//adapter.setShowSql(true);
+		// adapter.setShowSql(true);
 
 		adapter.setPrepareConnection(true);
 
