@@ -12,26 +12,28 @@
 	content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
 	name='viewport' />
 <!--     Fonts and icons     -->
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script
-	src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
-	integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-	crossorigin="anonymous"></script>
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
-	integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-	crossorigin="anonymous"></script>
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
-	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-	crossorigin="anonymous">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 	rel="stylesheet">
+<link href='/main.css' rel='stylesheet' />
+<script src='/main.js'></script>
+<script src="/reserva.js"></script>
+<!--  <script src="/post.js"></script>-->
+<script src="/put.js"></script>
+<script src="/delete.js"></script>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
+
+<!-- CSS Files -->
+<link href="/bootstrapPainel.min.css" rel="stylesheet" />
+<link href="/painelAdm.css " rel="stylesheet" />
+<script src="/administrador.js"></script>
+<script src="/reserva.js"></script>
+<!-- CSS Just for demo purpose, don't include it in your project -->
+<link href="/demoPainel.css" rel="stylesheet" />
 <script
 	src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
 	integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
@@ -44,34 +46,6 @@
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
 	integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn"
 	crossorigin="anonymous">
-<link href='/main.css' rel='stylesheet' />
-<script src='/main.js'></script>
-<script src="/reserva.js"></script>
-<!--  <script src="/post.js"></script>-->
-<script src="/put.js"></script>
-<script src="/delete.js"></script>
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-	rel="stylesheet">
-<link
-	href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200"
-	rel="stylesheet" />
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
-<!-- CSS Files -->
-<link href="/bootstrapPainel.min.css" rel="stylesheet" />
-<link href="/painelAdm.css " rel="stylesheet" />
-<script
-	src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
-	integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-	crossorigin="anonymous"></script>
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
-	integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
-	crossorigin="anonymous"></script>
-<script src="/administrador.js"></script>
-<script src="/reserva.js"></script>
-<!-- CSS Just for demo purpose, don't include it in your project -->
-<link href="/demoPainel.css" rel="stylesheet" />
 
 <style type="text/css">
 #calendar {
@@ -79,60 +53,11 @@
 	margin: 30px auto;
 }
 
-.modAlterar {
-	background-color: transparent;
-}
-
-#modal-body {
-	border: 3px solid red;
-}
-
-.modal-header {
-	color: white;
-	background-color: red;
-}
-
-.modal-title {
-	font-family: verdana;
-	margin-bottom: 0;
-	position: relative;
-	top: -74%;
-	width: 23%;
-	color: white;
-	padding: 20px;
-}
-
-.modal {
-	background-color: transparent;
-	max-height: 100%
-}
-
-.headerModal {
-	padding: 22px;
-	background-color: red;
-	margin: -5.3%;
-	width: 46.3vh;
-	height: 59px;
-}
-
-.close {
-	float: right;
-	font-size: 2.5rem;
-	font-weight: 700;
-	line-height: 1;
-	color: #000;
-	text-shadow: 0 1px 0 #fff;
-	opacity: .5;
-	top: -300%;
-	left: 3%;
-}
-
-button.close {
-	padding: 0;
-	background: 0 0;
-	position: relative;
-	border: 0;
-	-webkit-appearance: none;
+#modalId.modal {
+	background: transparent;
+	overflow: hidden;
+	overflow-y: scroll;
+	padding-right: 0 !important;
 }
 
 .fc button {
@@ -145,6 +70,10 @@ button.close {
 	border-color: #2196F3;
 	margin-top: 10px;
 	cursor: pointer;
+}
+
+.modal {
+	overflow: scroll;
 }
 </style>
 
@@ -164,6 +93,12 @@ button.close {
 						src="/logo_senai_original.png">"
 				</div>
 				<ul class="nav">
+
+					<li><a id="usuario" class="nav-link" href="#"> <i
+							class=" large material-icons">accessibility</i>
+					</a></li>
+
+
 					<li><a class="nav-link" href="#"> <i
 							class=" large material-icons">home</i>
 							<p>Home</p>
@@ -177,6 +112,9 @@ button.close {
 					<li class="nav-item active"><a class="nav-link"
 						href="/painelReserva"><i class=" large material-icons">event_seat</i>
 							<p>Auditório</p> </a></li>
+
+
+
 					<li><a class="nav-link" href="/"> <i
 							class=" large material-icons">exit_to_app</i>
 							<p>Sair</p>
@@ -198,43 +136,47 @@ button.close {
 		</div>
 
 
-		<div id="modalId" class="modal modAlterar" tabindex="-1">
-			<div class="modal-dialog">
+		<!-- Modal -->
+		<div class="modal fade" id="modalId" tabindex="-1" role="dialog"
+			aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered">
 				<div class="modal-content">
-
 					<div class="modal-header">
-						<h5 class="modal-title" id="exampleModalLabel">NOVA RESERVA</h5>
+						<p class="modal-title" id="exampleModalLongTitle">Novo Evento</p>
 						<button type="button" class="close" data-dismiss="modal"
 							aria-label="Close">
-							<span style="color: white" aria-hidden="true">&times;</span>
+							<span aria-hidden="true">&times;</span>
 						</button>
 					</div>
 					<div class="modal-body">
+						<form action="/salvarUsuario">
+							<input type="hidden" id="idUsuario">
+							<div class="form-group">
+								<input placeholder="Insira o titulo" required type="text"
+									class="form-control" id="title2">
 
-						<form>
-							<input type="text" id="idUsuario">
-							<div class="form-row">
-								<div class="form-group col-md-6">
-									<label for="inputEmail4">TÍTULO DO EVENTO</label> <input
-										required="required" type="text" class="form-control"
-										id="title2">
-								</div>
-								<div class="form-group col-md-6">
-									<label for="inputPassword4">INÍCIO DO EVENTO</label> <input
-										type="datetime-local" class="form-control" id="start2">
-								</div>
 							</div>
 							<div class="form-group">
-								<label for="inputAddress">FINAL DO EVENTO</label> <input
-									required="required" value="#start2" type="datetime-local"
-									class="form-control" id="end2">
-								<p class="erro" id="erro"></p>
-								<button onclick="historico()" style="margin-top: 35px;"
-									type="button" class="btn btn-light">Reservar</button>
+								<label for="exampleInputEmail1">Inicio:</label> <input required
+									id="start2" type="datetime-local" class="form-control"
+									aria-describedby="text">
+							</div>
+							<div class="form-group">
+								<label for="exampleInputEmail1">Fim:</label><input required
+									id="end2" type="datetime-local" class="form-control"
+									aria-describedby="text">
 							</div>
 
-						</form>
 
+
+
+
+							<div class="modal-footer">
+								<button type="reset" class="btn btn-dark" data-dismiss="modal">FECHAR</button>
+								<button type="button" onclick="historico()"
+									class="btn btn-success">SALVAR</button>
+							</div>
+						</form>
 					</div>
 
 				</div>
@@ -242,122 +184,108 @@ button.close {
 		</div>
 
 
-		<div id="modalUpdate" class="modal" tabindex="-1">
-			<div class="modal-dialog">
+
+		<!-- Modal alterar -->
+		<div style="background-color: transparent;" class="modal fade"
+			id="modalUpdate" tabindex="-1" role="dialog"
+			aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered">
 				<div class="modal-content">
 					<div class="modal-header">
-
-						<h5 class="modal-title">VER EVENTO</h5>
+						<p class="modal-title" id="exampleModalLongTitle">Evento</p>
 						<button type="button" class="close" data-dismiss="modal"
 							aria-label="Close">
-							<span style="color: white" aria-hidden="true">&times;</span>
+							<span aria-hidden="true">&times;</span>
 						</button>
 					</div>
-					<div style="margin: 0 auto;" class="modal-body">
-
+					<div class="modal-body">
 						<form>
 							<input type="hidden" id="idUsuario"> <input type="hidden"
 								id="idUpdate">
 
-							<div class="form-row">
-								<div class="form-group col-md-8">
-									<label for="inputEmail4">TÍTULO DO EVENTO</label> <input
-										type="text" class="form-control" id="titleUpdate">
-								</div>
-								<div class="form-group col-md-8">
-									<label for="inputEmail4">USUÀRIO</label> <input readonly
-										style="background-color: transparent;" type="text"
-										class="form-control" id="usuarioUpdate">
-								</div>
-								<div class="form-group col-md-8">
-									<label for="inputPassword4">INÍCIO DO EVENTO</label> <input
-										type="datetime-local" class="form-control" id="startUpdate">
-								</div>
-								<div class="form-group col-md-8">
-									<label for="inputAddress">FINAL DO EVENTO</label> <input
-										value="#start2" type="datetime-local" class="form-control"
-										id="endUpdate">
-								</div>
+							<div class="form-group">
+								<input placeholder="Insira o titulo" required type="text"
+									class="form-control" id="titleUpdate">
 
-
-								<button onclick="update()" style="margin-right: 10px;"
-									id="btnAlterar" type="button" class="btn btn-dark col-md-5">ALTERAR</button>
-								<button onclick="apagar()" type="button"
-									class="btn btn-dark col-md-5" id="btnExcluir">DELETAR</button>
+							</div>
+							<div class="form-group">
+								<label for="exampleInputEmail1">Inicio:</label> <input required
+									id="startUpdate" type="datetime-local" class="form-control">
+							</div>
+							<div class="form-group">
+								<label for="exampleInputEmail1">Fim:</label><input required
+									id="endUpdate" type="datetime-local" class="form-control">
+							</div>
+							<div class="form-group">
+								<label for="exampleInputEmail1">Usuário:</label><input required
+									disabled="disabled" id="usuarioUpdate" type="text"
+									class="form-control">
 							</div>
 
 
 
+
+
+							<div class="modal-footer">
+								<button id="btnExcluir" type="button" onclick="apagar()"
+									class="btn btn-dark" data-dismiss="modal">Excluir</button>
+								<button id="btnAlterar" type="button" onclick="update()"
+									class="btn btn-success">Alterar</button>
+
+							</div>
 						</form>
-
-
-
-					</div>
-
-				</div>
-
-			</div>
-
-		</div>
-
-		<div id="eventoModal" class="modal" tabindex="-1">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title">Reserva</h5>
-					</div>
-					<div id="bodyModal" class="modal-body modal-xl">
-
-
-						<dl class="row">
-							<dt class="col-sm-5">Número Da Reserva:</dt>
-							<dd id="idModal" class="col-sm-9"></dd>
-							<dt class="col-sm-5">TÍTULO:</dt>
-							<dd id="titleModal" class="col-sm-9"></dd>
-							<dt class="col-sm-5">INICIO DO EVENTO:</dt>
-							<dd id="startModal" class="col-sm-9"></dd>
-							<dt class="col-sm-5">FIM DO EVENTO:</dt>
-							<dd id="endModal" class="col-sm-9"></dd>
-						</dl>
 					</div>
 
 				</div>
 			</div>
 		</div>
+
+
+
+
 		<script type="text/javascript">
 			function colocaValor() {
 				let token = sessionStorage.getItem("token");
 				let payload = parseJwt(token);
 				var id = payload.id_usuario;
 				if (payload.tipo === "usuario") {
+					console.log(payload.tipo)
 					console.log("ENTREI NO IF DO USUARIO")
 					token = sessionStorage.getItem("token");
 					payload = parseJwt(token);
 					console.log(payload);
 					var id = payload.id_usuario;
+					var nome = payload.nome_usuario;
 					console.log(id);
+					let usuario = document.getElementById("usuario")
 					let idUsuario = document.getElementById("idUsuario")
 					let idUsuarioU = document.getElementById("idUsuarioU")
 					let usuarioLink = document.getElementById("usuarioLink")
 					console.log(idUsuarioU)
+					console.log(usuario)
+					console.log(nome)
 					console.log(idUsuario)
 					idUsuario.value = id;
-					usuarioLink.style.visibility = "hidden";
-					idUsuarioU.value = id;
+					usuario.innerHTML = "OLÀ  " + nome;
 					//document.querySelectorAll('#idUsuario').value = id;
-				} else if (payload.tipo === "administrador") {
+				} else if (payload.tipo === "admnistrador") {
+
 					console.log("ENTREI NO ELSE DO ADM")
 					let token = sessionStorage.getItem("token");
 					let payload = parseJwt(token);
+					var nome = payload.nome_usuario;
 					console.log(payload);
 					var id = payload.id_usuario;
 					console.log(id);
+					console.log(nome)
+					let usuario = document.getElementById("usuario")
 					let idUsuario = document.getElementById("idUsuario")
 					let idUsuarioU = document.getElementById("idUsuarioU")
 					console.log(idUsuarioU)
 					console.log(idUsuario)
 					idUsuario.value = id;
-					idUsuarioU.value = id;
+					usuario.innerHTML = "OLÀ " + nome;
+
 					//document.querySelectorAll('#idUsuario').value = id;
 
 				}
@@ -378,6 +306,8 @@ button.close {
 			};
 			colocaValor()
 		</script>
+
+
 
 		<script type="text/javascript">
 			function fazPost(url, body) {

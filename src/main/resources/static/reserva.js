@@ -43,18 +43,6 @@ document.addEventListener('DOMContentLoaded', function() {
 			$('#modalId #start2').val(arg.start.toISOString().substring(0, 16));
 			$('#modalId #end2').val(arg.start.toISOString().substring(0, 16));
 
-
-			$('#date-form2').on('focusout', function() {
-				var dateObj1 = new Date($('#start2').val());
-				var dateObj2 = new Date($('#end2').val());
-
-
-			});
-
-			console.log(arg.start.toISOString().substring(0, 16).replace());
-			console.log(arg.start.toISOString())
-			console.log(arg.start.toISOString())
-			//console.log(arg.end.toLocaleString())
 		},
 
 		//bloqueia dias passados ao atual
@@ -90,6 +78,9 @@ document.addEventListener('DOMContentLoaded', function() {
 			let idUsuarioLogado = document.getElementById("idUsuario").value
 			let botaoAlterar = document.getElementById("btnAlterar");
 			let botaoExcluir = document.getElementById("btnExcluir");
+			let start = document.getElementById("startUpdate");
+			let end = document.getElementById("endUpdate");
+			let title = document.getElementById("titleUpdate");
 			console.log(payload)
 			console.log("ENTREi IF" + info.event.extendedProps)
 			$('#modalUpdate #usuarioUpdate').val(info.event.extendedProps.usuario.nome)
@@ -107,12 +98,17 @@ document.addEventListener('DOMContentLoaded', function() {
 				console.log(payload.id_usuario)
 
 				if (payload.id_usuario == info.event.extendedProps.usuario.id) {
+					console.log(info.event.extendedProps.usuario.id)
+					console.log(payload.id_usuario)
 					console.log("USUARIOOO ALTERAR")
 					botaoAlterar.style.visibility = "visible"
 					botaoExcluir.style.visibility = "visible"
 
 
 				} else {
+					end.ariaDisabled;
+					start.ariaDisabled;
+					title.ariaDisabled;
 					botaoAlterar.style.visibility = "hidden"
 					botaoExcluir.style.visibility = "hidden"
 				}
