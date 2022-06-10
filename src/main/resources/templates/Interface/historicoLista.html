@@ -2,107 +2,140 @@
 <html xmlns:th="http://thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Historico</title>
-<link rel="stylesheet" href="/headerPadraoUser.css">
-<link rel="stylesheet" href="/lista.css">
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
-	integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn"
-	crossorigin="anonymous">
-<!-- Compiled and minified CSS -->
-<!-- <link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> -->
+<title>HISTÓRICO</title>
+<link rel="stylesheet" href="/stylehistorico.css" />
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 	rel="stylesheet">
-<style type="text/css">
-.no-gutters {
-	border: 4px solid black;
-}
-</style>
-
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.2/font/bootstrap-icons.css">
-
+<link href="/demoPainel.css" rel="stylesheet" />
+<!--     Fonts and icons     -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200"
+	rel="stylesheet" />
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
+<!-- CSS Files -->
+<link href="/bootstrapPainel.min.css" rel="stylesheet" />
+<link href="/painelAdm.css " rel="stylesheet" />
+<link href="/demoPainel.css" rel="stylesheet" />
 </head>
 <body>
-	<header id="header">
-		<img src="/logo_senai_original.png" alt="Logo do Senai" width="100"
-			class="imgLogo">
-		<nav id="nav">
-			<ul class="listaNav">
-				<li class="current"><a class="aNav">Home</a></li>
-				<li class="current"><a href="./login/loginUsuario.html"
-					class="aNav">Login</a></li>
-			</ul>
-		</nav>
-	</header>
-	<form action="/buscarHistorico" method="get">
-		<div class="pesquisa">
-			<i class="bi icone bi-search"></i> <input class="form-control"
-				list="datalistOptions" id="search"
-				placeholder="Busca por título ou pela data de ínicio" type="search"
-				name="parametro">
-		</div>
-	</form>
-	<br>
-	<br>
-	<h1 class="bodyH1">Histórico de Eventos</h1>
-	<br>
-	<br>
-	<div class="card mb-3" style="max-width: 540px;">
-		<div th:each="lista:${historico}" class="row no-gutters">
-			<div class="col-md-4">
-				<img width="150px" th:src="${lista.verFotos[0]}">
+	<div class="wrapper">
+		<div class="sidebar" data-image="../assets/img/senai.png">
+			<!--
+        Tip 1: You can change the color of the sidebar using: data-color="purple | blue | green | orange | red"
+
+        Tip 2: you can also add an image using data-image tag
+    -->
+			<div class="sidebar-wrapper">
+				<div class="logo">
+					<img alt="" style="position: relative; left: 2.8em;" width="120"
+						src="/logo_senai_original.png">"
+				</div>
+				<ul class="nav">
+					<li class="nav-item active"><a class="nav-link" href="/listarHistorico/1"> <i
+							class=" large material-icons">home</i>
+							<p>Home</p>
+					</a></li>
+
+
+
+					<li><a class="nav-link"
+						href="/painelReserva"><i class=" large material-icons">event_seat</i>
+							<p>Auditório</p> </a></li>
+					<li><a class="nav-link" href="/apiInsta"><i
+							class="large material-icons">collections</i>
+							<p>Hashtag</p> </a></li>
+					<li><a class="nav-link" href="/"> <i
+							class=" large material-icons">exit_to_app</i>
+							<p>Sair</p>
+					</a></li>
+
+
+					<li>
+				</ul>
 			</div>
-			<div class="col-md-8">
-				<div class="card-body">
-					<h5 class="card-title" th:text="${lista.title}"></h5>
-					<p class="card-text" th:text="${#temporals.format(lista.start)}"></p>
-					<p class="card-text" th:text="${#temporals.format(lista.end)}"></p>
+		</div>
+		<div class="main-panel">
+			<!-- Navbar -->
+			<nav class="navbar navbar-expand-lg " color-on-scroll="500">
+				<div class="container-fluid">
+					<a class="navbar-brand"> Painel </a>
+					<div class="collapse navbar-collapse justify-content-end"
+						id="navigation">
+						<form action="/buscarHistorico" method="get">
+							<div class="pesquisa">
+								<i class="bi icone bi-search"></i> <input class="formcontrole"
+									list="datalistOptions" id="search"
+									placeholder="Busca por título ou pelo dia" type="search"
+									name="parametro">
+							</div>
+						</form>
 
-					<form action="/salvarHistorico" method="post"
-						enctype="multipart/form-data" accept-charset="utf-8">
+						<ul class="navbar-nav ml-auto">
 
-						<div class="row">
 
-							<input type="hidden" th:value="${listaFoto?.fotos}" name="fotos" />
-							<input type="hidden" name="idEvento" id="idEvento"
-								th:value="${lista.id}">
-						</div>
-						<div class="row">
-							<div class="file-field input-field col s12">
-								<div class="indigo lighten-3  waves-light btn-small">
-									<span>Fotos</span> <input type="file" name="fileFotos" multiple
-										accept="image/*">
+							<li class="nav-item"><a class="nav-link" href="/logOut">
+									<span class="no-icon"><i class=" medium material-icons">exit_to_app</i></span>
+							</a></li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+			<br> <br>
+			<h1 class="bodyH1">Histórico de Eventos</h1>
+			<br>
+			<div class="containernovo">
+				<!-- Card 1 -->
+				<div th:each="lista:${historico}" class="card card-1">
+					<!-- card-header -->
+					<div class="card-header">
+						<img th:src="${lista.verFotos[0]}" class="card-img" />
+					</div>
+					<!-- card-header -->
+
+					<!-- card-body -->
+					<div class="card-body">
+						<h2 th:text="${lista.title}" class="card-titulo"></h2>
+						<p th:text="${#temporals.format(lista.start)}" class="card-texto"></p>
+						<p th:text="${#temporals.format(lista.end)}" class="card-texto"></p>
+					</div>
+					<!-- card-body -->
+
+					<!-- card-footer -->
+					<div class="card-footer">
+						<form action="/salvarHistorico" method="post"
+							class="formhistorico" enctype="multipart/form-data"
+							accept-charset="utf-8">
+
+							<div>
+								<input type="hidden" th:value="${listaFoto?.fotos}" name="fotos" />
+								<input type="hidden" name="idEvento" id="idEvento"
+									th:value="${lista.id}">
+							</div>
+							<div>
+								<div>
+									<div class="containerhis">
+										<input class="uploadhis" type="file" name="fileFotos" multiple
+											accept="image/*">
+									</div>
 								</div>
 							</div>
-						</div>
-						<br />
-						<button class="indigo darken-1 waves-light btn" type="submit">
-							<i class="material-icons left">save</i>Salvar
-						</button>
-					</form>
+							<div>
+								<a th:href="@{/excluirFotos(idFotos=${lista.id})}"><button
+										class="classExcluir">
+										<i class="material-icons">delete</i>
+									</button></a>
+							</div>
+							<br />
+							<button class="salvarafoto" type="submit">Salvar</button>
+						</form>
+					</div>
+					<!-- card-footer -->
 				</div>
 			</div>
-		</div>
-
-	</div>
-
-	<ul class="pagination" style="padding: 400px 0px 0px;">
-		<li th:class="${paginaAtual == 1 ? 'disabled' : ''}"><a
-			th:href="${paginaAtual > 1 ? paginaAtual - 1 : '#'}"><i
-				class="material-icons">chevron_left</i></a></li>
-
-
-		<li th:each="p:${numPaginas}"
-			th:class="${paginaAtual == p ? 'active' : ''}"><a th:href="${p}"><span
-				th:text="${p}"></span></a></li>
-
-
-		<li th:class="${paginaAtual == totalPaginas ? 'disabled' : ''}">
-			<a th:href="${paginaAtual < totalPaginas ? paginaAtual + 1 : '#'}"><i
-				class="material-icons">chevron_right</i></a>
-		</li>
-	</ul>
 </body>
 </html>

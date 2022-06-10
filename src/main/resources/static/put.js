@@ -26,7 +26,7 @@ function update() {
 	let start = document.getElementById("startUpdate").value
 	let end = document.getElementById("endUpdate").value
 
-	let url = "http://localhost:8080/api/evento/" + id
+	let url = "http://10.92.198.11:8080/api/evento/" + id
 
 
 	if (end < start) {

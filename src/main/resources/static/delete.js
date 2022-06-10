@@ -20,7 +20,7 @@ function apagar() {
 	console.log("passei no deletar")
 
 	let id = document.getElementById("idUpdate").value
-	let url = "http://localhost:8080/api/evento/" + id
+	let url = "http://10.92.198.11:8080/api/evento/" + id
 
 	console.log(id)
 

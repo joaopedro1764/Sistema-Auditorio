@@ -196,7 +196,7 @@ public class UsuarioController {
 	}
 
 	@RequestMapping("esquecerSenha")
-	public String esquecerSenha(Usuario usuario, Model model, RedirectAttributes attr, String nif) {
+	public String esquecerSenha(Usuario usuario, Model model, RedirectAttributes attr) {
 
 		Usuario usuario2 = repository.findByNif(usuario.getNif());
 
@@ -206,11 +206,16 @@ public class UsuarioController {
 
 			attr.addFlashAttribute("senha", "Sua senha foi redefinida para a senha inicial!");
 
-			String parte = usuario.getNif().substring(0, 3);
+			String parte = repository.findById(usuario2.getId()).get().getNif().substring(0, 3);
 
-			usuario.setSenha(parte);
+			System.out.println("u1 " + usuario);
+			System.out.println("u2 " + usuario2);
 
-			System.out.println(parte);
+			usuario2.setSenha(parte);
+
+			repository.save(usuario2);
+
+			System.out.println("3 primeiros caracteres do nif: " + parte);
 
 			return "redirect:/";
 

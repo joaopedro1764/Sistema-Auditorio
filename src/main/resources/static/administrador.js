@@ -11,7 +11,7 @@ function atualizarAdmin(id) {
 
 	function main() {
 
-		let data = fazerGet("http://localhost:8080/api/administrador/" + id);
+		let data = fazerGet("http://10.92.198.11:8080/api/administrador/" + id);
 		let admin = JSON.parse(data);
 
 		$('#modalUpdateAdmin #idAdm').val(admin.id)

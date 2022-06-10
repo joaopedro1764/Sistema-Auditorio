@@ -121,6 +121,29 @@ public class EventoController {
 		return "Interface/historicoLista";
 	}
 
+	@RequestMapping("excluir")
+	public String excluirRestaurante(Long idFotos) {
+		Evento eve = repositoryEvento.findById(idFotos).get();
+		if (eve.getFotos().length() > 0) {
+			for (String foto : eve.verFotos()) {
+				fireBaseUtil.deletar(foto);
+			}
+		}
+		repositoryEvento.delete(eve);
+		return "redirect:listarHistorico/1";
+	}
+
+	@RequestMapping("excluirFoto")
+	public String excluirFoto(Long idFotos, int numFoto, Model model) {
+		Evento eve = repositoryEvento.findById(idFotos).get();
+		String fotoUrl = eve.verFotos()[numFoto];
+		fireBaseUtil.deletar(fotoUrl);
+		eve.setFotos(eve.getFotos().replace(fotoUrl + ";", ""));
+		repositoryEvento.save(eve);
+		model.addAttribute("historico", eve);
+		return "forward:/listarHistorico/1";
+	}
+
 	// request mapping para buscar
 	@RequestMapping("buscarHistorico")
 	public String buscar(Model model, String parametro) {

@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		selectable: true,
 
 		eventSources: {
-			url: 'http://localhost:8080/api/evento',
+			url: 'http://10.92.198.11:8080/api/evento',
 			method: 'GET',
 
 

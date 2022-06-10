@@ -39,4 +39,11 @@ public interface EventoRepository extends PagingAndSortingRepository<Evento, Lon
 	public List<Evento> findByTitleAndStart(@Param("p") String parametro);
 
 	public List<Evento> findAllByOrderByTitleAsc();
+
+	@Query("SELECT t FROM Evento t where :s BETWEEN t.start AND t.end")
+	public Evento intervaloDeDatasInicio(@Param("s") LocalDateTime start);
+
+	@Query("SELECT t FROM Evento t where :e BETWEEN t.start AND t.end")
+	public Evento intervaloDeDatasFinal(@Param("e") LocalDateTime end);
+
 }

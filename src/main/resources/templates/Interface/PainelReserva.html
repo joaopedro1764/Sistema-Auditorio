@@ -99,7 +99,7 @@
 					</a></li>
 
 
-					<li><a class="nav-link" href="#"> <i
+					<li><a class="nav-link" href="/listarHistorico/1"> <i
 							class=" large material-icons">home</i>
 							<p>Home</p>
 					</a></li>
@@ -270,7 +270,7 @@
 					idUsuario.value = id;
 					usuario.innerHTML = "OLÀ  " + nome;
 					//document.querySelectorAll('#idUsuario').value = id;
-				} else if (payload.tipo === "admnistrador") {
+				} else if (payload.tipo === "administrador") {
 
 					console.log("ENTREI NO ELSE DO ADM")
 					let token = sessionStorage.getItem("token");
@@ -337,7 +337,7 @@
 
 				let token = sessionStorage.getItem("token");
 				let payload = parseJwt(token);
-				let url = "http://localhost:8080/api/evento/"
+				let url = "http://10.92.198.11:8080/api/evento/"
 				let idUsuario = document.getElementById("idUsuario").value
 				console.log(idUsuario)
 				let id = document.getElementById("idUsuario").value
@@ -466,8 +466,16 @@
 				request.setRequestHeader("content-type", "application/json")
 				request.send(JSON.stringify(body))
 
-				request.onload = function() {
-					console.log(this.responseText)
+				request.onreadystatechange = function() {
+					console.log('dentro do retorno' + this.status)
+					console.log('dentro do retorno' + this.readyState)
+					if (this.readyState == 4 && this.status == 201) {
+						console.log('PASSOU AQUIIIIIIIIIIIIIIII')
+
+					} else if (this.readyState == 4 && this.status == 409) {
+						// console.log(this)
+						alert("DATA JÀ CADASTRADA")
+					}
 				}
 
 				return request.responseText
@@ -483,7 +491,7 @@
 				let title = document.getElementById("titleUpdate").value
 				let start = document.getElementById("startUpdate").value
 				let end = document.getElementById("endUpdate").value
-				let url = "http://localhost:8080/api/evento/" + id
+				let url = "http://10.92.198.11:8080/api/evento/" + id
 				let fotos = ""
 
 				if (end < start) {

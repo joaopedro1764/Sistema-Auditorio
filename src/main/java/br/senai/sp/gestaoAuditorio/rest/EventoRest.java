@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.senai.sp.gestaoAuditorio.annotation.Privado;
-import br.senai.sp.gestaoAuditorio.annotation.Publico;
 import br.senai.sp.gestaoAuditorio.controller.JavaMailApp;
 import br.senai.sp.gestaoAuditorio.model.Erro;
 import br.senai.sp.gestaoAuditorio.model.Evento;
@@ -125,10 +124,24 @@ public class EventoRest {
 			throw new RuntimeException("id invalido");
 		} else {
 
-			repository.save(evento);
-			// salvar o evento no banco de dados
+			Evento evn2 = repository.intervaloDeDatasInicio(evento.getStart());
 
-			// criar um cabeçalhao HTTp
+			Evento evn3 = repository.intervaloDeDatasFinal(evento.getEnd());
+
+			Evento evn4 = repository.findByTitle(evento.getTitle());
+
+			System.out.println("EVN 1: " + evento);
+			System.out.println("EVN 2: " + evn2);
+
+			if (evn2 != null && evn3 != null && evn4 != null) {
+
+				System.out.println("ERROOO");
+
+				return ResponseEntity.status(HttpStatus.CONFLICT).build();
+
+			} else {
+				repository.save(evento);
+			}
 			HttpHeaders headers = new HttpHeaders();
 			headers.setLocation(URI.create("/api/evento/"));
 			return new ResponseEntity<Void>(headers, HttpStatus.OK);

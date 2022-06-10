@@ -269,7 +269,7 @@ a:focus, a:active, button::-moz-focus-inner, input::-moz-focus-inner,
 }
 
 .sidebar .sidebar-wrapper, body>.navbar-collapse .sidebar-wrapper {
-	position: relative;
+	position: fixed;
 	max-height: calc(100vh - 75px);
 	min-height: 100%;
 	overflow: auto;
@@ -719,6 +719,7 @@ a:focus, a:active, button::-moz-focus-inner, input::-moz-focus-inner,
 
 .modal .modal-content .modal-header {
 	border-bottom: none;
+	padding-top: 24px;
 	padding-right: 24px;
 	padding-bottom: 0;
 	padding-left: 24px;

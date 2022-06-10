@@ -61,7 +61,7 @@ function getHistorico(url) {
 
 function main() {
 
-	let data = getHistorico("http://localhost:8080/api/evento")
+	let data = getHistorico("http://10.92.198.11:8080/api/evento")
 	let eventos = JSON.parse(data);
 	let tabela = document.getElementById("tabela")
 

@@ -11,7 +11,7 @@
 function logaradmin() {
 
 	console.log("entrou")
-	let url = "http://localhost:8080/api/administrador/login";
+	let url = "http://10.92.198.11:8080/api/administrador/login";
 	let senha = document.getElementById("senha").value;
 	let nif = document.getElementById("nif").value;
 	

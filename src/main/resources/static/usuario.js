@@ -11,7 +11,7 @@ function atualizar(id) {
 
 	function main() {
 
-		let data = fazerGet("http://localhost:8080/api/usuario/" + id);
+		let data = fazerGet("http://10.92.198.11:8080/api/usuario/" + id);
 		// variavel para acessar os atributos
 		let usuario = JSON.parse(data);
 

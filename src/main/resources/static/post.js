@@ -17,7 +17,7 @@ function fazPost(url, body) {
 }
 function historico() {
 
-	let url = "http://localhost:8080/api/evento/"
+	let url = "http://10.92.198.11:8080/api/evento/"
 	let idUsuario = document.getElementById("idUsuario").value
 	console.log(idUsuario)
 	let id = document.getElementById("id").value
