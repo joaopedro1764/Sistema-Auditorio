@@ -32,7 +32,7 @@ public class EventoRest {
 	public static final String EMISSOR = "gestao@Auditorio";
 	public static final String SECRET = "Audit@orio";
 
-	@Publico
+	@Privado
 	@RequestMapping(value = "", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Object> criarEvento(@RequestBody Evento evento, RedirectAttributes attr) {
 		try {
@@ -63,10 +63,9 @@ public class EventoRest {
 			// retorna código 201, com a URL para acesso no Location e o usuário inserido no
 			// corpo da resposta
 
-			 JavaMailApp.mandarEmail(evento);
+			JavaMailApp.mandarEmail(evento);
 
-			//JavaMailApp.mandarEmail(evento);
-
+			// JavaMailApp.mandarEmail(evento);
 
 			return ResponseEntity.created(URI.create("/api/evento/" + evento.getId())).body(evento);
 
@@ -98,14 +97,14 @@ public class EventoRest {
 		}
 	}
 
-	@Publico
+	@Privado
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	public Iterable<Evento> getAllValues() {
 		return repository.findAll();
 	}
 
 	// Pelo id
-	@Publico
+	@Privado
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<Evento> findEvento(@PathVariable("id") Long idEvento) {
 		// busca o evento
@@ -146,7 +145,7 @@ public class EventoRest {
 
 	}
 
-	@Publico
+	@Privado
 	@RequestMapping(value = "/usuario/{id}", method = RequestMethod.GET)
 	public Iterable<Evento> procurarID(@PathVariable("id") Long id) {
 		return repository.findByUsuarioId(id);

@@ -18,7 +18,7 @@ import br.senai.sp.gestaoAuditorio.interceptor.AppInterceptor;
 @Configuration
 public class ConfiguracaoApp implements WebMvcConfigurer {
 
-	/*@Autowired
+	@Autowired
 	private AppInterceptor interceptor;
 
 	@Override
@@ -26,7 +26,7 @@ public class ConfiguracaoApp implements WebMvcConfigurer {
 
 		registry.addInterceptor(interceptor);
 
-	}*/
+	}
 
 	@Bean
 	public DataSource dataSource() {

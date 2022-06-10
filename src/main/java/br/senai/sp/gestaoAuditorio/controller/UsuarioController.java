@@ -87,6 +87,7 @@ public class UsuarioController {
 		return "redirect:listarUsuario/1";
 	}
 
+	@Privado
 	@RequestMapping("listarUsuario/{pagina}")
 
 	// @PathVariable associando int page a ${page}

@@ -37,7 +37,7 @@ public class UsuarioRest {
 	public static final String EMISSOR = "r@meu";
 	public static final String SECRET = "RES@PLICA";
 
-	@Publico
+	@Privado
 	@RequestMapping(value = "", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Object> criarUsuario(@RequestBody Usuario usuario) {
 		try {
@@ -63,7 +63,7 @@ public class UsuarioRest {
 		}
 	}
 
-	@Publico
+	@Privado
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<Usuario> findUsuario(@PathVariable("id") Long idUsuario) {
 		Optional<Usuario> usuario = repository.findById(idUsuario);
@@ -81,7 +81,7 @@ public class UsuarioRest {
 		return ResponseEntity.noContent().build();
 	}
 
-	@Publico
+	@Privado
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<Void> atualizarAdm(@RequestBody Usuario usuario, @PathVariable("id") Long id) {
 		if (id != usuario.getId()) {

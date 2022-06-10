@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import br.senai.sp.gestaoAuditorio.annotation.Publico;
 import br.senai.sp.gestaoAuditorio.model.Evento;
 import br.senai.sp.gestaoAuditorio.repository.EventoRepository;
 import br.senai.sp.gestaoAuditorio.rest.EventoRest;
@@ -53,6 +54,7 @@ public class EventoController {
 		return "redirect:fullCalendar";
 	}
 
+	@Publico
 	@RequestMapping("painelReserva")
 	public String painelReserva(Model model) {
 
