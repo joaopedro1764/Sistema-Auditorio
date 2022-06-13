@@ -711,8 +711,8 @@ A HORIZONTAL event
     z-index: 1; /* container inner z-index's because <tr>s can't do it */
   }
 .fc .fc-daygrid-day.fc-day-today {
-      background-color:#ADA5A2 ;
-      background-color: var(--fc-today-bg-color, #ADA5A2);
+      background-color:#F4666C;
+      background-color: var(--fc-today-bg-color, #F22F1D);
     }
 .fc .fc-daygrid-day-frame {
     position: relative;
@@ -1259,7 +1259,7 @@ A VERTICAL event
   color: inherit;
   color: var(--fc-more-link-text-color, inherit);
   background: #d0d0d0;
-  background: var(--fc-more-link-bg-color, #d0d0d0);
+  background: var(--fc-more-link-bg-color, #fff);
   cursor: pointer;
   margin-bottom: 1px; /* match space below fc-timegrid-event */
 }

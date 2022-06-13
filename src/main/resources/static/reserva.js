@@ -23,8 +23,9 @@ document.addEventListener('DOMContentLoaded', function() {
 			right: 'dayGridMonth,timeGridWeek,timeGridDay'
 		},
 
-
-
+		// deixa domingo disable
+		hiddenDays: [0],
+		dayMaxEventRows: 4,
 		navLinks: true, // can click day/week names to navigate views
 		selectable: true,
 
@@ -84,8 +85,6 @@ document.addEventListener('DOMContentLoaded', function() {
 			console.log(payload)
 			console.log("ENTREi IF" + info.event.extendedProps)
 			$('#modalUpdate #usuarioUpdate').val(info.event.extendedProps.usuario.nome)
-
-
 			$('#modalUpdate #titleUpdate').val(info.event.title)
 			$('#modalUpdate #startUpdate').val(info.event.start.toISOString().substring(0, 16))
 			$('#modalUpdate #endUpdate').val(info.event.end.toISOString().substring(0, 16))
@@ -106,9 +105,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 				} else {
-					end.ariaDisabled;
-					start.ariaDisabled;
-					title.ariaDisabled;
+					start.disabled = true;
+					end.disabled = true;
+					title.disabled = true;
 					botaoAlterar.style.visibility = "hidden"
 					botaoExcluir.style.visibility = "hidden"
 				}
