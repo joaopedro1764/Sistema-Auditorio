@@ -1,7 +1,7 @@
 $(function() {
 	//istanciamento da variavel do token e a url
 	//token ficticio
-	const url = "https://graph.facebook.com/17921217800437558/top_media?user_id=17841453171843486&fields=id,media_type,media_url,comments_count,like_count&access_token=EAAISF9D7XfEBAKdwDJ0vLFxX4C8uH8cUf6W5AwjkRUKrDLPFNfsq0O9NxJACboBuULYyfKCeqZAzCXnOiCh1o9nzXcVrJPdwRGAk4bcpucDEP0RPsh3ZAerbOFz6T2U4kU3A7qUuhbsVsXlvm5QLpQsenqld9K4FQj9rcZCTNZBB4szNX87g"
+	const url = "https://graph.facebook.com/17921217800437558/top_media?user_id=17841453171843486&fields=id,media_type,media_url,comments_count,like_count&access_token=EAAISF9D7XfEBAIUJxwlZC0gmUSSHE75mNNraku4bauUbhhWOaL2SfCKigPI1jVxMR7ViwenUGdZBE2vBkJD7VwwMPi22ZANPF6tPQ7Hcg52xnwZBcJFZCyjuXBd8ulQDO9k7vFblUZAqQQbeg45KbR9wcpwu79iTvnB5TUblJUTqNol5cB6sfu"
 
 	//aqui e o processo do consumo de api do ista 
 	$.get(url).then(function(response) {

@@ -35,6 +35,10 @@ public class UsuarioController {
 	public String formUsuario() {
 		return "Usuario/Form";
 	}
+	@RequestMapping("manual")
+	public String Manual() {
+		return "interface/Manual";
+	}
 
 	@RequestMapping("buscarUsuario")
 	public String buscar(Model model, String parametro) {

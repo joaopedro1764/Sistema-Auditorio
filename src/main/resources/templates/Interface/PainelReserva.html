@@ -385,7 +385,9 @@
 					console.log('dentro do retorno' + this.status)
 					console.log('dentro do retorno' + this.readyState)
 					if (this.readyState == 4 && this.status == 201) {
-						console.log('PASSOU AQUIIIIIIIIIIIIIIII')
+						console.log("PASSOU AAAAAAA");
+
+						alert("AAAA")
 
 					} else if (this.readyState == 4 && this.status == 409) {
 						//  console.log(this)
@@ -422,45 +424,15 @@
 				var dataAtual = ano + '-' + '0' + (mes + 1) + '-' + '0' + dia
 						+ 'T' + hora + ':' + min;
 
-				let divErro = document.getElementById("erro")
-
 				if (end < start) {
 
-					const mensagemErro1 = document.createElement('h5')
-
-					const msgErro = document
-							.createTextNode('A Data final não pode acabar antes da data de inicio!')
-
-					mensagemErro1.appendChild(msgErro)
-
-					divErro.appendChild(mensagemErro1)
-
-					setInterval(function Tempo() {
-						var msg = document.getElementsByClassName("erro");
-						while (msg.length > 0) {
-							msg[0].parentNode.removeChild(msg[0]);
-						}
-					}, 3000);
+					alert('A Data final não pode acabar antes da data de inicio!')
 
 					end.focus()
 
 				} else if (start === end) {
 
-					const mensagemErro2 = document.createElement('h5')
-
-					const msgErro2 = document
-							.createTextNode('A data de inicio não pode ser igual a data final!')
-
-					mensagemErro2.appendChild(msgErro2)
-
-					divErro.appendChild(mensagemErro2)
-
-					setInterval(function Tempo() {
-						var msg = document.getElementsByClassName("erro");
-						while (msg.length > 0) {
-							msg[0].parentNode.removeChild(msg[0]);
-						}
-					}, 3000);
+					alert("A data de inicio não pode ser igual a data final!")
 
 					end.focus()
 
@@ -468,19 +440,7 @@
 
 					const mensagemErro3 = document.createElement('h5')
 
-					const msgErro3 = document
-							.createTextNode('A data/hora inicial não pode ser menor que o dia/hora atual !')
-
-					mensagemErro3.appendChild(msgErro3)
-
-					divErro.appendChild(mensagemErro3)
-
-					setInterval(function Tempo() {
-						var msg = document.getElementsByClassName("erro");
-						while (msg.length > 0) {
-							msg[0].parentNode.removeChild(msg[0]);
-						}
-					}, 3000);
+					alert('A data/hora inicial não pode ser menor que o dia/hora atual !')
 
 					end.focus()
 
@@ -539,9 +499,9 @@
 						console.log('PASSOU AQUIIIIIIIIIIIIIIII')
 
 					} else if (this.readyState == 4 && this.status == 409) {
-						// console.log(this)
-						//alert("DATA JÀ CADASTRADA")
-						$('#modalId').modal('show');
+						console.log(this)
+						alert("DATA JÀ CADASTRADA")
+
 					}
 				}
 
@@ -561,15 +521,34 @@
 				let url = "http://10.92.198.11:8080/api/evento/" + id
 				let fotos = ""
 
+				let data = new Date()
+
+				var dia = data.getDate();
+				var mes = data.getMonth();
+				var ano = data.getFullYear();
+				var hora = data.getHours();
+				var min = data.getMinutes();
+
+				var dataAtual = ano + '-' + '0' + (mes + 1) + '-' + '0' + dia
+						+ 'T' + hora + ':' + min;
+
 				if (end < start) {
-					alert('A Data final não pode acabar antes do inicio!');
+
+					alert('A Data final não pode acabar antes da data de inicio!')
 
 					end.focus()
 
 				} else if (start === end) {
-					alert("data inicio não pode ser igual a data final")
-				} else if (start > end) {
-					alert("ERROOOO")
+
+					alert("A data de inicio não pode ser igual a data final!")
+
+					end.focus()
+
+				} else if (start < dataAtual) {
+
+					alert('A data/hora inicial não pode ser menor que o dia/hora atual !')
+
+					end.focus()
 				} else {
 
 					console.log(id)
